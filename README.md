@@ -72,9 +72,12 @@ Set these in `.env` to enable LLM verification:
 For YouTube Shorts URL-only requests, the app attempts to auto-ingest:
 - Title/description metadata using `yt-dlp`
 - Transcript using `youtube-transcript-api`
+- Subtitle-track parsing fallback from `yt-dlp` caption tracks (`vtt`/`json3`)
+- Audio transcription fallback using OpenAI Whisper (`/v1/audio/transcriptions`)
+- Thumbnail-based visual analysis using OpenAI vision models
 
 Current limitation:
-- Full frame-by-frame visual analysis is not enabled in this v1 (noted in response notes).
+- Full frame-by-frame video decoding is not enabled yet; v1 uses sampled thumbnail visual cues.
 
 ## Suggested Next Build Steps
 1. Add a true ingestion pipeline for video metadata, transcript, and sampled frames.

@@ -1,5 +1,8 @@
 import asyncio
 import json
+import os
+import tempfile
+from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 import httpx
@@ -38,7 +41,6 @@ def _fetch_youtube_metadata_sync(url: str) -> dict:
 
 
 def _fetch_transcript_sync(video_id: str) -> str:
-    # Try common English variants first, then default language fallback.
     langs = ["en", "en-US", "en-GB"]
     try:
         segments = YouTubeTranscriptApi.get_transcript(video_id, languages=langs)
@@ -107,7 +109,6 @@ async def _extract_transcript_from_ydl_info(info: dict) -> str:
         block = info.get(key) or {}
         if not isinstance(block, dict):
             return tracks
-        # Prefer English tracks first.
         lang_priority = ["en", "en-US", "en-GB"]
         keys = lang_priority + [k for k in block.keys() if k not in lang_priority]
         for lang in keys:
@@ -124,6 +125,96 @@ async def _extract_transcript_from_ydl_info(info: dict) -> str:
         if text:
             return text
     return ""
+
+
+def _download_audio_for_transcription_sync(url: str, outdir: str) -> str | None:
+    ydl_opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "format": "bestaudio/best",
+        "outtmpl": str(Path(outdir) / "%(id)s.%(ext)s"),
+        "noplaylist": True,
+    }
+    with YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(url, download=True)
+        downloaded = ydl.prepare_filename(info)
+    return downloaded if downloaded and Path(downloaded).exists() else None
+
+
+async def _openai_transcribe_file(audio_path: str) -> str:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return ""
+
+    model = os.getenv("OPENAI_TRANSCRIBE_MODEL", "gpt-4o-mini-transcribe")
+    headers = {"Authorization": f"Bearer {api_key}"}
+
+    try:
+        async with httpx.AsyncClient(timeout=120) as client:
+            with open(audio_path, "rb") as fh:
+                files = {
+                    "file": (Path(audio_path).name, fh, "application/octet-stream"),
+                    "model": (None, model),
+                }
+                resp = await client.post("https://api.openai.com/v1/audio/transcriptions", headers=headers, files=files)
+            resp.raise_for_status()
+            data = resp.json()
+    except Exception:
+        return ""
+
+    text = data.get("text") if isinstance(data, dict) else ""
+    return text.strip() if isinstance(text, str) else ""
+
+
+async def _whisper_fallback_transcript(url: str) -> str:
+    try:
+        with tempfile.TemporaryDirectory() as td:
+            audio_path = await asyncio.to_thread(_download_audio_for_transcription_sync, url, td)
+            if not audio_path:
+                return ""
+            return await _openai_transcribe_file(audio_path)
+    except Exception:
+        return ""
+
+
+async def _openai_thumbnail_analysis(thumbnail_urls: list[str]) -> str:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key or not thumbnail_urls:
+        return ""
+
+    model = os.getenv("OPENAI_VISION_MODEL", os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+
+    content_items: list[dict] = [
+        {
+            "type": "text",
+            "text": (
+                "Analyze these social-video thumbnails for deception/scam/manipulation cues. "
+                "Return concise plain text summary in max 3 sentences."
+            ),
+        }
+    ]
+    for url in thumbnail_urls[:2]:
+        content_items.append({"type": "image_url", "image_url": {"url": url}})
+
+    payload = {
+        "model": model,
+        "temperature": 0,
+        "messages": [
+            {"role": "system", "content": "You are a concise visual risk analyst."},
+            {"role": "user", "content": content_items},
+        ],
+    }
+
+    try:
+        async with httpx.AsyncClient(timeout=45) as client:
+            resp = await client.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+            resp.raise_for_status()
+            data = resp.json()
+            text = data["choices"][0]["message"]["content"]
+            return text.strip() if isinstance(text, str) else ""
+    except Exception:
+        return ""
 
 
 async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
@@ -150,9 +241,6 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
             notes.append(f"Auto-ingested YouTube metadata from channel: {channel}.")
         else:
             notes.append("Auto-ingested YouTube metadata.")
-
-        if info.get("thumbnails"):
-            notes.append("Thumbnail metadata detected. Frame-by-frame visual analysis is not enabled in this v1.")
     except Exception:
         notes.append("Could not fetch YouTube metadata via yt-dlp.")
 
@@ -169,5 +257,22 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
         transcript = await _extract_transcript_from_ydl_info(info)
         if transcript:
             notes.append("Recovered transcript from YouTube subtitle tracks (yt-dlp fallback).")
+
+    if not transcript:
+        whisper_text = await _whisper_fallback_transcript(url)
+        if whisper_text:
+            transcript = whisper_text
+            notes.append("Recovered transcript from audio using OpenAI Whisper transcription fallback.")
+
+    thumbnails = info.get("thumbnails") if isinstance(info, dict) else None
+    if isinstance(thumbnails, list) and thumbnails:
+        thumb_urls = [t.get("url", "") for t in thumbnails if isinstance(t, dict) and t.get("url")]
+        visual_summary = await _openai_thumbnail_analysis(thumb_urls)
+        if visual_summary:
+            if caption:
+                caption = f"{caption}\n\nVisual signals: {visual_summary}"
+            else:
+                caption = f"Visual signals: {visual_summary}"
+            notes.append("Added thumbnail-based visual risk analysis (OpenAI vision).")
 
     return caption, transcript, notes
