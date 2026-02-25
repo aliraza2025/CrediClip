@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-from app.models import AnalyzeRequest, AnalyzeResponse
+from app.models import AnalyzeRequest, AnalyzeResponse, ClaimAssessment
 from app.services.claim_checker import assess_claims
 from app.services.detectors import optional_aiornot_scan
 from app.services.extractors import extract_signals
@@ -53,25 +53,42 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
             caption = auto_caption.strip()
             transcript = auto_transcript.strip()
         else:
-            raise ValueError(
-                "Link-only analysis is currently enabled for YouTube Shorts. "
-                "For TikTok/Instagram, provide caption or transcript text."
+            notes.append(
+                "Link-only auto-ingestion is not enabled for this platform in v1; running limited analysis."
             )
 
-    if not caption and not transcript:
-        raise ValueError(
-            "Could not extract text from this link. Provide transcript/caption manually for now."
+    no_text_mode = not caption and not transcript
+    if no_text_mode:
+        notes.append(
+            "Could not extract transcript/caption from this link. Returning limited-confidence report."
         )
-
-    signals = extract_signals(caption, transcript)
-    claims, claim_notes = await assess_claims(signals.claims)
+        claims = [
+            ClaimAssessment(
+                claim="Insufficient extracted text for factual verification from URL-only input.",
+                status="not_enough_evidence",
+                confidence=0.99,
+                rationale="No transcript/caption was available, so claim-level verification is limited.",
+                citations=[],
+            )
+        ]
+        signals = extract_signals("", "")
+        claim_notes: list[str] = []
+    else:
+        signals = extract_signals(caption, transcript)
+        claims, claim_notes = await assess_claims(signals.claims)
 
     external_scan = await optional_aiornot_scan(str(request.url))
 
-    misinformation = score_misinformation(claims)
-    scam = score_scam(signals.scam_cues)
-    manipulation = score_manipulation(signals.manipulation_cues, external_scan)
-    uncertainty = score_uncertainty(claims)
+    if no_text_mode:
+        misinformation = 65.0
+        scam = 25.0
+        manipulation = max(25.0, score_manipulation(signals.manipulation_cues, external_scan))
+        uncertainty = 100.0
+    else:
+        misinformation = score_misinformation(claims)
+        scam = score_scam(signals.scam_cues)
+        manipulation = score_manipulation(signals.manipulation_cues, external_scan)
+        uncertainty = score_uncertainty(claims)
 
     component_scores = {
         "misinformation": misinformation,
