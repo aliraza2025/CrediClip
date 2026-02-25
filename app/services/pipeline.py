@@ -4,6 +4,7 @@ from app.models import AnalyzeRequest, AnalyzeResponse
 from app.services.claim_checker import assess_claims
 from app.services.detectors import optional_aiornot_scan
 from app.services.extractors import extract_signals
+from app.services.ingestion import enrich_from_youtube
 from app.services.scoring import (
     aggregate_credibility,
     build_flags,
@@ -41,8 +42,29 @@ def infer_platform(url: str) -> str:
 
 async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
     platform = infer_platform(str(request.url))
-    signals = extract_signals(request.caption, request.transcript)
-    claims = assess_claims(signals.claims)
+    caption = request.caption.strip()
+    transcript = request.transcript.strip()
+    notes: list[str] = []
+
+    if not caption and not transcript:
+        if platform == "youtube_shorts":
+            auto_caption, auto_transcript, ingest_notes = await enrich_from_youtube(str(request.url))
+            notes.extend(ingest_notes)
+            caption = auto_caption.strip()
+            transcript = auto_transcript.strip()
+        else:
+            raise ValueError(
+                "Link-only analysis is currently enabled for YouTube Shorts. "
+                "For TikTok/Instagram, provide caption or transcript text."
+            )
+
+    if not caption and not transcript:
+        raise ValueError(
+            "Could not extract text from this link. Provide transcript/caption manually for now."
+        )
+
+    signals = extract_signals(caption, transcript)
+    claims, claim_notes = await assess_claims(signals.claims)
 
     external_scan = await optional_aiornot_scan(str(request.url))
 
@@ -65,10 +87,10 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         uncertainty=uncertainty,
     )
 
-    notes: list[str] = []
+    notes.extend(claim_notes)
     if external_scan is None:
         notes.append("External deepfake API not configured; manipulation score uses heuristic signals.")
-    if not request.transcript:
+    if not transcript:
         notes.append("No transcript provided; claim extraction may be incomplete.")
 
     return AnalyzeResponse(

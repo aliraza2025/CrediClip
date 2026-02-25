@@ -3,9 +3,12 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from dotenv import load_dotenv
 
 from app.models import AnalyzeRequest, AnalyzeResponse
 from app.services.pipeline import analyze_video
+
+load_dotenv()
 
 app = FastAPI(title="CrediClip MVP", version="0.1.0")
 

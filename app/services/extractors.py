@@ -30,13 +30,17 @@ def split_sentences(text: str) -> list[str]:
 
 
 def extract_claims(text: str, top_k: int = 3) -> list[str]:
+    sentences = split_sentences(text)
     claims = []
-    for sentence in split_sentences(text):
+    for sentence in sentences:
         lowered = sentence.lower()
         if any(hint in lowered for hint in CLAIM_HINTS) and len(sentence) >= 20:
             claims.append(sentence)
         if len(claims) >= top_k:
             break
+    if not claims:
+        # Fallback: still analyze substantive sentences when explicit claim cues are absent.
+        claims = [s for s in sentences if len(s) >= 20][:top_k]
     return claims
 
 
