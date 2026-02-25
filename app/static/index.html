@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrediClip MVP</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20260225b" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>CrediClip</h1>
+        <p class="subtitle">AI credibility scoring for TikTok, Instagram, and YouTube Shorts videos.</p>
+
+        <form id="analyze-form">
+          <label for="url">Video URL</label>
+          <input id="url" type="url" placeholder="https://www.youtube.com/shorts/..." required />
+
+          <label for="caption">Caption (optional)</label>
+          <textarea id="caption" rows="3" placeholder="Paste post caption"></textarea>
+
+          <label for="transcript">Transcript (optional, recommended)</label>
+          <textarea id="transcript" rows="5" placeholder="Paste ASR transcript"></textarea>
+
+          <button type="submit">Analyze</button>
+        </form>
+      </section>
+
+      <section class="card" id="results-card" hidden>
+        <h2>Results</h2>
+        <div id="score"></div>
+        <h3>Risk Flags</h3>
+        <div id="flags"></div>
+        <h3>Claims</h3>
+        <div id="claims"></div>
+        <h3>Notes</h3>
+        <ul id="notes"></ul>
+      </section>
+    </main>
+
+    <script src="/static/app.js?v=20260225b"></script>
+  </body>
+</html>
