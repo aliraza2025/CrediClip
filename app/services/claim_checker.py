@@ -1,5 +1,3 @@
-import os
-
 from app.models import ClaimAssessment
 from app.services.debug_state import add_debug_note
 from app.services.llm_claims import assess_claim_with_llm
@@ -47,27 +45,24 @@ def _heuristic_with_evidence(claim: str, evidence_urls: list[str]) -> ClaimAsses
 async def assess_claims(claims: list[str]) -> tuple[list[ClaimAssessment], list[str]]:
     assessments: list[ClaimAssessment] = []
     notes: list[str] = []
-    llm_enabled = bool(os.getenv("OPENAI_API_KEY"))
-    llm_used = False
+    os_used = False
 
     for claim in claims:
         evidence = retrieve_evidence(claim, top_k=3)
         evidence_urls = [e.source_url for e in evidence]
 
-        llm_result = await assess_claim_with_llm(claim, evidence)
-        if llm_result is not None:
-            assessments.append(llm_result)
-            llm_used = True
+        result = await assess_claim_with_llm(claim, evidence)
+        if result is not None:
+            assessments.append(result)
+            os_used = True
             continue
 
         assessments.append(_heuristic_with_evidence(claim, evidence_urls))
 
-    if claims and not llm_enabled:
-        notes.append("OPENAI_API_KEY not set; claim verification used evidence-grounded heuristic fallback.")
-    elif claims and llm_enabled and not llm_used:
-        notes.append("LLM verification unavailable at runtime; fallback verification was used.")
-        add_debug_note("LLM fallback path active for all claims.")
-    elif llm_used:
-        notes.append("Claim verification used LLM + retrieved trusted evidence (RAG).")
+    if claims and os_used:
+        notes.append("Claim verification used open-source evidence heuristics.")
+    elif claims:
+        notes.append("Claim verification used heuristic fallback.")
+        add_debug_note("Open-source verifier returned no decisive result for one or more claims.")
 
     return assessments, notes

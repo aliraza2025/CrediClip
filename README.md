@@ -13,7 +13,7 @@ Link-only behavior:
 ## Stack
 - FastAPI backend
 - Vanilla HTML/CSS/JS frontend
-- Modular scoring pipeline with RAG claim verification and optional external deepfake API integration
+- Open-source scoring pipeline with retrieval-based claim verification and optional external deepfake API integration
 
 ## Quickstart
 
@@ -56,16 +56,12 @@ If you have API access, copy `.env.example` to `.env` and set:
 
 When not configured, the app uses heuristic-only manipulation scoring.
 
-## Optional OpenAI Claim Verification (RAG)
+## Open-Source Verification
 
-The app now uses a retrieval + LLM flow for claim verification:
+Claim verification is fully open-source in this version:
 - Retrieve relevant evidence chunks from trusted-source corpus
-- Ask LLM to classify claim as supported/refuted/not_enough_evidence with citations
-- Fall back to evidence-grounded heuristics if OpenAI credentials are missing/unavailable
-
-Set these in `.env` to enable LLM verification:
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL` (default: `gpt-4o-mini`)
+- Apply lexical/heuristic support-refute checks with citations
+- Return not_enough_evidence when support is weak
 
 ## Auto-Ingestion (YouTube Shorts)
 
@@ -73,11 +69,11 @@ For YouTube Shorts URL-only requests, the app attempts to auto-ingest:
 - Title/description metadata using `yt-dlp`
 - Transcript using `youtube-transcript-api`
 - Subtitle-track parsing fallback from `yt-dlp` caption tracks (`vtt`/`json3`)
-- Audio transcription fallback using OpenAI Whisper (`/v1/audio/transcriptions`)
-- Thumbnail-based visual analysis using OpenAI vision models
+- oEmbed metadata fallback
+- Thumbnail metadata fallback from deterministic YouTube image URLs
 
 Current limitation:
-- Full frame-by-frame video decoding is not enabled yet; v1 uses sampled thumbnail visual cues.
+- Full frame-by-frame video decoding and local OCR/ASR are not enabled yet.
 
 ## Suggested Next Build Steps
 1. Add a true ingestion pipeline for video metadata, transcript, and sampled frames.

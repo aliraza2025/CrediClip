@@ -1,13 +1,11 @@
 import asyncio
 import json
-import os
-import tempfile
-from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 import httpx
 from yt_dlp import YoutubeDL
 from youtube_transcript_api import YouTubeTranscriptApi
+
 from app.services.debug_state import add_debug_note
 
 
@@ -141,66 +139,6 @@ async def _extract_transcript_from_ydl_info(info: dict) -> str:
     return ""
 
 
-def _download_audio_for_transcription_sync(url: str, outdir: str) -> str | None:
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
-        "format": "bestaudio/best",
-        "outtmpl": str(Path(outdir) / "%(id)s.%(ext)s"),
-        "noplaylist": True,
-    }
-    with YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        downloaded = ydl.prepare_filename(info)
-    return downloaded if downloaded and Path(downloaded).exists() else None
-
-
-async def _openai_transcribe_file(audio_path: str) -> str:
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        add_debug_note("Whisper skipped: OPENAI_API_KEY missing.")
-        return ""
-
-    model = os.getenv("OPENAI_TRANSCRIBE_MODEL", "gpt-4o-mini-transcribe")
-    headers = {"Authorization": f"Bearer {api_key}"}
-
-    try:
-        async with httpx.AsyncClient(timeout=120) as client:
-            with open(audio_path, "rb") as fh:
-                files = {
-                    "file": (Path(audio_path).name, fh, "application/octet-stream"),
-                    "model": (None, model),
-                }
-                resp = await client.post("https://api.openai.com/v1/audio/transcriptions", headers=headers, files=files)
-            resp.raise_for_status()
-            data = resp.json()
-    except httpx.HTTPStatusError as exc:
-        add_debug_note(f"Whisper API HTTP error: {exc.response.status_code}.")
-        return ""
-    except httpx.HTTPError as exc:
-        add_debug_note(f"Whisper API network error: {type(exc).__name__}.")
-        return ""
-    except Exception as exc:
-        add_debug_note(f"Whisper API unexpected error: {type(exc).__name__}.")
-        return ""
-
-    text = data.get("text") if isinstance(data, dict) else ""
-    return text.strip() if isinstance(text, str) else ""
-
-
-async def _whisper_fallback_transcript(url: str) -> str:
-    try:
-        with tempfile.TemporaryDirectory() as td:
-            audio_path = await asyncio.to_thread(_download_audio_for_transcription_sync, url, td)
-            if not audio_path:
-                add_debug_note("Whisper fallback: audio download returned no file.")
-                return ""
-            return await _openai_transcribe_file(audio_path)
-    except Exception as exc:
-        add_debug_note(f"Whisper fallback exception: {type(exc).__name__}.")
-        return ""
-
-
 def _fallback_thumbnail_urls(video_id: str) -> list[str]:
     return [
         f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg",
@@ -209,53 +147,21 @@ def _fallback_thumbnail_urls(video_id: str) -> list[str]:
     ]
 
 
-async def _openai_thumbnail_analysis(thumbnail_urls: list[str]) -> str:
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key or not thumbnail_urls:
-        if not api_key:
-            add_debug_note("Vision skipped: OPENAI_API_KEY missing.")
-        return ""
+async def _thumbnail_metadata_summary(thumbnail_urls: list[str]) -> str:
+    # Open-source lightweight visual heuristic: collect reachable thumbnail sizes.
+    found: list[str] = []
+    for url in thumbnail_urls[:3]:
+        try:
+            async with httpx.AsyncClient(timeout=10) as client:
+                res = await client.head(url)
+            if res.status_code < 400:
+                found.append(url.split("/")[-1])
+        except Exception:
+            continue
 
-    model = os.getenv("OPENAI_VISION_MODEL", os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-
-    content_items: list[dict] = [
-        {
-            "type": "text",
-            "text": (
-                "Analyze these social-video thumbnails for deception/scam/manipulation cues. "
-                "Return concise plain text summary in max 3 sentences."
-            ),
-        }
-    ]
-    for url in thumbnail_urls[:2]:
-        content_items.append({"type": "image_url", "image_url": {"url": url}})
-
-    payload = {
-        "model": model,
-        "temperature": 0,
-        "messages": [
-            {"role": "system", "content": "You are a concise visual risk analyst."},
-            {"role": "user", "content": content_items},
-        ],
-    }
-
-    try:
-        async with httpx.AsyncClient(timeout=45) as client:
-            resp = await client.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-            resp.raise_for_status()
-            data = resp.json()
-            text = data["choices"][0]["message"]["content"]
-            return text.strip() if isinstance(text, str) else ""
-    except httpx.HTTPStatusError as exc:
-        add_debug_note(f"Vision API HTTP error: {exc.response.status_code}.")
+    if not found:
         return ""
-    except httpx.HTTPError as exc:
-        add_debug_note(f"Vision API network error: {type(exc).__name__}.")
-        return ""
-    except Exception as exc:
-        add_debug_note(f"Vision API unexpected error: {type(exc).__name__}.")
-        return ""
+    return f"Available thumbnail variants: {', '.join(found)}."
 
 
 async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
@@ -315,30 +221,17 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
         if transcript:
             notes.append("Recovered transcript from YouTube subtitle tracks (yt-dlp fallback).")
 
-    if not transcript:
-        whisper_text = await _whisper_fallback_transcript(url)
-        if whisper_text:
-            transcript = whisper_text
-            notes.append("Recovered transcript from audio using OpenAI Whisper transcription fallback.")
-        else:
-            notes.append("Whisper transcription fallback could not recover transcript.")
-
     thumbnails = info.get("thumbnails") if isinstance(info, dict) else None
     thumb_urls: list[str] = []
     if isinstance(thumbnails, list) and thumbnails:
         thumb_urls = [t.get("url", "") for t in thumbnails if isinstance(t, dict) and t.get("url")]
     if not thumb_urls:
         thumb_urls = _fallback_thumbnail_urls(video_id)
-        notes.append("Using deterministic YouTube thumbnail URL fallback for visual analysis.")
+        notes.append("Using deterministic YouTube thumbnail URL fallback for visual metadata checks.")
 
-    visual_summary = await _openai_thumbnail_analysis(thumb_urls)
+    visual_summary = await _thumbnail_metadata_summary(thumb_urls)
     if visual_summary:
-        if caption:
-            caption = f"{caption}\n\nVisual signals: {visual_summary}"
-        else:
-            caption = f"Visual signals: {visual_summary}"
-        notes.append("Added thumbnail-based visual risk analysis (OpenAI vision).")
-    else:
-        notes.append("Visual analysis fallback did not return additional signals.")
+        caption = f"{caption}\n\nVisual metadata: {visual_summary}".strip()
+        notes.append("Added thumbnail metadata signals (open-source fallback).")
 
     return caption, transcript, notes
