@@ -8,6 +8,7 @@ from urllib.parse import parse_qs, urlparse
 import httpx
 from yt_dlp import YoutubeDL
 from youtube_transcript_api import YouTubeTranscriptApi
+from app.services.debug_state import add_debug_note
 
 
 def extract_youtube_video_id(url: str) -> str | None:
@@ -49,6 +50,7 @@ async def _fetch_youtube_oembed(url: str) -> dict:
             data = resp.json()
             return data if isinstance(data, dict) else {}
     except Exception:
+        add_debug_note("YouTube oEmbed request failed.")
         return {}
 
 
@@ -156,6 +158,7 @@ def _download_audio_for_transcription_sync(url: str, outdir: str) -> str | None:
 async def _openai_transcribe_file(audio_path: str) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
+        add_debug_note("Whisper skipped: OPENAI_API_KEY missing.")
         return ""
 
     model = os.getenv("OPENAI_TRANSCRIBE_MODEL", "gpt-4o-mini-transcribe")
@@ -171,7 +174,14 @@ async def _openai_transcribe_file(audio_path: str) -> str:
                 resp = await client.post("https://api.openai.com/v1/audio/transcriptions", headers=headers, files=files)
             resp.raise_for_status()
             data = resp.json()
-    except Exception:
+    except httpx.HTTPStatusError as exc:
+        add_debug_note(f"Whisper API HTTP error: {exc.response.status_code}.")
+        return ""
+    except httpx.HTTPError as exc:
+        add_debug_note(f"Whisper API network error: {type(exc).__name__}.")
+        return ""
+    except Exception as exc:
+        add_debug_note(f"Whisper API unexpected error: {type(exc).__name__}.")
         return ""
 
     text = data.get("text") if isinstance(data, dict) else ""
@@ -183,9 +193,11 @@ async def _whisper_fallback_transcript(url: str) -> str:
         with tempfile.TemporaryDirectory() as td:
             audio_path = await asyncio.to_thread(_download_audio_for_transcription_sync, url, td)
             if not audio_path:
+                add_debug_note("Whisper fallback: audio download returned no file.")
                 return ""
             return await _openai_transcribe_file(audio_path)
-    except Exception:
+    except Exception as exc:
+        add_debug_note(f"Whisper fallback exception: {type(exc).__name__}.")
         return ""
 
 
@@ -200,6 +212,8 @@ def _fallback_thumbnail_urls(video_id: str) -> list[str]:
 async def _openai_thumbnail_analysis(thumbnail_urls: list[str]) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key or not thumbnail_urls:
+        if not api_key:
+            add_debug_note("Vision skipped: OPENAI_API_KEY missing.")
         return ""
 
     model = os.getenv("OPENAI_VISION_MODEL", os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
@@ -233,7 +247,14 @@ async def _openai_thumbnail_analysis(thumbnail_urls: list[str]) -> str:
             data = resp.json()
             text = data["choices"][0]["message"]["content"]
             return text.strip() if isinstance(text, str) else ""
-    except Exception:
+    except httpx.HTTPStatusError as exc:
+        add_debug_note(f"Vision API HTTP error: {exc.response.status_code}.")
+        return ""
+    except httpx.HTTPError as exc:
+        add_debug_note(f"Vision API network error: {type(exc).__name__}.")
+        return ""
+    except Exception as exc:
+        add_debug_note(f"Vision API unexpected error: {type(exc).__name__}.")
         return ""
 
 
@@ -263,6 +284,7 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
             notes.append("Auto-ingested YouTube metadata.")
     except Exception:
         notes.append("Could not fetch YouTube metadata via yt-dlp.")
+        add_debug_note("yt-dlp metadata extraction failed.")
 
     if not caption:
         oembed = await _fetch_youtube_oembed(url)
@@ -286,6 +308,7 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
             notes.append("YouTube transcript lookup returned empty text.")
     except Exception:
         notes.append("Could not fetch YouTube transcript (disabled/unavailable).")
+        add_debug_note("youtube-transcript-api failed for this video.")
 
     if not transcript and info:
         transcript = await _extract_transcript_from_ydl_info(info)

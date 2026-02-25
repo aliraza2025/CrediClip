@@ -1,6 +1,7 @@
 import os
 
 from app.models import ClaimAssessment
+from app.services.debug_state import add_debug_note
 from app.services.llm_claims import assess_claim_with_llm
 from app.services.retrieval import retrieve_evidence
 
@@ -65,6 +66,7 @@ async def assess_claims(claims: list[str]) -> tuple[list[ClaimAssessment], list[
         notes.append("OPENAI_API_KEY not set; claim verification used evidence-grounded heuristic fallback.")
     elif claims and llm_enabled and not llm_used:
         notes.append("LLM verification unavailable at runtime; fallback verification was used.")
+        add_debug_note("LLM fallback path active for all claims.")
     elif llm_used:
         notes.append("Claim verification used LLM + retrieved trusted evidence (RAG).")
 

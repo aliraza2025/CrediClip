@@ -5,6 +5,7 @@ from typing import Any
 import httpx
 
 from app.models import ClaimAssessment
+from app.services.debug_state import add_debug_note
 from app.services.retrieval import EvidenceChunk
 
 
@@ -30,6 +31,7 @@ async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> Cl
     api_key = os.getenv("OPENAI_API_KEY")
     model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     if not api_key:
+        add_debug_note("LLM check skipped: OPENAI_API_KEY missing.")
         return None
 
     evidence_block = "\n".join(
@@ -72,11 +74,19 @@ async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> Cl
             response.raise_for_status()
             data = response.json()
             content = data["choices"][0]["message"]["content"]
-    except Exception:
+    except httpx.HTTPStatusError as exc:
+        add_debug_note(f"LLM API HTTP error: {exc.response.status_code}.")
+        return None
+    except httpx.HTTPError as exc:
+        add_debug_note(f"LLM API network error: {type(exc).__name__}.")
+        return None
+    except Exception as exc:
+        add_debug_note(f"LLM API unexpected error: {type(exc).__name__}.")
         return None
 
     parsed = _extract_json(content)
     if not parsed:
+        add_debug_note("LLM response parse error: JSON not found.")
         return None
 
     status = parsed.get("status")
@@ -85,6 +95,7 @@ async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> Cl
     citations = parsed.get("citations") or []
 
     if status not in {"supported", "refuted", "not_enough_evidence"}:
+        add_debug_note("LLM response validation error: invalid status.")
         return None
     if not isinstance(confidence, (int, float)):
         confidence = 0.5

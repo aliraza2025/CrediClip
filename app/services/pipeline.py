@@ -2,6 +2,7 @@ from urllib.parse import urlparse
 
 from app.models import AnalyzeRequest, AnalyzeResponse, ClaimAssessment
 from app.services.claim_checker import assess_claims
+from app.services.debug_state import get_debug_notes, reset_debug_notes
 from app.services.detectors import optional_aiornot_scan
 from app.services.extractors import extract_signals
 from app.services.ingestion import enrich_from_youtube
@@ -41,6 +42,7 @@ def infer_platform(url: str) -> str:
 
 
 async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
+    reset_debug_notes()
     platform = infer_platform(str(request.url))
     caption = request.caption.strip()
     transcript = request.transcript.strip()
@@ -109,6 +111,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         notes.append("External deepfake API not configured; manipulation score uses heuristic signals.")
     if not transcript:
         notes.append("No transcript provided; claim extraction may be incomplete.")
+    notes.extend(get_debug_notes())
 
     return AnalyzeResponse(
         platform=platform,
