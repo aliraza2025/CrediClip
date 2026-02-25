@@ -40,6 +40,18 @@ def _fetch_youtube_metadata_sync(url: str) -> dict:
     return info or {}
 
 
+async def _fetch_youtube_oembed(url: str) -> dict:
+    endpoint = "https://www.youtube.com/oembed"
+    try:
+        async with httpx.AsyncClient(timeout=15) as client:
+            resp = await client.get(endpoint, params={"url": url, "format": "json"})
+            resp.raise_for_status()
+            data = resp.json()
+            return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
 def _fetch_transcript_sync(video_id: str) -> str:
     langs = ["en", "en-US", "en-GB"]
     try:
@@ -177,6 +189,14 @@ async def _whisper_fallback_transcript(url: str) -> str:
         return ""
 
 
+def _fallback_thumbnail_urls(video_id: str) -> list[str]:
+    return [
+        f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg",
+        f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
+        f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg",
+    ]
+
+
 async def _openai_thumbnail_analysis(thumbnail_urls: list[str]) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key or not thumbnail_urls:
@@ -244,6 +264,20 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
     except Exception:
         notes.append("Could not fetch YouTube metadata via yt-dlp.")
 
+    if not caption:
+        oembed = await _fetch_youtube_oembed(url)
+        if oembed:
+            title = (oembed.get("title") or "").strip()
+            author = (oembed.get("author_name") or "").strip()
+            if title:
+                caption = title
+            if author:
+                notes.append(f"Recovered metadata from YouTube oEmbed (author: {author}).")
+            else:
+                notes.append("Recovered metadata from YouTube oEmbed.")
+        else:
+            notes.append("Could not fetch YouTube metadata via oEmbed fallback.")
+
     try:
         transcript = await asyncio.to_thread(_fetch_transcript_sync, video_id)
         if transcript:
@@ -263,16 +297,25 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
         if whisper_text:
             transcript = whisper_text
             notes.append("Recovered transcript from audio using OpenAI Whisper transcription fallback.")
+        else:
+            notes.append("Whisper transcription fallback could not recover transcript.")
 
     thumbnails = info.get("thumbnails") if isinstance(info, dict) else None
+    thumb_urls: list[str] = []
     if isinstance(thumbnails, list) and thumbnails:
         thumb_urls = [t.get("url", "") for t in thumbnails if isinstance(t, dict) and t.get("url")]
-        visual_summary = await _openai_thumbnail_analysis(thumb_urls)
-        if visual_summary:
-            if caption:
-                caption = f"{caption}\n\nVisual signals: {visual_summary}"
-            else:
-                caption = f"Visual signals: {visual_summary}"
-            notes.append("Added thumbnail-based visual risk analysis (OpenAI vision).")
+    if not thumb_urls:
+        thumb_urls = _fallback_thumbnail_urls(video_id)
+        notes.append("Using deterministic YouTube thumbnail URL fallback for visual analysis.")
+
+    visual_summary = await _openai_thumbnail_analysis(thumb_urls)
+    if visual_summary:
+        if caption:
+            caption = f"{caption}\n\nVisual signals: {visual_summary}"
+        else:
+            caption = f"Visual signals: {visual_summary}"
+        notes.append("Added thumbnail-based visual risk analysis (OpenAI vision).")
+    else:
+        notes.append("Visual analysis fallback did not return additional signals.")
 
     return caption, transcript, notes
