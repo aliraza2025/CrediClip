@@ -149,3 +149,7 @@ async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> Cl
         rationale="Retrieved trusted evidence does not strongly address this claim.",
         citations=urls,
     )
+
+
+def openrouter_enabled() -> bool:
+    return bool(os.getenv("OPENROUTER_API_KEY", "").strip())

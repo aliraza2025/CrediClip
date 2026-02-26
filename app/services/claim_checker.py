@@ -1,6 +1,6 @@
 from app.models import ClaimAssessment
 from app.services.debug_state import add_debug_note
-from app.services.llm_claims import assess_claim_with_llm
+from app.services.llm_claims import assess_claim_with_llm, openrouter_enabled
 from app.services.retrieval import retrieve_evidence
 
 
@@ -46,6 +46,7 @@ async def assess_claims(claims: list[str]) -> tuple[list[ClaimAssessment], list[
     assessments: list[ClaimAssessment] = []
     notes: list[str] = []
     os_used = False
+    or_enabled = openrouter_enabled()
 
     for claim in claims:
         evidence = retrieve_evidence(claim, top_k=3)
@@ -59,8 +60,10 @@ async def assess_claims(claims: list[str]) -> tuple[list[ClaimAssessment], list[
 
         assessments.append(_heuristic_with_evidence(claim, evidence_urls))
 
-    if claims and os_used:
+    if claims and os_used and not or_enabled:
         notes.append("Claim verification used open-source evidence heuristics.")
+    elif claims and or_enabled:
+        notes.append("Claim verification attempted via OpenRouter with heuristic fallback.")
     elif claims:
         notes.append("Claim verification used heuristic fallback.")
         add_debug_note("Open-source verifier returned no decisive result for one or more claims.")
