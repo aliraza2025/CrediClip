@@ -10,7 +10,7 @@ class AnalyzeRequest(BaseModel):
 
 
 class RiskFlag(BaseModel):
-    type: Literal["misinformation", "scam", "manipulation", "uncertainty"]
+    type: Literal["misinformation", "scam", "manipulation", "uncertainty", "generation_origin"]
     level: Literal["low", "medium", "high"]
     score: float
     rationale: str

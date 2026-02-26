@@ -43,6 +43,30 @@ def score_uncertainty(claims: list[ClaimAssessment]) -> float:
     return clamp((uncertain / len(claims)) * 100)
 
 
+def score_generation_origin(
+    text: str,
+    manipulation_cues: list[str],
+    aiornot: dict[str, float] | None,
+) -> float:
+    """Returns AI-generation likelihood on a 0..100 scale.
+
+    Low score => likely human-generated.
+    High score => likely AI-generated/synthetic.
+    """
+    cue_score = min(55.0, len(manipulation_cues) * 16.0)
+    api_score = 0.0
+    if aiornot:
+        api_score = (aiornot.get("video_risk", 0.0) * 70) + (aiornot.get("audio_risk", 0.0) * 30)
+
+    lowered = text.lower()
+    keyword_bonus = 0.0
+    for k in ["ai generated", "ai-made", "deepfake", "synthetic", "voice clone", "face swap"]:
+        if k in lowered:
+            keyword_bonus += 8.0
+
+    return clamp(cue_score + api_score + keyword_bonus)
+
+
 def aggregate_credibility(
     misinformation: float,
     scam: float,
@@ -59,16 +83,25 @@ def build_flags(component_scores: dict[str, float]) -> list[RiskFlag]:
         "scam": "Language cues suggest potential fraud or deceptive persuasion patterns.",
         "manipulation": "Audio/visual indicators suggest potential synthetic or altered media.",
         "uncertainty": "Evidence availability is limited for one or more key claims.",
+        "generation_origin": "Estimated clip origin based on synthetic-media signals.",
     }
 
     flags: list[RiskFlag] = []
     for key, score in component_scores.items():
+        rationale = rationales[key]
+        if key == "generation_origin":
+            if score >= 70:
+                rationale = "AI-generated content likely."
+            elif score >= 35:
+                rationale = "Origin uncertain (mixed AI/human signals)."
+            else:
+                rationale = "Human-generated content likely."
         flags.append(
             RiskFlag(
                 type=key,
                 level=level_from_score(score),
                 score=round(score, 2),
-                rationale=rationales[key],
+                rationale=rationale,
             )
         )
     return flags

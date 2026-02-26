@@ -9,6 +9,7 @@ from app.services.ingestion import enrich_from_youtube
 from app.services.scoring import (
     aggregate_credibility,
     build_flags,
+    score_generation_origin,
     score_manipulation,
     score_misinformation,
     score_scam,
@@ -92,11 +93,18 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         manipulation = score_manipulation(signals.manipulation_cues, external_scan)
         uncertainty = score_uncertainty(claims)
 
+    generation_origin = score_generation_origin(
+        text=f"{caption}\n{transcript}",
+        manipulation_cues=signals.manipulation_cues,
+        aiornot=external_scan,
+    )
+
     component_scores = {
         "misinformation": misinformation,
         "scam": scam,
         "manipulation": manipulation,
         "uncertainty": uncertainty,
+        "generation_origin": generation_origin,
     }
 
     credibility_score = aggregate_credibility(
