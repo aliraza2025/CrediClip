@@ -90,6 +90,25 @@ For YouTube Shorts URL-only requests, the app attempts to auto-ingest:
 Current limitation:
 - Some videos may still block downloads/transcripts from server-side IPs.
 
+### yt-dlp Cookie Authentication (Recommended for YouTube blocks)
+
+If YouTube blocks server-side metadata/audio extraction, configure yt-dlp cookies:
+
+- `YTDLP_COOKIE_FILE`: path to a Netscape cookie file inside runtime
+- `YTDLP_COOKIES_B64`: base64 of Netscape cookie file content (best for Fly secrets)
+
+Example (local shell):
+
+```bash
+base64 -i /path/to/cookies.txt | tr -d '\n'
+```
+
+Then set on Fly:
+
+```bash
+flyctl secrets set YTDLP_COOKIES_B64='<BASE64_VALUE>' -a crediclip-axraza-msba
+```
+
 ## Suggested Next Build Steps
 1. Add a true ingestion pipeline for video metadata, transcript, and sampled frames.
 2. Expand trusted corpora and add vector-store retrieval (FAISS/pgvector) for higher recall.
@@ -127,6 +146,45 @@ python scripts/retrain_generation_labels.py
 Manual override file:
 - `app/data/manual_generation_overrides.json`
 
+## Build Mixed Eval Labels (AI + Human Shorts)
+
+Build a mixed ground-truth file using:
+- AI Shorts: `aibuttonfoundation/youtube-ai-slop-shorts-dataset`
+- Human Shorts: `prince7489/youtube-shorts-performance-dataset`
+
+```bash
+python scripts/build_mixed_eval_labels.py
+```
+
+Optional class balancing cap (example: 5000 per class):
+
+```bash
+python scripts/build_mixed_eval_labels.py --max-ai 5000 --max-human 5000
+```
+
+Output:
+- `app/data/eval_mixed_labels.json` (`video_id -> ai_generated|human_generated`)
+
+### Recommended Human Label Source (Real YouTube IDs)
+
+If your Kaggle human dataset contains synthetic IDs (e.g., `vid_1000`), build human labels from real public YouTube channels:
+
+```bash
+python scripts/build_human_labels_from_channels.py --max-per-channel 40
+```
+
+Inputs:
+- `app/data/human_channels.txt` (editable list of channels/handles)
+
+Output:
+- `app/data/human_generation_labels.json`
+
+Then build mixed labels using AI Kaggle labels + real human channel labels:
+
+```bash
+python scripts/build_mixed_eval_labels.py --human-labels-json app/data/human_generation_labels.json --max-ai 5000 --max-human 5000
+```
+
 ## Validation Report Workflow
 
 Run a random sample validation against live API and save reproducible reports:
@@ -135,6 +193,44 @@ Run a random sample validation against live API and save reproducible reports:
 python scripts/evaluate_random_sample.py --n 10 --seed 20260225
 ```
 
+Run it against mixed labels:
+
+```bash
+python scripts/evaluate_random_sample.py --labels app/data/eval_mixed_labels.json --n 50 --seed 20260226
+```
+
+Run balanced sampling for fair AI vs human validation:
+
+```bash
+python scripts/evaluate_random_sample.py --labels app/data/eval_mixed_labels.json --n 50 --seed 20260226 --balanced
+```
+
 Outputs:
 - `reports/validation_10_<timestamp>.json`
 - `reports/validation_10_<timestamp>.csv`
+
+## Metrics + Threshold Recommendation
+
+Compute generation-origin quality metrics and a recommended score threshold from validation CSVs:
+
+```bash
+python scripts/evaluate_thresholds.py
+```
+
+Use mixed-label truth explicitly:
+
+```bash
+python scripts/evaluate_thresholds.py --labels app/data/eval_mixed_labels.json
+```
+
+Optional explicit CSV input:
+
+```bash
+python scripts/evaluate_thresholds.py --report reports/validation_5_20260226T091350Z.csv
+```
+
+Outputs:
+- `reports/calibration_<timestamp>.json`
+
+Note:
+- Reliable thresholding needs mixed ground truth (both `ai_generated` and human-generated samples).

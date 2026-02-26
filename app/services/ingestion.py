@@ -1,4 +1,5 @@
 import asyncio
+import base64
 import json
 import os
 import re
@@ -18,6 +19,40 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from app.services.debug_state import add_debug_note
 
 _WHISPER_MODEL: WhisperModel | None = None
+_YTDLP_COOKIEFILE_RESOLVED: str | None = None
+_YTDLP_COOKIEFILE_INIT_ATTEMPTED = False
+
+
+def _resolve_yt_dlp_cookiefile() -> str | None:
+    global _YTDLP_COOKIEFILE_RESOLVED, _YTDLP_COOKIEFILE_INIT_ATTEMPTED
+    if _YTDLP_COOKIEFILE_INIT_ATTEMPTED:
+        return _YTDLP_COOKIEFILE_RESOLVED
+    _YTDLP_COOKIEFILE_INIT_ATTEMPTED = True
+
+    # Option 1: absolute/relative file path already present in runtime.
+    cookie_path = (os.getenv("YTDLP_COOKIE_FILE") or "").strip()
+    if cookie_path and Path(cookie_path).exists():
+        _YTDLP_COOKIEFILE_RESOLVED = cookie_path
+        add_debug_note("yt-dlp cookie file detected from YTDLP_COOKIE_FILE.")
+        return _YTDLP_COOKIEFILE_RESOLVED
+
+    # Option 2: base64-encoded Netscape cookie content.
+    cookie_b64 = (os.getenv("YTDLP_COOKIES_B64") or "").strip()
+    if cookie_b64:
+        try:
+            decoded = base64.b64decode(cookie_b64).decode("utf-8", errors="ignore").strip()
+            if decoded:
+                fd, tmp_path = tempfile.mkstemp(prefix="yt_dlp_cookies_", suffix=".txt")
+                os.close(fd)
+                Path(tmp_path).write_text(decoded + "\n")
+                _YTDLP_COOKIEFILE_RESOLVED = tmp_path
+                add_debug_note("yt-dlp cookie file materialized from YTDLP_COOKIES_B64.")
+                return _YTDLP_COOKIEFILE_RESOLVED
+        except Exception:
+            add_debug_note("Failed to decode YTDLP_COOKIES_B64.")
+            return None
+
+    return None
 
 
 def _yt_dlp_retry_option_sets(base: dict) -> list[dict]:
@@ -27,6 +62,9 @@ def _yt_dlp_retry_option_sets(base: dict) -> list[dict]:
         "no_warnings": True,
         "noplaylist": True,
     }
+    cookiefile = _resolve_yt_dlp_cookiefile()
+    if cookiefile:
+        common["cookiefile"] = cookiefile
     sets = []
     # Standard web client.
     s1 = {**common, **base}
