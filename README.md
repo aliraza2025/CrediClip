@@ -63,6 +63,14 @@ Claim verification is fully open-source in this version:
 - Apply lexical/heuristic support-refute checks with citations
 - Return not_enough_evidence when support is weak
 
+## Optional OpenRouter LLM (Free Tier)
+
+You can optionally enable OpenRouter for stronger claim reasoning while keeping free/open alternatives:
+- Set `OPENROUTER_API_KEY`
+- Set `OPENROUTER_MODEL` (example free model: `meta-llama/llama-3.1-8b-instruct:free`)
+
+When OpenRouter is enabled, claim verification uses OpenRouter first, then falls back to open-source heuristics if OpenRouter fails.
+
 ## Auto-Ingestion (YouTube Shorts)
 
 For YouTube Shorts URL-only requests, the app attempts to auto-ingest:
