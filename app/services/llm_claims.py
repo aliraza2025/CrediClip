@@ -35,6 +35,21 @@ def _lexical_support_score(claim: str, evidence: list[EvidenceChunk]) -> tuple[f
     return best_score, best_urls
 
 
+def _has_ai_self_declaration(claim: str) -> bool:
+    lowered = claim.lower()
+    patterns = [
+        "#ai",
+        "#aigenerated",
+        "ai generated",
+        "generated with ai",
+        "made with ai",
+        "this is ai",
+        "ai video",
+        "ai clip",
+    ]
+    return any(p in lowered for p in patterns)
+
+
 async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> ClaimAssessment | None:
     """Open-source verifier with optional OpenRouter LLM path.
 
@@ -52,7 +67,9 @@ async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> Cl
             "Classify the claim using ONLY provided evidence. "
             "Return strict JSON with keys: status, confidence, rationale, citations. "
             "status in [supported, refuted, not_enough_evidence]. "
-            "confidence is 0..1 float. citations are source URLs from evidence."
+            "confidence is 0..1 float. citations are source URLs from evidence. "
+            "If claim text self-declares AI generation (e.g., #ai, ai-generated) and evidence is not contradictory, "
+            "prefer supported over not_enough_evidence."
         )
         user_prompt = f"Claim:\n{claim}\n\nEvidence:\n{evidence_block}"
         payload = {
@@ -121,17 +138,27 @@ async def assess_claim_with_llm(claim: str, evidence: list[EvidenceChunk]) -> Cl
 
     support_score, urls = _lexical_support_score(claim, evidence)
 
-    if support_score >= 0.55:
+    if _has_ai_self_declaration(claim):
+        add_debug_note("Open-source verifier: AI self-declaration detected in claim text.")
+        return ClaimAssessment(
+            claim=claim,
+            status="supported",
+            confidence=0.78,
+            rationale="Claim includes explicit AI-generation self-declaration in source text.",
+            citations=urls,
+        )
+
+    if support_score >= 0.45:
         add_debug_note("Open-source verifier: lexical evidence support high.")
         return ClaimAssessment(
             claim=claim,
             status="supported",
-            confidence=min(0.85, 0.55 + support_score * 0.4),
+            confidence=min(0.85, 0.52 + support_score * 0.42),
             rationale="Claim has strong lexical overlap with retrieved trusted evidence.",
             citations=urls,
         )
 
-    if support_score >= 0.30:
+    if support_score >= 0.22:
         add_debug_note("Open-source verifier: lexical overlap medium; uncertain verdict.")
         return ClaimAssessment(
             claim=claim,

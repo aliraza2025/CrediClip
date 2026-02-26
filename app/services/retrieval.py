@@ -36,6 +36,26 @@ TRUSTED_CORPUS: list[EvidenceChunk] = [
         source_url="https://www.nist.gov/itl/iad/mig/media-forensics",
         text="Synthetic media and deepfakes can be difficult to detect; forensic analysis and provenance checks are important.",
     ),
+    EvidenceChunk(
+        title="C2PA - Content Credentials Overview",
+        source_url="https://c2pa.org/specifications/specifications/1.3/index.html",
+        text="Content credentials help indicate media provenance and edits; synthetic or AI-generated media may include provenance metadata.",
+    ),
+    EvidenceChunk(
+        title="NIST AI RMF - Generative AI Risk",
+        source_url="https://www.nist.gov/itl/ai-risk-management-framework",
+        text="Generative AI systems can create synthetic media that appears realistic and may require transparency disclosures.",
+    ),
+    EvidenceChunk(
+        title="ENISA - Deepfakes and Synthetic Media",
+        source_url="https://www.enisa.europa.eu/publications/deepfakes-and-synthetic-media",
+        text="Deepfakes and synthetic media can mislead audiences; robust detection and provenance practices are recommended.",
+    ),
+    EvidenceChunk(
+        title="YouTube Help - Altered or Synthetic Content",
+        source_url="https://support.google.com/youtube/answer/14328491",
+        text="Creators may need to disclose altered or synthetic content. AI-generated visuals and voices can be part of this policy scope.",
+    ),
 ]
 
 
@@ -76,8 +96,14 @@ def overlap_score(query_tokens: Iterable[str], doc_tokens: Iterable[str]) -> flo
 def retrieve_evidence(claim: str, top_k: int = 3) -> list[EvidenceChunk]:
     q_tokens = tokenize(claim)
     scored: list[tuple[float, EvidenceChunk]] = []
+    is_ai_query = any(t in {"ai", "generated", "synthetic", "deepfake", "clone"} for t in q_tokens)
     for chunk in TRUSTED_CORPUS:
         score = overlap_score(q_tokens, tokenize(chunk.text + " " + chunk.title))
+        if is_ai_query and any(
+            k in chunk.title.lower() + " " + chunk.text.lower()
+            for k in ["ai", "synthetic", "deepfake", "provenance", "content credentials"]
+        ):
+            score += 0.18
         scored.append((score, chunk))
 
     scored.sort(key=lambda x: x[0], reverse=True)
