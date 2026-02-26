@@ -89,3 +89,24 @@ Current limitation:
 3. Add persistent storage (Postgres) for video analysis history.
 4. Add authentication and role-based dashboards for moderators/researchers.
 5. Evaluate against benchmark datasets (FaceForensics++, DFDC, ASVspoof).
+
+## Train Generation Labels from Kaggle (AI Shorts Only)
+
+To build/refresh `generation_origin` calibration labels from:
+`aibuttonfoundation/youtube-ai-slop-shorts-dataset`
+
+```bash
+cd "/Users/aliraaza/Documents/New project"
+source .venv/bin/activate
+pip install -r requirements-train.txt
+python scripts/train_generation_labels.py
+```
+
+Optional: specify a dataset file path if Kaggle dataset has multiple files:
+
+```bash
+python scripts/train_generation_labels.py --file-path "your_file.csv"
+```
+
+This writes:
+- `app/data/generation_labels.json` (video_id -> `ai_generated`)
