@@ -99,6 +99,43 @@ def _ai_truthy(value: object) -> bool:
     return bool(re.search(r"\b(ai|synthetic|generated|fake|deepfake)\b", s))
 
 
+def _train_from_nested_schema(df: pd.DataFrame) -> dict[str, str]:
+    """Handle dataset schema with nested shorts + labels.
+
+    Observed columns:
+      - shorts: list[{"videoId": "..."}]
+      - labels: {"slopChannel": ["SLOP", "SUSPECTED_AI", ...]}
+    """
+    required = {"shorts", "labels"}
+    if not required.issubset({str(c) for c in df.columns}):
+        return {}
+
+    labels: dict[str, str] = {}
+    for _, row in df.iterrows():
+        label_obj = row.get("labels")
+        shorts_obj = row.get("shorts")
+
+        # Channel-level AI flags
+        ai_channel = False
+        if isinstance(label_obj, dict):
+            vals = label_obj.get("slopChannel")
+            if isinstance(vals, list):
+                joined = " ".join(str(v).lower() for v in vals)
+                if any(k in joined for k in ["slop", "suspected_ai", "ai", "synthetic"]):
+                    ai_channel = True
+
+        if not ai_channel:
+            continue
+
+        if isinstance(shorts_obj, list):
+            for item in shorts_obj:
+                if isinstance(item, dict):
+                    vid = item.get("videoId")
+                    if isinstance(vid, str) and vid.strip():
+                        labels[vid.strip()] = "ai_generated"
+    return labels
+
+
 def load_dataset(dataset: str, file_path: str) -> pd.DataFrame:
     import kagglehub
     from kagglehub import KaggleDatasetAdapter
@@ -133,18 +170,23 @@ def main() -> None:
     if df is None or df.empty:
         raise ValueError("Loaded dataset is empty.")
 
-    url_col = _pick_url_column(df)
-    label_col = _pick_label_column(df)
+    labels = _train_from_nested_schema(df)
+    if labels:
+        url_col = "shorts.videoId (nested)"
+        label_col = "labels.slopChannel (nested)"
+    else:
+        url_col = _pick_url_column(df)
+        label_col = _pick_label_column(df)
 
-    rows = df[[url_col, label_col]].dropna()
-    rows = rows[rows[url_col].astype(str).map(is_shorts_url)]
-    rows = rows[rows[label_col].map(_ai_truthy)]
+        rows = df[[url_col, label_col]].dropna()
+        rows = rows[rows[url_col].astype(str).map(is_shorts_url)]
+        rows = rows[rows[label_col].map(_ai_truthy)]
 
-    labels: dict[str, str] = {}
-    for url in rows[url_col].astype(str):
-        vid = extract_video_id(url)
-        if vid:
-            labels[vid] = "ai_generated"
+        labels = {}
+        for url in rows[url_col].astype(str):
+            vid = extract_video_id(url)
+            if vid:
+                labels[vid] = "ai_generated"
 
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
