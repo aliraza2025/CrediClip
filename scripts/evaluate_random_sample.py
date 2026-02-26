@@ -60,15 +60,37 @@ def main() -> None:
     parser.add_argument("--n", type=int, default=10)
     parser.add_argument("--seed", type=int, default=20260225)
     parser.add_argument("--outdir", default="reports")
+    parser.add_argument(
+        "--balanced",
+        action="store_true",
+        help="Sample evenly across labels (best for mixed AI/human evaluation).",
+    )
     args = parser.parse_args()
 
     labels = json.loads(Path(args.labels).read_text())
-    video_ids = list(labels.keys())
-    if args.n > len(video_ids):
-        raise ValueError(f"Requested n={args.n} but only {len(video_ids)} labels available")
-
     random.seed(args.seed)
-    sample_ids = random.sample(video_ids, args.n)
+    if args.balanced:
+        by_label: dict[str, list[str]] = {}
+        for vid, lab in labels.items():
+            by_label.setdefault(str(lab), []).append(str(vid))
+        classes = sorted(by_label.keys())
+        if not classes:
+            raise ValueError("No labels found.")
+        base = args.n // len(classes)
+        rem = args.n % len(classes)
+        sample_ids: list[str] = []
+        for i, cls in enumerate(classes):
+            pool = by_label.get(cls, [])
+            need = base + (1 if i < rem else 0)
+            if need > len(pool):
+                raise ValueError(f"Class '{cls}' has only {len(pool)} ids, cannot sample {need}")
+            sample_ids.extend(random.sample(pool, need))
+        random.shuffle(sample_ids)
+    else:
+        video_ids = list(labels.keys())
+        if args.n > len(video_ids):
+            raise ValueError(f"Requested n={args.n} but only {len(video_ids)} labels available")
+        sample_ids = random.sample(video_ids, args.n)
 
     rows = [run_api(args.api_url, vid) for vid in sample_ids]
 
@@ -105,6 +127,8 @@ def main() -> None:
     print(f"Success: {len(ok)}/{len(rows)}")
     print(f"generation_origin=high: {len(high)}/{len(ok) if ok else 0}")
     print(f"top_claim_status=not_enough_evidence: {len(not_enough)}/{len(ok) if ok else 0}")
+    if args.balanced:
+        print("sampling=balanced")
 
 
 if __name__ == "__main__":

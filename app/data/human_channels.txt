@@ -1,0 +1,10 @@
+# Add public channels likely to contain primarily human-created Shorts.
+# You can use @handles, channel URLs, or /channel/ IDs.
+@MrBeast
+@zachking
+@doctor.youn
+@AliAbdaal
+@nasa
+@ESPN
+@NBA
+@khaby.lame

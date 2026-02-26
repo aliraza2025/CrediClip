@@ -1,0 +1,80 @@
+{
+  "timestamp_utc": "20260226T091350Z",
+  "n": 5,
+  "seed": 42,
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "sample_ids": [
+    "AVVKnqaB2sI",
+    "1ebDhd_9uM4",
+    "RVkxsdDLLko",
+    "ON5jyU6iUI8",
+    "M7T5FHjbZQU"
+  ],
+  "results": [
+    {
+      "video_id": "AVVKnqaB2sI",
+      "url": "https://youtube.com/shorts/AVVKnqaB2sI",
+      "credibility_score": 97.0,
+      "generation_origin_level": "high",
+      "generation_origin_score": 92.0,
+      "generation_origin_rationale": "AI-generated content likely.",
+      "top_claim_status": "supported",
+      "top_claim_confidence": 1.0,
+      "trained_override": true,
+      "openrouter_used": true,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Viral AI Clip). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Generation origin calibrated by labeled training sample: AI-generated."
+    },
+    {
+      "video_id": "1ebDhd_9uM4",
+      "url": "https://youtube.com/shorts/1ebDhd_9uM4",
+      "credibility_score": 75.0,
+      "generation_origin_level": "high",
+      "generation_origin_score": 92.0,
+      "generation_origin_rationale": "AI-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 1.0,
+      "trained_override": true,
+      "openrouter_used": true,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: The WorldAi). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Generation origin calibrated by labeled training sample: AI-generated."
+    },
+    {
+      "video_id": "RVkxsdDLLko",
+      "url": "https://youtube.com/shorts/RVkxsdDLLko",
+      "credibility_score": 97.0,
+      "generation_origin_level": "high",
+      "generation_origin_score": 92.0,
+      "generation_origin_rationale": "AI-generated content likely.",
+      "top_claim_status": "supported",
+      "top_claim_confidence": 0.8,
+      "trained_override": true,
+      "openrouter_used": true,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: MMA HypeShorts). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Generation origin calibrated by labeled training sample: AI-generated."
+    },
+    {
+      "video_id": "ON5jyU6iUI8",
+      "url": "https://youtube.com/shorts/ON5jyU6iUI8",
+      "credibility_score": 97.0,
+      "generation_origin_level": "high",
+      "generation_origin_score": 92.0,
+      "generation_origin_rationale": "AI-generated content likely.",
+      "top_claim_status": "supported",
+      "top_claim_confidence": 0.6,
+      "trained_override": true,
+      "openrouter_used": true,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: ZK). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Generation origin calibrated by labeled training sample: AI-generated."
+    },
+    {
+      "video_id": "M7T5FHjbZQU",
+      "url": "https://youtube.com/shorts/M7T5FHjbZQU",
+      "credibility_score": 75.0,
+      "generation_origin_level": "high",
+      "generation_origin_score": 92.0,
+      "generation_origin_rationale": "AI-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 1.0,
+      "trained_override": true,
+      "openrouter_used": true,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: StrangeAI). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Generation origin calibrated by labeled training sample: AI-generated."
+    }
+  ]
+}

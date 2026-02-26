@@ -1,0 +1,46 @@
+{
+  "timestamp_utc": "20260226T094627Z",
+  "report_path": "reports/validation_50_20260226T094627Z.csv",
+  "rows_total": 50,
+  "rows_ok": 42,
+  "rows_with_truth": 42,
+  "rows_without_truth": 0,
+  "truth_distribution": {
+    "positive": 42,
+    "negative": 0
+  },
+  "claim_status": {
+    "not_enough_evidence_count": 27,
+    "not_enough_evidence_rate": 0.6428571428571429
+  },
+  "current_rule": {
+    "name": "generation_origin_level == high",
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 0.0,
+    "f1": 1.0,
+    "confusion": {
+      "tp": 42,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0
+    }
+  },
+  "recommended_threshold_rule": {
+    "name": "generation_origin_score >= threshold",
+    "threshold": 50,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 0.0,
+    "f1": 1.0,
+    "confusion": {
+      "tp": 42,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0
+    }
+  },
+  "warning": "Ground truth contains only one class in this report; collect mixed AI + human samples for reliable thresholding."
+}
