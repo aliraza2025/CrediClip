@@ -7,6 +7,7 @@ from app.services.detectors import optional_aiornot_scan
 from app.services.generation_training import apply_generation_training_override
 from app.services.extractors import extract_signals
 from app.services.ingestion import enrich_from_youtube
+from app.services.retrieval import tokenize
 from app.services.scoring import (
     aggregate_credibility,
     build_flags,
@@ -62,6 +63,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
             )
 
     no_text_mode = not caption and not transcript
+    source_token_count = len(tokenize(f"{caption}\n{transcript}"))
     if no_text_mode:
         notes.append(
             "Could not extract transcript/caption from this link. Returning limited-confidence report."
@@ -79,7 +81,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         claim_notes: list[str] = []
     else:
         signals = extract_signals(caption, transcript)
-        claims, claim_notes = await assess_claims(signals.claims)
+        claims, claim_notes = await assess_claims(signals.claims, source_text=f"{caption}\n{transcript}")
 
     external_scan = await optional_aiornot_scan(str(request.url))
 
@@ -119,6 +121,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
     )
 
     notes.extend(claim_notes)
+    notes.append(f"Extracted evidence token count: {source_token_count}.")
     if external_scan is None:
         notes.append("External deepfake API not configured; manipulation score uses heuristic signals.")
     if not transcript:

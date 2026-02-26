@@ -1,12 +1,23 @@
 import asyncio
 import json
+import os
+import re
+import subprocess
+import tempfile
+from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 import httpx
+from bs4 import BeautifulSoup
+from faster_whisper import WhisperModel
+from PIL import Image
+from pytesseract import image_to_string
 from yt_dlp import YoutubeDL
 from youtube_transcript_api import YouTubeTranscriptApi
 
 from app.services.debug_state import add_debug_note
+
+_WHISPER_MODEL: WhisperModel | None = None
 
 
 def extract_youtube_video_id(url: str) -> str | None:
@@ -50,6 +61,37 @@ async def _fetch_youtube_oembed(url: str) -> dict:
     except Exception:
         add_debug_note("YouTube oEmbed request failed.")
         return {}
+
+
+async def _scrape_watch_page_metadata(video_id: str) -> tuple[str, str]:
+    watch_url = f"https://www.youtube.com/watch?v={video_id}"
+    try:
+        async with httpx.AsyncClient(timeout=20, follow_redirects=True) as client:
+            resp = await client.get(watch_url)
+            resp.raise_for_status()
+            html = resp.text
+    except Exception:
+        add_debug_note("Watch-page metadata scrape failed.")
+        return "", ""
+
+    soup = BeautifulSoup(html, "html.parser")
+    title = ""
+    desc = ""
+
+    og_title = soup.find("meta", attrs={"property": "og:title"})
+    if og_title and og_title.get("content"):
+        title = og_title["content"].strip()
+
+    og_desc = soup.find("meta", attrs={"property": "og:description"})
+    if og_desc and og_desc.get("content"):
+        desc = og_desc["content"].strip()
+
+    if not title:
+        t = soup.find("title")
+        if t and t.text:
+            title = t.text.strip()
+
+    return title, desc
 
 
 def _fetch_transcript_sync(video_id: str) -> str:
@@ -139,6 +181,122 @@ async def _extract_transcript_from_ydl_info(info: dict) -> str:
     return ""
 
 
+def _download_audio_sync(url: str, outdir: str) -> str | None:
+    ydl_opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "format": "bestaudio/best",
+        "outtmpl": str(Path(outdir) / "%(id)s.%(ext)s"),
+        "noplaylist": True,
+    }
+    with YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(url, download=True)
+        out = ydl.prepare_filename(info)
+    return out if out and Path(out).exists() else None
+
+
+def _download_video_sync(url: str, outdir: str) -> str | None:
+    ydl_opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "format": "mp4[height<=720]/best[height<=720]/best",
+        "outtmpl": str(Path(outdir) / "%(id)s_video.%(ext)s"),
+        "noplaylist": True,
+    }
+    with YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(url, download=True)
+        out = ydl.prepare_filename(info)
+    return out if out and Path(out).exists() else None
+
+
+def _get_whisper_model() -> WhisperModel:
+    global _WHISPER_MODEL
+    if _WHISPER_MODEL is None:
+        model_size = os.getenv("WHISPER_MODEL_SIZE", "small")
+        compute_type = os.getenv("WHISPER_COMPUTE_TYPE", "int8")
+        _WHISPER_MODEL = WhisperModel(model_size, device="cpu", compute_type=compute_type)
+    return _WHISPER_MODEL
+
+
+def _transcribe_local_whisper_sync(audio_path: str) -> str:
+    model = _get_whisper_model()
+    segments, _ = model.transcribe(audio_path, beam_size=1, vad_filter=True)
+    return " ".join(s.text.strip() for s in segments if getattr(s, "text", "")).strip()
+
+
+async def _local_asr_fallback(url: str) -> str:
+    try:
+        with tempfile.TemporaryDirectory() as td:
+            audio_path = await asyncio.to_thread(_download_audio_sync, url, td)
+            if not audio_path:
+                add_debug_note("Local ASR fallback: audio download returned no file.")
+                return ""
+            text = await asyncio.to_thread(_transcribe_local_whisper_sync, audio_path)
+            return text.strip()
+    except Exception as exc:
+        add_debug_note(f"Local ASR fallback error: {type(exc).__name__}.")
+        return ""
+
+
+def _extract_frames_sync(video_path: str, outdir: str, fps: int, max_frames: int) -> list[str]:
+    out_pattern = str(Path(outdir) / "frame_%03d.jpg")
+    cmd = [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-i",
+        video_path,
+        "-vf",
+        f"fps={fps}",
+        "-frames:v",
+        str(max_frames),
+        out_pattern,
+    ]
+    subprocess.run(cmd, check=True)
+    frames = sorted(str(p) for p in Path(outdir).glob("frame_*.jpg"))
+    return frames
+
+
+def _ocr_frames_sync(frame_paths: list[str]) -> str:
+    snippets: list[str] = []
+    for fp in frame_paths:
+        try:
+            txt = image_to_string(Image.open(fp))
+        except Exception:
+            continue
+        txt = re.sub(r"\s+", " ", txt).strip()
+        if txt and len(txt) >= 6:
+            snippets.append(txt)
+    # dedupe near-repeats
+    dedup: list[str] = []
+    for s in snippets:
+        if not dedup or s != dedup[-1]:
+            dedup.append(s)
+    return " ".join(dedup).strip()
+
+
+async def _frame_ocr_fallback(url: str) -> str:
+    try:
+        with tempfile.TemporaryDirectory() as td:
+            video_path = await asyncio.to_thread(_download_video_sync, url, td)
+            if not video_path:
+                add_debug_note("Frame OCR fallback: video download returned no file.")
+                return ""
+            fps = int(os.getenv("OCR_FRAME_FPS", "1"))
+            max_frames = int(os.getenv("OCR_MAX_FRAMES", "8"))
+            frames_dir = str(Path(td) / "frames")
+            Path(frames_dir).mkdir(parents=True, exist_ok=True)
+            frame_paths = await asyncio.to_thread(_extract_frames_sync, video_path, frames_dir, fps, max_frames)
+            if not frame_paths:
+                add_debug_note("Frame OCR fallback: no frames extracted.")
+                return ""
+            return await asyncio.to_thread(_ocr_frames_sync, frame_paths)
+    except Exception as exc:
+        add_debug_note(f"Frame OCR fallback error: {type(exc).__name__}.")
+        return ""
+
+
 def _fallback_thumbnail_urls(video_id: str) -> list[str]:
     return [
         f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg",
@@ -148,7 +306,6 @@ def _fallback_thumbnail_urls(video_id: str) -> list[str]:
 
 
 async def _thumbnail_metadata_summary(thumbnail_urls: list[str]) -> str:
-    # Open-source lightweight visual heuristic: collect reachable thumbnail sizes.
     found: list[str] = []
     for url in thumbnail_urls[:3]:
         try:
@@ -206,6 +363,12 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
         else:
             notes.append("Could not fetch YouTube metadata via oEmbed fallback.")
 
+    if not caption:
+        scraped_title, scraped_desc = await _scrape_watch_page_metadata(video_id)
+        if scraped_title or scraped_desc:
+            caption = "\n\n".join([p for p in [scraped_title, scraped_desc] if p]).strip()
+            notes.append("Recovered metadata from YouTube watch-page scraping fallback.")
+
     try:
         transcript = await asyncio.to_thread(_fetch_transcript_sync, video_id)
         if transcript:
@@ -220,6 +383,17 @@ async def enrich_from_youtube(url: str) -> tuple[str, str, list[str]]:
         transcript = await _extract_transcript_from_ydl_info(info)
         if transcript:
             notes.append("Recovered transcript from YouTube subtitle tracks (yt-dlp fallback).")
+
+    if not transcript:
+        local_asr = await _local_asr_fallback(url)
+        if local_asr:
+            transcript = local_asr
+            notes.append("Recovered transcript with local Whisper ASR fallback.")
+
+    ocr_text = await _frame_ocr_fallback(url)
+    if ocr_text:
+        transcript = f"{transcript}\n\n{ocr_text}".strip() if transcript else ocr_text
+        notes.append("Recovered on-screen text using frame OCR fallback.")
 
     thumbnails = info.get("thumbnails") if isinstance(info, dict) else None
     thumb_urls: list[str] = []

@@ -26,6 +26,10 @@ uvicorn app.main:app --reload
 
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
+Local prerequisites for ASR/OCR fallback:
+- `ffmpeg`
+- `tesseract`
+
 ## API
 
 ### `POST /api/analyze`
@@ -78,10 +82,13 @@ For YouTube Shorts URL-only requests, the app attempts to auto-ingest:
 - Transcript using `youtube-transcript-api`
 - Subtitle-track parsing fallback from `yt-dlp` caption tracks (`vtt`/`json3`)
 - oEmbed metadata fallback
+- YouTube watch-page metadata scraping fallback
+- Local ASR fallback with `faster-whisper` on downloaded audio
+- Frame OCR fallback (`ffmpeg` sampling + `pytesseract`) to capture on-screen text
 - Thumbnail metadata fallback from deterministic YouTube image URLs
 
 Current limitation:
-- Full frame-by-frame video decoding and local OCR/ASR are not enabled yet.
+- Some videos may still block downloads/transcripts from server-side IPs.
 
 ## Suggested Next Build Steps
 1. Add a true ingestion pipeline for video metadata, transcript, and sampled frames.
@@ -110,3 +117,24 @@ python scripts/train_generation_labels.py --file-path "your_file.csv"
 
 This writes:
 - `app/data/generation_labels.json` (video_id -> `ai_generated`)
+
+To retrain and automatically re-apply manual overrides:
+
+```bash
+python scripts/retrain_generation_labels.py
+```
+
+Manual override file:
+- `app/data/manual_generation_overrides.json`
+
+## Validation Report Workflow
+
+Run a random sample validation against live API and save reproducible reports:
+
+```bash
+python scripts/evaluate_random_sample.py --n 10 --seed 20260225
+```
+
+Outputs:
+- `reports/validation_10_<timestamp>.json`
+- `reports/validation_10_<timestamp>.csv`
