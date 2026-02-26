@@ -4,6 +4,7 @@ from app.models import AnalyzeRequest, AnalyzeResponse, ClaimAssessment
 from app.services.claim_checker import assess_claims
 from app.services.debug_state import get_debug_notes, reset_debug_notes
 from app.services.detectors import optional_aiornot_scan
+from app.services.generation_training import apply_generation_training_override
 from app.services.extractors import extract_signals
 from app.services.ingestion import enrich_from_youtube
 from app.services.scoring import (
@@ -98,6 +99,9 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         manipulation_cues=signals.manipulation_cues,
         aiornot=external_scan,
     )
+    generation_origin, generation_note = apply_generation_training_override(str(request.url), generation_origin)
+    if generation_note:
+        notes.append(generation_note)
 
     component_scores = {
         "misinformation": misinformation,
