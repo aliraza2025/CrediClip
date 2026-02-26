@@ -90,6 +90,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         notes.append(
             "Could not extract transcript/caption from this link. Returning limited-confidence report."
         )
+        notes.append("Ingestion quality: insufficient evidence extracted from source media.")
         claims = [
             ClaimAssessment(
                 claim="Insufficient extracted text for factual verification from URL-only input.",

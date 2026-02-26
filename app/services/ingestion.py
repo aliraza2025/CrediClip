@@ -20,6 +20,52 @@ from app.services.debug_state import add_debug_note
 _WHISPER_MODEL: WhisperModel | None = None
 
 
+def _yt_dlp_retry_option_sets(base: dict) -> list[dict]:
+    """Return progressively more permissive yt-dlp option sets."""
+    common = {
+        "quiet": True,
+        "no_warnings": True,
+        "noplaylist": True,
+    }
+    sets = []
+    # Standard web client.
+    s1 = {**common, **base}
+    sets.append(s1)
+    # Android client often works when web client is blocked.
+    s2 = {
+        **common,
+        **base,
+        "extractor_args": {"youtube": {"player_client": ["android"]}},
+    }
+    sets.append(s2)
+    # Embedded/web fallback with retries and permissive extractors.
+    s3 = {
+        **common,
+        **base,
+        "extractor_args": {"youtube": {"player_client": ["web", "web_embedded", "android"]}},
+        "retries": 2,
+        "fragment_retries": 2,
+    }
+    sets.append(s3)
+    return sets
+
+
+def _yt_dlp_extract_with_retries(url: str, base_opts: dict, download: bool) -> tuple[dict, str | None]:
+    last_exc: Exception | None = None
+    for opts in _yt_dlp_retry_option_sets(base_opts):
+        try:
+            with YoutubeDL(opts) as ydl:
+                info = ydl.extract_info(url, download=download)
+                out = ydl.prepare_filename(info) if download and info else None
+            return info or {}, out
+        except Exception as exc:
+            last_exc = exc
+            continue
+    if last_exc:
+        raise last_exc
+    return {}, None
+
+
 def extract_youtube_video_id(url: str) -> str | None:
     parsed = urlparse(url)
     host = parsed.netloc.lower()
@@ -39,15 +85,12 @@ def extract_youtube_video_id(url: str) -> str | None:
 
 
 def _fetch_youtube_metadata_sync(url: str) -> dict:
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
+    base_opts = {
         "skip_download": True,
         "extract_flat": False,
     }
-    with YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=False)
-    return info or {}
+    info, _ = _yt_dlp_extract_with_retries(url, base_opts, download=False)
+    return info
 
 
 async def _fetch_youtube_oembed(url: str) -> dict:
@@ -182,30 +225,32 @@ async def _extract_transcript_from_ydl_info(info: dict) -> str:
 
 
 def _download_audio_sync(url: str, outdir: str) -> str | None:
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
+    base_opts = {
         "format": "bestaudio/best",
         "outtmpl": str(Path(outdir) / "%(id)s.%(ext)s"),
-        "noplaylist": True,
     }
-    with YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        out = ydl.prepare_filename(info)
+    info, out = _yt_dlp_extract_with_retries(url, base_opts, download=True)
+    if (not out or not Path(out).exists()) and info:
+        req = info.get("requested_downloads") if isinstance(info, dict) else None
+        if isinstance(req, list) and req and isinstance(req[0], dict):
+            fp = req[0].get("filepath")
+            if isinstance(fp, str):
+                out = fp
     return out if out and Path(out).exists() else None
 
 
 def _download_video_sync(url: str, outdir: str) -> str | None:
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
+    base_opts = {
         "format": "mp4[height<=720]/best[height<=720]/best",
         "outtmpl": str(Path(outdir) / "%(id)s_video.%(ext)s"),
-        "noplaylist": True,
     }
-    with YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        out = ydl.prepare_filename(info)
+    info, out = _yt_dlp_extract_with_retries(url, base_opts, download=True)
+    if (not out or not Path(out).exists()) and info:
+        req = info.get("requested_downloads") if isinstance(info, dict) else None
+        if isinstance(req, list) and req and isinstance(req[0], dict):
+            fp = req[0].get("filepath")
+            if isinstance(fp, str):
+                out = fp
     return out if out and Path(out).exists() else None
 
 
