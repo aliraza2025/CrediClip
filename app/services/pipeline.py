@@ -1,3 +1,4 @@
+import re
 from urllib.parse import urlparse
 
 from app.models import AnalyzeRequest, AnalyzeResponse, ClaimAssessment
@@ -6,7 +7,7 @@ from app.services.debug_state import get_debug_notes, reset_debug_notes
 from app.services.detectors import optional_aiornot_scan
 from app.services.generation_training import apply_generation_training_override
 from app.services.extractors import extract_signals
-from app.services.ingestion import enrich_from_youtube
+from app.services.ingestion import enrich_from_youtube, extract_youtube_video_id
 from app.services.retrieval import tokenize
 from app.services.scoring import (
     aggregate_credibility,
@@ -31,6 +32,24 @@ SUPPORTED_DOMAINS = {
 }
 
 
+def normalize_input_url(url: str) -> tuple[str, bool]:
+    raw = (url or "").strip()
+    # Handle escaped query chars coming from pasted CSV or shell-escaped text.
+    cleaned = re.sub(r"\\([?=&/])", r"\1", raw)
+    changed = cleaned != raw
+
+    parsed = urlparse(cleaned)
+    host = parsed.netloc.lower()
+    if host in {"youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be"}:
+        vid = extract_youtube_video_id(cleaned)
+        if vid:
+            canonical = f"https://www.youtube.com/shorts/{vid}"
+            if canonical != cleaned:
+                changed = True
+            cleaned = canonical
+    return cleaned, changed
+
+
 def infer_platform(url: str) -> str:
     parsed = urlparse(url)
     host = parsed.netloc.lower()
@@ -46,14 +65,17 @@ def infer_platform(url: str) -> str:
 
 async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
     reset_debug_notes()
-    platform = infer_platform(str(request.url))
+    normalized_url, normalized = normalize_input_url(str(request.url))
+    platform = infer_platform(normalized_url)
     caption = request.caption.strip()
     transcript = request.transcript.strip()
     notes: list[str] = []
+    if normalized:
+        notes.append("Normalized input URL to canonical format before analysis.")
 
     if not caption and not transcript:
         if platform == "youtube_shorts":
-            auto_caption, auto_transcript, ingest_notes = await enrich_from_youtube(str(request.url))
+            auto_caption, auto_transcript, ingest_notes = await enrich_from_youtube(normalized_url)
             notes.extend(ingest_notes)
             caption = auto_caption.strip()
             transcript = auto_transcript.strip()
@@ -83,7 +105,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         signals = extract_signals(caption, transcript)
         claims, claim_notes = await assess_claims(signals.claims, source_text=f"{caption}\n{transcript}")
 
-    external_scan = await optional_aiornot_scan(str(request.url))
+    external_scan = await optional_aiornot_scan(normalized_url)
 
     if no_text_mode:
         misinformation = 65.0
@@ -101,7 +123,7 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         manipulation_cues=signals.manipulation_cues,
         aiornot=external_scan,
     )
-    generation_origin, generation_note = apply_generation_training_override(str(request.url), generation_origin)
+    generation_origin, generation_note = apply_generation_training_override(normalized_url, generation_origin)
     if generation_note:
         notes.append(generation_note)
 
