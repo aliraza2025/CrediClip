@@ -64,7 +64,29 @@ def score_generation_origin(
         if k in lowered:
             keyword_bonus += 8.0
 
-    return clamp(cue_score + api_score + keyword_bonus)
+    # Self-declared AI tags/phrases should strongly influence origin scoring.
+    declaration_bonus = 0.0
+    declaration_patterns = [
+        "#ai",
+        "#aigenerated",
+        "#aiart",
+        "#midjourney",
+        "#stablediffusion",
+        "made with ai",
+        "generated with ai",
+        "this is ai",
+        "ai video",
+        "ai clip",
+    ]
+    for pat in declaration_patterns:
+        if pat in lowered:
+            declaration_bonus += 20.0
+
+    # Generic AI mentions are weaker than explicit declarations.
+    if " ai " in f" {lowered} ":
+        declaration_bonus += 8.0
+
+    return clamp(cue_score + api_score + keyword_bonus + declaration_bonus)
 
 
 def aggregate_credibility(
