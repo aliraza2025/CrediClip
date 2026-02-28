@@ -209,6 +209,42 @@ Outputs:
 - `reports/validation_10_<timestamp>.json`
 - `reports/validation_10_<timestamp>.csv`
 
+## Oracle Worker (Recommended for YouTube Ingestion Blocks)
+
+If Fly-hosted ingestion gets blocked by YouTube, run ingestion on your Oracle VM and send extracted text to the same API.
+
+On Oracle Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install -y python3-venv ffmpeg tesseract-ocr
+```
+
+Project setup:
+
+```bash
+cd "/path/to/New project"
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run worker against a links file:
+
+```bash
+python scripts/oracle_ingest_and_analyze.py \
+  --links-file /tmp/links20.txt \
+  --api-url "https://crediclip-axraza-msba.fly.dev/api/analyze" \
+  --concurrency 1
+```
+
+Outputs:
+- `reports/oracle_worker_<n>_<timestamp>.json`
+- `reports/oracle_worker_<n>_<timestamp>.csv`
+
+Optional for blocked extraction on Oracle too:
+- set `YTDLP_COOKIES_B64` with a fresh Netscape cookies export.
+
 ## Metrics + Threshold Recommendation
 
 Compute generation-origin quality metrics and a recommended score threshold from validation CSVs:
