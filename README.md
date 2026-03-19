@@ -1,21 +1,57 @@
-# CrediClip MVP
+# CrediClip
 
-CrediClip is an AI credibility scoring prototype for TikTok, Instagram, and YouTube Shorts videos.
-This MVP accepts a public URL and returns:
-- Credibility score (0-100)
-- Risk flags (misinformation, scam, manipulation, uncertainty)
-- Claim-level assessments
-- Evidence coverage breakdown (`caption/transcript/ocr/asr` token counts + level)
+CrediClip is a multi-platform credibility analysis system for short-form video.
+It accepts a public TikTok, Instagram, or YouTube Shorts URL and returns:
 
-Link-only behavior:
-- YouTube Shorts: supported (auto metadata + transcript ingestion)
-- Instagram: supported via queue-backed worker ingest
-- TikTok: supported via queue-backed worker ingest (Phase 3 baseline)
+- Credibility score (`0-100`)
+- Risk flags (`misinformation`, `scam`, `manipulation`, `uncertainty`)
+- Claim-level assessment notes
+- Evidence coverage breakdown (`caption`, `transcript`, `ocr`, `asr`)
+
+## What It Does
+
+CrediClip turns a social-video link into a structured credibility assessment by combining:
+
+- platform-specific ingestion
+- browser-rendered recovery where public metadata is thin
+- OCR from on-screen text
+- ASR/transcript recovery where media access is possible
+- evidence-aware scoring
+- selective hosted LLM claim assessment where it improves quality
+
+## Current Production State
+
+Platform status:
+
+- **Instagram**: strongest path, with worker-backed browser ingest, OCR, ASR, and gated OpenAI claim assessment
+- **TikTok**: stable and usable, with queue-backed worker processing and tuned fast-path runtime cutoffs
+- **YouTube Shorts**: supported and isolated on its own worker lane, but still the weakest platform because of auth and anti-bot friction
+
+Operational status:
+
+- persistent queue storage on Fly at `/data/jobs.db`
+- 2 non-YouTube workers for Instagram/TikTok
+- 1 dedicated YouTube worker
+- interactive dashboard for queue, worker, and platform visibility
+
+## Architecture At A Glance
+
+1. User submits a URL
+2. Web app creates or reuses a queue job
+3. Background worker extracts evidence
+4. Server computes final deterministic score
+5. Dashboard and analyzer show live progress and result state
+
+This keeps the web layer light while pushing heavy media work to workers.
 
 ## Stack
+
 - FastAPI backend
 - Vanilla HTML/CSS/JS frontend
-- Open-source scoring pipeline with retrieval-based claim verification and optional external deepfake API integration
+- SQLite queue with persistent Fly volume storage
+- Oracle VM workers for heavy ingest
+- Playwright, `ffmpeg`, Tesseract OCR, `faster-whisper`, `yt-dlp`
+- Retrieval-based scoring pipeline with optional OpenAI claim assessment
 
 ## Quickstart
 
