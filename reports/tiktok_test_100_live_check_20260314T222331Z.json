@@ -1,0 +1,25 @@
+{
+  "checked_at_utc": "2026-03-14T22:23:31.801724+00:00",
+  "source_file": "/Users/aliraaza/Documents/New project/reports/jobs_submitted_100_20260313T185321Z.json",
+  "source_total": 100,
+  "live_api_base": "https://crediclip-axraza-msba.fly.dev/api/jobs/{job_id}",
+  "live_polling_status": "unreachable_dns",
+  "live_polling_error": "URLError(URLError(gaierror(8, 'nodename nor servname provided, or not known')))",
+  "local_progress_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_durable_restart_progress_20260313.json",
+  "local_progress_snapshot": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "local_db_file": "/Users/aliraaza/Documents/New project/app/data/jobs.db",
+  "local_db_match": {
+    "found_submitted_ids": 0,
+    "missing_submitted_ids": 100
+  },
+  "completion_confirmed": false,
+  "completion_reason": "Unable to verify live status and local fallback remains incomplete."
+}

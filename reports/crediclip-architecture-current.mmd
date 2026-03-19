@@ -1,0 +1,64 @@
+flowchart LR
+    U["User / Team (Web Browser)"] --> W["Fly.io Web + API\ncrediclip-axraza-msba.fly.dev"]
+
+    subgraph Fly["Fly.io (Public App Layer)"]
+      W --> UI["UI Pages\n/ and /dashboard"]
+      W --> API1["POST /api/analyze\n(sync quick path)"]
+      W --> API2["Queue APIs\n/api/jobs, /claim, /artifacts, /complete, /fail"]
+      API2 --> DB[("SQLite Jobs Store\napp/data/jobs.db")]
+    end
+
+    subgraph Oracle["Oracle VM Always Free (Processing Layer)"]
+      SVC1["systemd: ollama.service"]
+      SVC2["systemd: crediclip-worker.service\n(restart=always)"]
+      SWAP["2GB swap + VM.Standard.E2.1.Micro"]
+
+      SVC2 --> QW["queue_worker.py\n--ingest-mode rich\n--analysis-mode local"]
+      SVC1 --> LLM["Local Ollama LLM\nqwen2.5:0.5b"]
+      SWAP --> LLM
+
+      QW --> ING["Ingestion Pipeline"]
+      ING --> YTDLP["yt-dlp (metadata/audio/video)"]
+      ING --> YTTR["youtube-transcript-api"]
+      ING --> OEM["YouTube oEmbed + watch-page scrape"]
+      ING --> ASR["Whisper ASR fallback\n(audio then video->audio)"]
+      ING --> OCR["Frame OCR fallback\nvideo frames -> thumbnail OCR"]
+      ING --> FS["Frame-by-frame visual scan\n(stability + AI/scam text cues)"]
+
+      QW --> SIG["Signal Extraction\nclaims + scam cues + manipulation cues"]
+      SIG --> VERIFY["Claim Verification\nLocal Ollama first, heuristic fallback"]
+      VERIFY --> SCORE["Scoring Engine"]
+      SCORE --> C1["Misinformation"]
+      SCORE --> C2["Scam"]
+      SCORE --> C3["Manipulation (Phase 2 sensitivity)"]
+      SCORE --> C4["Uncertainty"]
+      SCORE --> C5["Evidence Quality Penalty (Phase 2)"]
+      SCORE --> C6["Generation Origin (AI/Human flag)"]
+    end
+
+    DB -. queued jobs .-> QW
+    QW -. claim job .-> API2
+    QW -. submit final result .-> API2
+    API2 --> DB
+
+    VERIFY --> OUT["Final JSON Report\nscore + risk flags + claims + notes"]
+    OUT --> API2
+    API1 --> OUT
+
+    subgraph Eval["Training / Evaluation (Capstone)"]
+      D1["AI Shorts dataset\naibuttonfoundation/youtube-ai-slop-shorts-dataset"]
+      D2["Human dataset\nprince7489/youtube-shorts-performance-dataset"]
+      D3["Calibration scripts\nvalidation + threshold reports"]
+    end
+
+    D1 --> C6
+    D2 --> C6
+    D3 --> SCORE
+
+    classDef infra fill:#eef7ff,stroke:#2b6cb0,stroke-width:1px;
+    classDef worker fill:#f0fff4,stroke:#2f855a,stroke-width:1px;
+    classDef score fill:#fffaf0,stroke:#b7791f,stroke-width:1px;
+
+    class W,UI,API1,API2,DB infra;
+    class SVC1,SVC2,SWAP,QW,ING,YTDLP,YTTR,OEM,ASR,OCR,FS,SIG,VERIFY,LLM worker;
+    class SCORE,C1,C2,C3,C4,C5,C6,OUT score;

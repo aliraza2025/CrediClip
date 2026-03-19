@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-03-14T17:23:05Z",
+  "automation_id": "tiktok-benchmark-watch",
+  "input_file": "jobs_submitted_100_20260313T185321Z.json",
+  "source_total": 100,
+  "live_poll": {
+    "api_base": "https://crediclip-axraza-msba.fly.dev",
+    "jobs_checked_before_blocker": 0,
+    "status_counts_partial": {},
+    "sample_job_ids": [
+      "4b029df2201f47a0a67d7cc1ea0c707a"
+    ]
+  },
+  "latest_local_progress": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "complete": false,
+  "summary_written": false,
+  "blocker": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev",
+  "decision": "Completion not confirmed (live polling blocked or incomplete local progress); final summary not generated."
+}

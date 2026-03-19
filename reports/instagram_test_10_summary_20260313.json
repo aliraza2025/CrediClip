@@ -1,0 +1,117 @@
+{
+  "batch": "instagram_test_10",
+  "requested": 10,
+  "completed": 10,
+  "missing": [],
+  "avg_score": 68.47,
+  "median_score": 68.21,
+  "avg_tokens": 128.3,
+  "median_tokens": 78.0,
+  "levels": {
+    "medium": 6,
+    "high": 2,
+    "low": 2
+  },
+  "rows": [
+    {
+      "url": "https://www.instagram.com/reel/DVQUiv8Eoev/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 70.12,
+      "tokens": 112,
+      "level": "medium",
+      "caption_chars": 877,
+      "transcript_chars": 49,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DTvWvaFj3TP/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 77.04,
+      "tokens": 614,
+      "level": "high",
+      "caption_chars": 4614,
+      "transcript_chars": 63,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVfVE6ritM1/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 68.62,
+      "tokens": 85,
+      "level": "medium",
+      "caption_chars": 493,
+      "transcript_chars": 49,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVfKxw0EvFV/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 62.37,
+      "tokens": 25,
+      "level": "low",
+      "caption_chars": 110,
+      "transcript_chars": 65,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVY4hI-iUFi/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 66.51,
+      "tokens": 57,
+      "level": "medium",
+      "caption_chars": 540,
+      "transcript_chars": 49,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVbGD6xjyV5/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 72.75,
+      "tokens": 128,
+      "level": "high",
+      "caption_chars": 2483,
+      "transcript_chars": 49,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DTFQWpBjZh1/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 67.41,
+      "tokens": 67,
+      "level": "medium",
+      "caption_chars": 341,
+      "transcript_chars": 62,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/p/DVgpFKhADCV/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 68.07,
+      "tokens": 76,
+      "level": "medium",
+      "caption_chars": 228,
+      "transcript_chars": 270,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DRR5RDuDC4f/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 63.45,
+      "tokens": 39,
+      "level": "low",
+      "caption_chars": 288,
+      "transcript_chars": 49,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVgQmytD5dX/?igsh=NjFhOGMzYTE3ZQ==",
+      "status": "completed",
+      "score": 68.35,
+      "tokens": 80,
+      "level": "medium",
+      "caption_chars": 492,
+      "transcript_chars": 49,
+      "notes": "Instagram returned a generic app-shell/error page instead of public post metadata. | Instagram transcript auto-ingestion is not enabled yet; using metadata-only analysis. | Recovered Instagram metadata from browser-rendered page. | Recovered Instagram on-screen text from browser screenshots. | Instagram browser ingestion ran without authenticated cookies."
+    }
+  ]
+}

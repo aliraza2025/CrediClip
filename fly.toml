@@ -8,6 +8,9 @@ primary_region = 'iad'
 
 [build]
 
+[env]
+  JOBS_DB_PATH = '/data/jobs.db'
+
 [http_service]
   internal_port = 10000
   force_https = true
@@ -20,3 +23,7 @@ primary_region = 'iad'
   memory = '1gb'
   cpus = 1
   memory_mb = 1024
+
+[[mounts]]
+  source = 'crediclip_data'
+  destination = '/data'

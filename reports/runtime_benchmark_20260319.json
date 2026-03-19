@@ -1,0 +1,91 @@
+{
+  "measured_at": "2026-03-19",
+  "sample_type": "Oracle-side live /api/analyze timing sample",
+  "summary": {
+    "instagram_low_evidence_before_sec": 42.25,
+    "instagram_low_evidence_after_sec": 39.16,
+    "instagram_low_evidence_delta_sec": -3.09,
+    "instagram_rich_before_sec": 85.71,
+    "instagram_rich_after_sec": 61.64,
+    "instagram_rich_delta_sec": -24.07,
+    "tiktok_low_before_sec": 3.10,
+    "tiktok_low_after_sec": 4.59,
+    "tiktok_low_delta_sec": 1.49,
+    "tiktok_low_2_before_sec": 4.68,
+    "tiktok_low_2_after_sec": 3.08,
+    "tiktok_low_2_delta_sec": -1.60
+  },
+  "before": [
+    {
+      "url": "https://www.instagram.com/reel/DVQUiv8Eoev/?igsh=NjFhOGMzYTE3ZQ==",
+      "platform": "instagram",
+      "elapsed_sec": 42.25,
+      "score": 63.3,
+      "tokens": 21,
+      "level": "low"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DTvWvaFj3TP/?igsh=NjFhOGMzYTE3ZQ==",
+      "platform": "instagram",
+      "elapsed_sec": 85.71,
+      "score": 94.89,
+      "tokens": 579,
+      "level": "high"
+    },
+    {
+      "url": "https://www.tiktok.com/@brookemonk_/video/7603118297403378975",
+      "platform": "tiktok",
+      "elapsed_sec": 3.10,
+      "score": 52.66,
+      "tokens": 2,
+      "level": "low"
+    },
+    {
+      "url": "https://www.tiktok.com/@moreliketoritilla/video/7596155608630299934",
+      "platform": "tiktok",
+      "elapsed_sec": 4.68,
+      "score": 55.7,
+      "tokens": 4,
+      "level": "low"
+    }
+  ],
+  "after": [
+    {
+      "url": "https://www.instagram.com/reel/DVQUiv8Eoev/?igsh=NjFhOGMzYTE3ZQ==",
+      "platform": "instagram",
+      "elapsed_sec": 39.16,
+      "score": 63.3,
+      "tokens": 21,
+      "level": "low"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DTvWvaFj3TP/?igsh=NjFhOGMzYTE3ZQ==",
+      "platform": "instagram",
+      "elapsed_sec": 61.64,
+      "score": 95.02,
+      "tokens": 567,
+      "level": "high"
+    },
+    {
+      "url": "https://www.tiktok.com/@brookemonk_/video/7603118297403378975",
+      "platform": "tiktok",
+      "elapsed_sec": 4.59,
+      "score": 52.66,
+      "tokens": 2,
+      "level": "low"
+    },
+    {
+      "url": "https://www.tiktok.com/@moreliketoritilla/video/7596155608630299934",
+      "platform": "tiktok",
+      "elapsed_sec": 3.08,
+      "score": 55.7,
+      "tokens": 4,
+      "level": "low"
+    }
+  ],
+  "notes": [
+    "Instagram rich-evidence latency improved the most after adding duplicate-job reuse, queue-native UI, two non-YouTube workers, warm shared Chromium, and Instagram fast cutoff.",
+    "TikTok low-evidence cases were already fast; improvements there are smaller and more variable.",
+    "A separate direct worker-side probe on Reuters TikTok improved from about 33.87s to 23.28s after lowering the TikTok fast-mode threshold to 70 tokens."
+  ]
+}

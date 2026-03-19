@@ -1,0 +1,31 @@
+{
+  "total_rows": 780,
+  "successes": 780,
+  "failures": 0,
+  "avg_score": 53.89,
+  "median_score": 53.14,
+  "min_score": 52.63,
+  "max_score": 66.72,
+  "avg_tokens": 19.16,
+  "median_tokens": 19.0,
+  "low_evidence_count": 759,
+  "low_evidence_pct": 97.31,
+  "score_bands": {
+    "<55": 754,
+    "55-64.99": 25,
+    "65-74.99": 1
+  },
+  "token_bands": {
+    "<=25": 759,
+    "26-99": 21
+  },
+  "top_claim_status": {
+    "not_enough_evidence": 772,
+    "supported": 3,
+    "missing": 5
+  },
+  "retries_applied": [
+    "https://www.youtube.com/shorts/79GaiuJWusY",
+    "https://www.youtube.com/shorts/KvJxhjLgkM0"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "date": "2026-03-13",
+  "status": "release_ready_for_current_scope",
+  "live": {
+    "app": {
+      "url": "https://crediclip-axraza-msba.fly.dev",
+      "fly_version": 99,
+      "image": "crediclip-axraza-msba:deployment-01KKKFTBP5FA2E8M2TSRG08X7G",
+      "machine_state": "started"
+    },
+    "queue": {
+      "queued": 0,
+      "processing": 0,
+      "completed": 1,
+      "failed": 0
+    },
+    "worker": {
+      "host": "oracle-worker-1",
+      "service": "active (running)",
+      "analysis_mode": "server",
+      "ingest_mode": "rich"
+    }
+  },
+  "phase_status": {
+    "youtube_phase_1": {
+      "status": "wrapped_architecturally",
+      "notes": [
+        "YouTube link-only analysis is worker-backed through the queue.",
+        "Rich evidence extraction still suffers from YouTube anti-bot/auth friction.",
+        "Scoring is stable but many YouTube cases remain low-evidence."
+      ]
+    },
+    "instagram_phase_2": {
+      "status": "wrapped",
+      "notes": [
+        "Instagram link-only analysis is worker-backed through the queue.",
+        "Authenticated Instagram cookies are installed on Oracle.",
+        "Worker now performs browser ingest, media download, local Whisper ASR, and frame OCR.",
+        "Live API now preserves worker-supplied OCR/ASR evidence counts."
+      ],
+      "final_validation_job": "386be7b6dcfa40a2a0628074959ee8bc"
+    }
+  },
+  "latest_verified_instagram_result": {
+    "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+    "score": 75.91,
+    "caption_chars": 485,
+    "transcript_chars": 746,
+    "evidence_coverage": {
+      "total_tokens": 184,
+      "caption_tokens": 77,
+      "transcript_tokens": 107,
+      "ocr_tokens": 28,
+      "asr_tokens": 79,
+      "level": "high"
+    }
+  },
+  "remaining_work": [
+    "Optional: harden YouTube auth further with fresher cookies/tokens to reduce anti-bot fallback behavior.",
+    "Optional: enable conditional Groq only for medium/high evidence cases after auth-backed ingest is stable.",
+    "Optional: move Oracle worker runtime beyond Python 3.8 for cleaner long-term maintenance."
+  ]
+}

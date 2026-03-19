@@ -1,0 +1,1035 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://youtube.com/shorts/_XrfQLBpfwA?si=6FPgyKmVMcj8WxA7",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "evidence_level": "low",
+      "evidence_total_tokens": 17,
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Normalized input URL to canonical format before analysis. | Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: NewGen). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://youtube.com/shorts/n-MbuVcPb_E?si=jRQNV17wMF8RoYUi",
+      "credibility_score": 68.39,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "evidence_level": "low",
+      "evidence_total_tokens": 25,
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Normalized input URL to canonical format before analysis. | Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: JesssFam). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://youtube.com/shorts/gFgwZolVBnU?si=8cUY9eBzirD6rt5m",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "evidence_level": "low",
+      "evidence_total_tokens": 19,
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Normalized input URL to canonical format before analysis. | Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: James and Deanna). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://youtube.com/shorts/TwwrmOSYP4k?si=ZovWp3cH1zEy7Kpy",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/Y0bT_zfCPfY?si=XahmlqfrSY85BLDD",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/nCDW3MqKsfI?si=wVHp3dadeaXQo--q",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/NDbh-ySbe8w?si=XKaift3Z4OZm3Alj",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://youtube.com/shorts/eewU22K5pmw?si=5a-WeZD3SiqJVtKj",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/sUE6BQB8AQg?si=6w5huCf9srwWVEtH",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/k--LbtL3PL0?si=fkCRaWF7GnxGVKEP",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/6TiH2zc9jrA?si=9_FT8gd91a8qbDvK",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/dZrT-6uru7k?si=avP_ZK0lMNj38nfN",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/9o0jFdLnlX0?si=vOIBnYjwk9Us7Cf7",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/OfoGCX1YuUQ?si=ygUE9h47fSd8YQG8",
+      "error": "curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/cTyGbikT0vM?si=qQrlu4pH1lq8PT5o",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/G_CTX2CRZ0M?si=A7QM7R1RzVfAR3QD",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/49jJRNbuwqc?si=UYRvTjfAZsMHFEU-",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/WvqddxQSCv8?si=qsNzWiqwtyYRLep9",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/on8eQbCF0wY?si=nmQJsUpRur7NiVZY",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/ehmzuc70Fkc?si=_VFqhAdJjeiv7dem",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/srsmWbUBxoI?si=u_44BdwBmRPE1v-y",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/3UjOTyvp698?si=j_SIW-e4kqhsKHkv",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/mt6POuw-a3g?si=1xLRs03XPMZ1BJBh",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/ZQJmsTiRVjo?si=Hyq0caRk0gnPhCw_",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/WAPHL4XIJSg?si=QYVwLz1UAjmsab5o",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/aEC1q52Iuq0?si=zHzcowrU9DaJyqsS",
+      "error": "curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/I-RQMA41Sfs?si=aS6aKyPQPvc2_QYN",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/YrGAVDdAZ9k?si=xqfaYptLCkMIXc_E",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/Z_IdzWUdKAU?si=K6-fC92iZXhLxLqL",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/O-ZVgZzRUwc?si=euZ46yqo568iBTsD",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://youtube.com/shorts/CbiEvw1sJ4Q?si=Qd9qG3UzAM4vqRf-",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/m4jONF5bUUk",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/LmZR01Xldek",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/p65iofzssHI",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/QGhyVqC1sWA",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/SUzNotWexFQ",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/kegGG_JWCns",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oqqz3xykhlQ",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/DTXZGEAd4Z8",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/3sYnNGkjkhA",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/TVYl6v9f8us",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/X30BmLLXm4w",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/S1FHTrA89Ns",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/T3qbhmbRavc",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ih7q2SE5M18",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/O8cZVAY3kLo",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/BRaeiCMuKpQ",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1DRNwhg18NI",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/RHv0ONFfMfk",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/t860h75QgNY",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/7h_rLG16-sk",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/q2G4UyWLOGs",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/kFuT0PDVMNw",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/fAbY9wKoVXY",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/GZ6lJzWvoEM",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/zrTpC_nznGE",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/A54DmtWBFA8",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/zE8iYfWjw9w",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZvLMZ_ifmns",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZejtlQykGm8",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/VoaXkzJVtIo",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/TX3XpIkFZKs",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/IYIfUQ__hQc",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/yBX7wor18p4",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/gy6DPX0sLtc",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/HiDGfFOzfnk",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/FFr7JJcJwEg",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/p4AGbTnsxs8",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/cixocSycC3A",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xs4AsbRqoT4",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/c4w4I9n-EQE",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/dyUed97vESs",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/v4IlwQInULQ",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Hc0dFVz8Z5o",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/YugawDL8G4M",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mUcS2bIy6Lk",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MprxJKJ5RC8",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/flh6ZpFawFo",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/UxXxnS6AbDo",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/w4kMt3sXZoM",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/rVwRoSF9_1Q",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/KriiolXfPPY",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/jfmG2iigvG8",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/OxiH1xzJhgA",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/IxzRPI3CL3w",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/s0e24Oak93o",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/X2cEvpFoaKQ",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/EBohWCR33zs",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/wYhC2MXliGk",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PdxfqLj439o",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/X-ky2lIGJX8",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/C64TlSC1PXE",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/-Nf6tZst7fw",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Pm7bR2e6kcM",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Ibc3hflWKLQ",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sVorW62B8yM",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/leMefrvElYA",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/wttsweiGXZ8",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/tMvOp-pbyb8",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xFYkuraE5gQ",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/G1lURknjmxM",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/FNgxSv2vfZY",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/fG2CO2HPhRc",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/H_YiO7IP8F0",
+      "error": "curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/yeukgKerfqM",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/48BnYG54694",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/fxn9pORPOTo",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/SHWvFyOT5cs",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MU3yH489oZY",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Tjrho4MWuTM",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/VvXlIkTtJow",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/utAPr-JssTY",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PeVuVY8EJYA",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xddSSmo3CIo",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sKDr4wKPeF8",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/b1YJb3dA3Zk",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/fHyQSQd6fQ4",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/dHaKNQEz7Ns",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/-TjojsxYU6U",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/nxh-f_UOVcM",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PA5tPdCeQpo",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/yLcLHLmewRw",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/UriesRczjSM",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/8vPGSjFQgOk",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1_3WUR6tBKs",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/wqMQNIlzdGk",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sT4gBBdgDuQ",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xaXVaXfTG0c",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Hh0WJ18fut8",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/a5CNaTHwPXA",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sLR-1sZqROo",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/S-A1upowdJI",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/He7oCf7hO8A",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/H6dImOh3yBM",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/z_xRkaWvjW0",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MSvkCl-tN5w",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/NeZEhryEIcg",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/GaU2og5snfk",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oqllm0y2lkg",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1rkAulAoXp0",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/B3wSbmi7ejw",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xMajJl1iU3c",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mwGTWUSvGnc",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/J0iIQ629N2c",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/6H5AImEWu0s",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/9rMswm1aRIE",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/09IwpgYlXr8",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ky6cV2YdLaI",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/hMWv6zvC44U",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Xmg0-2voDdQ",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/jbGEQX-quVs",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/VqtZNQW6qzg",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/DKOFyIIuzOM",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PUwhrmjHKTI",
+      "error": "curl: (28) Operation timed out after 45010 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/k22CVgKcCeg",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/fxxeOGUg3Qc",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/I5B3-6ku_mk",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/35q2HcdYlek",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Xp_hwCg4t6U",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/B_0fYrKSnnM",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Q4UgFD23XfU",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Sbx98IsG_vM",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/2Qn09nVrpT0",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/-Z4GZCN4V8A",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/eTJ2pSC05dQ",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/0RX4V4M-f1U",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZUnfX61rYUY",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/j5rwCpW92-4",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PB_gqLDRM4o",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/5H1EIqp-PvA",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/CTnfsi8XLFc",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/KiZhxPo26nk",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/GTw7wk-4ai4",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MqRZSl7MMHA",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1tKxmn1HMvA",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/TeawrWwLD9U",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/jPueqeAmpHs",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/vxJkBOkeNqE",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mW7UX65xd1M",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/VEAimqwBm1Q",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1q3J3RXdJQM",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/vhTvcA-mBr4",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/8gw-WAIYdGs",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MxfkDg_4Rs0",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/VDxJkAu4TaI",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/g0_hflEWnCU",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/bxuhIo2CIVc",
+      "error": "curl: (28) Operation timed out after 45011 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/tz8S-x3XeDw",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/cAnJ9sB2k20",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/i6Aba621UHQ",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Z9aTG6YwcEg",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/nGKXwcdabYA",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/NmHBfbDkbRY",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/0cFDa458GyQ",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PCqqD4QIUGQ",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/lzWf4nYOBZQ",
+      "error": "curl: (28) Operation timed out after 45010 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/JGcJylThTGU",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/CHhJIHDlMv8",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/tDvhJ46JBdo",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/UwkC76sKPOU",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/EeEu8pvw_5Y",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/YXtO__P_4b4",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/6nvCRVJwsZ4",
+      "error": "curl: (28) Operation timed out after 45010 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/rLzqupI-UdI",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/X8Ev_Lzyay4",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/9zfk9aLwLl0",
+      "error": "curl: (28) Operation timed out after 45008 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Pu9xAVgXPHw",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/j4d7nKyvuzo",
+      "error": "curl: (28) Operation timed out after 45010 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/XulN4FZCqJ4",
+      "error": "curl: (28) Operation timed out after 45010 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/o6_B7UdKydQ",
+      "error": "curl: (28) Operation timed out after 45009 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/slDUyX6CCL8",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/qrZM4JNJSk8",
+      "error": "curl: (28) Operation timed out after 45010 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/lwWhOvfM2wY",
+      "error": "curl: (28) Operation timed out after 45007 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xFRGJl3UhYI",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/B7GOaPKXvwc",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/QFlU9sDkbHI",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZrYZn74gkqA",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/C_jTG8Kt21c",
+      "error": "invalid_json",
+      "raw": ""
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xnWPP06YsiQ",
+      "error": "invalid_json",
+      "raw": ""
+    },
+    {
+      "url": "https://www.youtube.com/shorts/FWeOvOQ7h2Y",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/YOla8Witpsw",
+      "error": "invalid_json",
+      "raw": ""
+    },
+    {
+      "url": "https://www.youtube.com/shorts/3IOiiZ0LfgE",
+      "error": "invalid_json",
+      "raw": ""
+    },
+    {
+      "url": "https://www.youtube.com/shorts/B1wgiXjQSjQ",
+      "error": "invalid_json",
+      "raw": ""
+    },
+    {
+      "url": "https://www.youtube.com/shorts/jiDHj4QOzZo",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/_SU1-NRZSTM",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/5Ljy39FWzIg",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/LIXh1Wl77mw",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/IaPLLZ3bPwo",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/DO4HN6lV0JA",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/R6XKXyVlFhg",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/RYWzF7WdAGg",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1vmjTHhf7rc",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/NIm4vcGD7t0",
+      "error": "curl: (28) Operation timed out after 45003 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/n55qur6tVL4",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mGpB9oP2Rzc",
+      "error": "curl: (28) Operation timed out after 45006 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MVq3H8ZCy04",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/4Y_y79sZV84",
+      "error": "curl: (28) Operation timed out after 45002 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Ty8P6dDiJCM",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/cejHgFGUyTo",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oisrvYSqpNA",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/88T44CZAjv4",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oNFgkkEhatw",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/WN_MnEy779E",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/wlSSQb72MOM",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MlIGETwCPAA",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/D56BC6Dzerw",
+      "error": "curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/8OLAi6Eba98",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/d-nlkEiOWcs",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Eel46Cp2DV0",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sO36e8PYCyg",
+      "error": "curl: (28) Operation timed out after 45004 milliseconds with 0 bytes received"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/P_3CYO0BXbc",
+      "error": "curl: (28) Operation timed out after 45005 milliseconds with 0 bytes received"
+    }
+  ]
+}

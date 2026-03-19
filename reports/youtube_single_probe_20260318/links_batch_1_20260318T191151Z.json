@@ -1,0 +1,35 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.youtube.com/shorts/4Y_y79sZV84",
+      "credibility_score": 58.57,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.28,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "misinformation_score": 20.0,
+      "scam_score": 10.0,
+      "manipulation_score": 0.0,
+      "uncertainty_score": 67.25,
+      "evidence_quality_score": 71.15,
+      "weighted_misinformation_penalty": 6.8,
+      "weighted_scam_penalty": 2.4,
+      "weighted_manipulation_penalty": 0.0,
+      "weighted_uncertainty_penalty": 8.07,
+      "weighted_evidence_quality_penalty": 8.538,
+      "weighted_total_penalty": 25.808,
+      "reconstructed_credibility_score": 74.19,
+      "credibility_vs_reconstructed_delta": -15.622,
+      "generation_origin_excluded_from_credibility": true,
+      "evidence_level": "low",
+      "evidence_total_tokens": 25,
+      "evidence_caption_tokens": 25,
+      "evidence_transcript_tokens": 0,
+      "evidence_ocr_tokens": 0,
+      "evidence_asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.56,
+      "notes": "Applied sparse-text score calibration to reduce flat scoring under limited extracted evidence. | Generation origin score calibrated by trained logistic model. | Claim verification used open-source evidence heuristics. | Sparse extracted text; not_enough_evidence may remain appropriate. | Analysis-confidence score: 29.59. | Evidence-quality penalty score: 71.15."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "date": "2026-03-13",
+  "worker": "oracle-worker-1",
+  "youtube": {
+    "cookie_file": "/home/ubuntu/youtube_cookies.txt",
+    "cookie_file_exists": true,
+    "cookie_file_size": 1623,
+    "cookies_b64": false,
+    "visitor_data": false,
+    "po_token_web": false,
+    "po_token_android": false,
+    "status": "partial"
+  },
+  "instagram": {
+    "cookie_file": null,
+    "cookie_file_exists": false,
+    "cookies_b64": false,
+    "status": "missing"
+  },
+  "summary": {
+    "youtube": "Worker has a YouTube cookie file but no visitor data or PO tokens; batch tests still show anti-bot throttling and low-evidence fallback completions.",
+    "instagram": "No authenticated Instagram cookie/session is configured on the worker; browser-rendered extraction works, but media download and ASR remain blocked.",
+    "next_step": "Provide a Netscape-format Instagram cookie export and, separately, refresh YouTube auth material if richer ingest is required."
+  }
+}

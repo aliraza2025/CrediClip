@@ -1,0 +1,41 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.youtube.com/shorts/s38BAbzadWg",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/gp_ZRJjptO4",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/yy-NJqImRQU",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/s6rXpRLYXkU",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ENFsDm03JR8",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/BaarEO9boXA",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/3BlspfrpVYE",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/zaHQI4mJyDo",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/74lASOuE9lY",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    }
+  ]
+}

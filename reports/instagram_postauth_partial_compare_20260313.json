@@ -1,0 +1,65 @@
+{
+  "completed_count": 4,
+  "rows": [
+    {
+      "url": "https://www.instagram.com/reel/DTvWvaFj3TP/",
+      "pre_score": 77.04,
+      "post_score": 77.04,
+      "pre_tokens": 614,
+      "post_tokens": 572,
+      "pre_level": "high",
+      "post_level": "high",
+      "pre_transcript_chars": 63,
+      "post_transcript_chars": 170,
+      "used_worker_cookies": true,
+      "downloaded_video": true,
+      "used_asr": false,
+      "used_frame_ocr": true
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVQUiv8Eoev/",
+      "pre_score": 70.12,
+      "post_score": 73.34,
+      "pre_tokens": 112,
+      "post_tokens": 138,
+      "pre_level": "medium",
+      "post_level": "high",
+      "pre_transcript_chars": 49,
+      "post_transcript_chars": 338,
+      "used_worker_cookies": true,
+      "downloaded_video": true,
+      "used_asr": true,
+      "used_frame_ocr": true
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVfKxw0EvFV/",
+      "pre_score": 62.37,
+      "post_score": 66.24,
+      "pre_tokens": 25,
+      "post_tokens": 54,
+      "pre_level": "low",
+      "post_level": "medium",
+      "pre_transcript_chars": 65,
+      "post_transcript_chars": 196,
+      "used_worker_cookies": true,
+      "downloaded_video": true,
+      "used_asr": true,
+      "used_frame_ocr": true
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+      "pre_score": 68.62,
+      "post_score": 75.93,
+      "pre_tokens": 85,
+      "post_tokens": 185,
+      "pre_level": "medium",
+      "post_level": "high",
+      "pre_transcript_chars": 49,
+      "post_transcript_chars": 755,
+      "used_worker_cookies": true,
+      "downloaded_video": true,
+      "used_asr": true,
+      "used_frame_ocr": true
+    }
+  ]
+}

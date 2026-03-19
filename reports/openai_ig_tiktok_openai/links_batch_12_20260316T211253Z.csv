@@ -1,0 +1,13 @@
+credibility_score,credibility_vs_reconstructed_delta,error,evidence_asr_tokens,evidence_caption_tokens,evidence_level,evidence_ocr_tokens,evidence_quality_score,evidence_total_tokens,evidence_transcript_tokens,generation_origin_excluded_from_credibility,generation_origin_level,generation_origin_rationale,generation_origin_score,manipulation_score,misinformation_score,notes,reconstructed_credibility_score,scam_score,top_claim_confidence,top_claim_status,uncertainty_score,url,weighted_evidence_quality_penalty,weighted_manipulation_penalty,weighted_misinformation_penalty,weighted_scam_penalty,weighted_total_penalty,weighted_uncertainty_penalty
+93.98,-0.0044,,79,77,high,31,11.23,187,110,True,low,Human-generated content likely.,2.06,0.0,3.0,Generation origin score calibrated by trained logistic model. | Claim verification attempted via local Ollama LLM with heuristic fallback. | Rich text context detected (transcript/OCR); thresholds tuned to reduce unnecessary not_enough_evidence. | Analysis-confidence score: 100.0. | Evidence-quality penalty score: 11.23. | Extracted evidence token count: 187.,93.98,10.0,0.9,supported,10.4,https://www.instagram.com/reel/DVfVE6ritM1/,1.3476,0.0,1.02,2.4,6.0156,1.248
+,,,,,,,,,,True,,,,,,,,,,,,https://www.instagram.com/reel/DTvWvaFj3TP/,,,,,,
+,,curl: (56) Recv failure: Connection reset by peer,,,,,,,,,,,,,,,,,,,,https://www.instagram.com/reel/DVQUiv8Eoev/,,,,,,
+,,,,,,,,,,True,,,,,,,,,,,,https://www.instagram.com/reel/DVbGD6xjyV5/,,,,,,
+,,,,,,,,,,True,,,,,,,,,,,,https://www.instagram.com/reel/DVfKxw0EvFV/,,,,,,
+,,curl: (56) Recv failure: Connection reset by peer,,,,,,,,,,,,,,,,,,,,https://www.instagram.com/reel/DRR5RDuDC4f/,,,,,,
+,,curl: (56) Recv failure: Connection reset by peer,,,,,,,,,,,,,,,,,,,,https://www.tiktok.com/@realjayllnn/video/7586112300378033422,,,,,,
+,,curl: (56) Recv failure: Connection reset by peer,,,,,,,,,,,,,,,,,,,,https://www.tiktok.com/@reuters/video/7589372207017626894,,,,,,
+,,,,,,,,,,True,,,,,,,,,,,,https://www.tiktok.com/@crashadamsbackup/video/7584700981921778974,,,,,,
+,,curl: (56) Recv failure: Connection reset by peer,,,,,,,,,,,,,,,,,,,,https://www.tiktok.com/@nfl/video/7604678425932074254,,,,,,
+,,,,,,,,,,True,,,,,,,,,,,,https://www.tiktok.com/@brookemonk_/video/7603118297403378975,,,,,,
+,,,,,,,,,,True,,,,,,,,,,,,https://www.tiktok.com/@tisipbign1/video/7596058593103744263,,,,,,

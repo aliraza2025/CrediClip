@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrediClip Queue Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20260318a2" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <div class="top-row">
+          <div>
+            <h1>Queue Dashboard</h1>
+            <p class="subtitle">Live worker progress for CrediClip analysis jobs.</p>
+          </div>
+          <div class="nav-links">
+            <a href="/">Analyzer</a>
+            <a href="/dashboard" aria-current="page">Dashboard</a>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat">
+            <h3>Total</h3>
+            <p id="stat-total">-</p>
+          </article>
+          <article class="stat stat-queued">
+            <h3>Queued</h3>
+            <p id="stat-queued">-</p>
+          </article>
+          <article class="stat stat-processing">
+            <h3>Processing</h3>
+            <p id="stat-processing">-</p>
+          </article>
+          <article class="stat stat-completed">
+            <h3>Completed</h3>
+            <p id="stat-completed">-</p>
+          </article>
+          <article class="stat stat-failed">
+            <h3>Failed</h3>
+            <p id="stat-failed">-</p>
+          </article>
+        </div>
+
+        <div class="dashboard-meta">
+          <span id="oldest-queued">Oldest queued: -</span>
+          <span id="last-refresh">Last refresh: -</span>
+        </div>
+
+        <div class="live-bar">
+          <div class="live-state">
+            <span id="live-indicator" class="live-indicator idle"></span>
+            <span id="live-status">Connecting…</span>
+          </div>
+          <div class="toolbar live-toolbar">
+            <label class="toggle">
+              <input id="auto-refresh-toggle" type="checkbox" checked />
+              <span>Auto refresh</span>
+            </label>
+            <label for="interval-filter">Every</label>
+            <select id="interval-filter">
+              <option value="3000">3s</option>
+              <option value="5000" selected>5s</option>
+              <option value="10000">10s</option>
+              <option value="15000">15s</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mini-insights-grid">
+          <article class="mini-panel">
+            <div class="panel-headline">
+              <div>
+                <h2>Queue Pulse</h2>
+                <p class="subtitle">Rolling view of live queue movement.</p>
+              </div>
+              <span class="mini-kicker">session</span>
+            </div>
+            <div id="queue-sparklines" class="sparkline-grid">
+              <div class="insight-empty">Collecting queue samples...</div>
+            </div>
+          </article>
+
+          <article class="mini-panel">
+            <div class="panel-headline">
+              <div>
+                <h2>System Snapshot</h2>
+                <p class="subtitle">Worker health and recent throughput.</p>
+              </div>
+              <span id="snapshot-status" class="mini-kicker">warming up</span>
+            </div>
+            <div id="system-summary" class="summary-grid">
+              <div class="insight-empty">Waiting for live queue data...</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="admin-strip">
+          <article class="admin-strip-card">
+            <div class="panel-headline compact">
+              <div>
+                <h2>Ops Readout</h2>
+                <p class="subtitle">Fast summary for demos and admin review.</p>
+              </div>
+            </div>
+            <div id="ops-readout" class="ops-readout">
+              <div class="insight-empty">Waiting for live queue data...</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="insights-grid">
+          <article class="insight-panel">
+            <div class="top-row table-head">
+              <div>
+                <h2>Worker Lanes</h2>
+                <p class="subtitle">See which worker is handling which platform lane.</p>
+              </div>
+            </div>
+            <div id="lane-grid" class="lane-grid">
+              <div class="insight-empty">Loading worker lanes...</div>
+            </div>
+          </article>
+
+          <article class="insight-panel">
+            <div class="top-row table-head">
+              <div>
+                <h2>Platform Mix</h2>
+                <p class="subtitle">Recent activity split by platform.</p>
+              </div>
+            </div>
+            <div id="platform-grid" class="platform-grid">
+              <div class="insight-empty">Loading platform mix...</div>
+            </div>
+            <p id="latest-failure" class="failure-note">Latest failure: none</p>
+          </article>
+        </div>
+
+        <div class="mode-panel-wrap">
+          <article class="insight-panel">
+            <div class="top-row table-head">
+              <div>
+                <h2>Model Modes</h2>
+                <p class="subtitle">Which reasoning path each platform is using right now.</p>
+              </div>
+            </div>
+            <div id="mode-grid" class="mode-grid">
+              <div class="insight-empty">Scanning recent jobs for active model mode...</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="insights-grid details-grid">
+          <article class="insight-panel">
+            <div class="top-row table-head">
+              <div>
+                <h2>Live Activity</h2>
+                <p class="subtitle">Changes detected between refresh cycles.</p>
+              </div>
+            </div>
+            <div id="activity-feed" class="activity-feed">
+              <div class="insight-empty">Waiting for job activity...</div>
+            </div>
+          </article>
+
+          <article class="insight-panel">
+            <div class="top-row table-head">
+              <div>
+                <h2>Job Details</h2>
+                <p class="subtitle">Click any row to inspect the full payload.</p>
+              </div>
+            </div>
+            <div id="job-detail" class="job-detail empty">
+              <div class="insight-empty">Select a job to inspect notes, errors, and evidence summary.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="top-row table-head">
+          <h2>Recent Jobs</h2>
+          <div class="toolbar">
+            <label for="status-filter">Status</label>
+            <select id="status-filter">
+              <option value="">all</option>
+              <option value="queued">queued</option>
+              <option value="processing">processing</option>
+              <option value="completed">completed</option>
+              <option value="failed">failed</option>
+            </select>
+            <label for="platform-filter">Platform</label>
+            <select id="platform-filter">
+              <option value="">all</option>
+              <option value="instagram">instagram</option>
+              <option value="tiktok">tiktok</option>
+              <option value="youtube_shorts">youtube</option>
+              <option value="unknown">unknown</option>
+            </select>
+            <label for="worker-filter">Worker</label>
+            <select id="worker-filter">
+              <option value="">all</option>
+            </select>
+            <label for="limit-filter">Limit</label>
+            <select id="limit-filter">
+              <option value="20">20</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+            </select>
+            <input id="search-filter" type="search" placeholder="Search URL, id, error…" />
+            <button id="refresh-btn" type="button">Refresh</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="jobs-table">
+            <thead>
+              <tr>
+                <th>Job ID</th>
+                <th>Platform</th>
+                <th>Mode</th>
+                <th>Status</th>
+                <th>Worker</th>
+                <th>Caption</th>
+                <th>Transcript</th>
+                <th>Score</th>
+                <th>Updated</th>
+                <th>URL</th>
+              </tr>
+            </thead>
+            <tbody id="jobs-body">
+              <tr><td colspan="10">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/dashboard.js?v=20260318a2"></script>
+  </body>
+</html>

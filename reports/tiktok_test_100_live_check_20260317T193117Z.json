@@ -1,0 +1,34 @@
+{
+  "timestamp_utc": "20260317T193117Z",
+  "submitted_file": "/Users/aliraaza/Documents/New project/reports/jobs_submitted_100_20260313T185321Z.json",
+  "source_url_count": 100,
+  "job_id_count": 100,
+  "probe": {
+    "checked_job_id": null,
+    "live_polling_status": "skipped_no_job_id",
+    "error": null
+  },
+  "durable_progress_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_durable_restart_progress_20260313.json",
+  "durable_progress": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "local_db_overlap": {
+    "db_path": "/Users/aliraaza/Documents/New project/app/data/jobs.db",
+    "found_submitted_ids": 0,
+    "submitted_id_count": 100,
+    "found_source_urls": 0,
+    "source_url_count": 100,
+    "latest_completed_urls": 0,
+    "db_error": null,
+    "id_column_used": "id",
+    "url_column_used": "url",
+    "local_jobs_count": 0
+  },
+  "is_complete_100_of_100": false
+}

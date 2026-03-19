@@ -1,0 +1,1085 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.youtube.com/shorts/s38BAbzadWg",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Daily Dose Of Internet). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/gp_ZRJjptO4",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Chakra Drum). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/yy-NJqImRQU",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Tiny Storiez). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/s6rXpRLYXkU",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: AMzone.clips1). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ENFsDm03JR8",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Life Unlocked With Archna\ud83c\udf3c). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/BaarEO9boXA",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Padakoo). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/3BlspfrpVYE",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Divine status creations). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/zaHQI4mJyDo",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Erase The Doubt). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/74lASOuE9lY",
+      "credibility_score": 67.25,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Vibes with Abhinav). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/4H9kFjV_hVk",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Holy History). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PloHBEZP5jc",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Divine status creations). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/lWy72oFxlZM",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Boxlapse). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/2jftwZBRcZA",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Goldy Recap). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/idlZ51Z9FRk",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Shrimpy). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/dN8fd_b2Q6M",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Professor Dave Explains). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/bGP8S5Vi4V8",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Wabie). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/KVIeHr7pNfE",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Nobel Prize). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/IZxua9LhGmQ",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 5.02,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Hayk_Animation). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/LKhGliLQR6A",
+      "credibility_score": 67.15,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Wyss Institute). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/uDcwjMPs-xA",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: The Pet Collective). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/7FK8f_X0RVc",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Austin Perlmutter, MD). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MzoppiEgxVY",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: UC Davis). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZTNODltNLtI",
+      "credibility_score": 68.29,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Animalogic). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/LWiOjMS2iW0",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: BBC Earth). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1OnEY7OjEyo",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: InspirationTuts 2D). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Sz0UzDz_Vkc",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Museum of Science). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Dnn85h3l9L4",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Maya and Mary). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/S6TEKEHBqC0",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: The Leakey Foundation). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/3BCglLrtTi8",
+      "credibility_score": 67.25,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Alex Grigg // Animation for Anyone). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ogvcWdvZ7t4",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: iNaturalist). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/jYEycPSa2h4",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Makeshift Project). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/HnwBh3d0r3g",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: iNaturalist). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/NQBkMRIZI-o",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Ryan Maloney). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mktYW177p6U",
+      "credibility_score": 67.15,
+      "generation_origin_level": "low",
+      "generation_origin_score": 0.0,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: MrBeast). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/lJbVwV0689A",
+      "credibility_score": 67.25,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: BBC). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/_tunbIZeLfM",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Corridor Crew). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/kwyI8o5B9wM",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Wallace H. Coulter Dept. of Biomedical Engineering). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/d5lGxs7eGEQ",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Moonbug Kids - Animals for Kids). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/wnYOrt6BWMw",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: LSU). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/2jUx8myk6-k",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Simon Clark). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Jg4enp_R31E",
+      "credibility_score": 68.08,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: AJanimalking). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oDT1Lwhsnbk",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: John Izzo). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/yzfyQ-wklwA",
+      "credibility_score": 67.25,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Viole). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sV_SiHTUSK8",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Del Monte Institute for Neuroscience). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/A_AyYgdfLJ0",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: MASTERPIECE PBS). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/2b_5e5al0Xw",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: UCHealthCincinnati). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/qAd-lvxncSs",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: How to Survive Show). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/4Xkh1NH6zAY",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Nat Geo Animals). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/xHamaJM1-x8",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Plant Life with Ashley Anita). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/qHh2aC9vhP0",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: National Science Foundation News). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/WG7rFm3r08A",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Wings Over the Rockies Air & Space Museum). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/_5TWmNcdfVg",
+      "credibility_score": 63.91,
+      "generation_origin_level": "low",
+      "generation_origin_score": 34.17,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.62,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: BuzzRobot). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/12aZdpxFcqs",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Waterwise Community Center). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/8x8QoaydQqw",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: BBC Earth). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/hsqWvVL_rR8",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Museum of Science). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/3AlSHuhqvjM",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Mike Likes Robots). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/kau-j05MnFg",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Healthy Houseplants). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/R0R7cvVNv98",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Gvids). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/dKJ-0baXLoA",
+      "credibility_score": 68.08,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: NASA Jet Propulsion Laboratory). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/fOzWeoPL6Xs",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: TeachKidsRobotics). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/r4EZDrosG28",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Yo Tambien Amo Las Plantas). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/TPXlNyEruvc",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: 7 News Spotlight). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/1pv5PJbs1IM",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: SEA). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/qDEyMjzSZHs",
+      "credibility_score": 68.29,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: ASTRO ALEXANDRA). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/gN0rfdy1uKE",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: National Science Foundation News). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/06oCv4Fa8Oo",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Geospatial World). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/6X_N4qW19T4",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: RootSaid - Robotics, Electronics & Technology). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/2z6nfBjuR_o",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Kaush). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/NGDbZQuu0B8",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: SpaceNews). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/UaaN6V993Mw",
+      "credibility_score": 63.91,
+      "generation_origin_level": "low",
+      "generation_origin_score": 34.17,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.62,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: AI News & Strategy Daily | Nate B Jones). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Q4NY9M7Dfbo",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Sea&me). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZFqCiS1W9M0",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Toyota Research Institute). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/BH3aCCBjY6o",
+      "credibility_score": 68.39,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: EVNautilus). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/H3rTP_7XyFk",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Unraveling Architecture). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/za9qjISJmPs",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Good Vibes - Binaural Beats). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/si1lI241upE",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: johnnielawson). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/zzu7sMRg1d0",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Maci and Abels Vision). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/pcNTCQLdABI",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Elizabeth and Briceida Learning & Fun). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/f2LgD7Zsigw",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Brian & Marisa). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/RhqxFNh-qhs",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: 5-MINUTE MAGIC). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/XS6bzlLIvW0",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Nico). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/PfZYTHsuWZQ",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Sick Science!). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/FXJhpMHCcRk",
+      "credibility_score": 68.29,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: RainRider Ambience). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ptiS1yXodpM",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: lopezexplora). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Gu580hYbxf8",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Awesome Nature). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ppwbPeGZYTA",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: An Adventure with Nick & Rachel). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/uGXa0XoGt4w",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Visbeen Architects). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/_wCHi1l1NcE",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Design vs. Build). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mI7vgZsz0rk",
+      "credibility_score": 67.66,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: theArchicreator). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/41YQ3Gu7m98",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: LearningEnglishPRO). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/y_kbj9Npbvw",
+      "credibility_score": 67.46,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Coraubanne). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/6ac1z0sHH90",
+      "credibility_score": 68.08,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Quiet Kitchen). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/5kHypJFtf3w",
+      "credibility_score": 68.08,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Astro Kirsten). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/W7-M4_idLMc",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Lubi\u0119 Tworzy\u0107). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/V9NmfGO8bEY",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: The Royal Society). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/55RE7Ih8rvA",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: LearnToStargaze). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/9ciMlAlYe48",
+      "credibility_score": 68.29,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Nature's Eye). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/KJuzniJ4yno",
+      "credibility_score": 67.56,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Corridor Crew). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/FksRkYjGg8k",
+      "credibility_score": 67.98,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Ventuno Art). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ZGELPRxvfZw",
+      "credibility_score": 72.0,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.52,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": null,
+      "top_claim_confidence": null,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Could not fetch YouTube metadata via oEmbed fallback. | Recovered metadata from YouTube watch-page scraping fallback. | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/KTiKF7WMUPg",
+      "credibility_score": 68.29,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: RainRider Ambience). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/x4YsTyxs49c",
+      "credibility_score": 67.25,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Corridor Crew). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/C6PhwSIp_-w",
+      "credibility_score": 67.77,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Welcome To Nana's). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/rGh47m8mLg0",
+      "credibility_score": 67.04,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Could not fetch YouTube metadata via oEmbed fallback. | Recovered metadata from YouTube watch-page scraping fallback. | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/sMrA8LvxTdE",
+      "credibility_score": 67.35,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Hypno Motion). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/ne9-mMsh6yc",
+      "credibility_score": 68.08,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Ventuno Art). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/YdNZ1lgnbPM",
+      "credibility_score": 68.18,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Nature's Eye). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Ff9BQUkhTZ4",
+      "credibility_score": 67.87,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.3,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Ventuno Art). | Could not fetch YouTube transcript (disabled/unavailable). | Skipped heavy ASR/OCR/browser ingestion on API node to keep memory usage stable. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback)."
+    }
+  ]
+}

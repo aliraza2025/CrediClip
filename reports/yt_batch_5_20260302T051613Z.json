@@ -1,0 +1,78 @@
+{
+  "rows": [
+    {
+      "url": "https://youtube.com/shorts/3d05ZaTWzZA?si=EvlNm4d7Rrhad5Mk",
+      "job_id": "1d76311d1bad4e1390577b8ead1578c1",
+      "status": "completed",
+      "credibility_score": 69.78,
+      "generation_origin": "low",
+      "generation_origin_score": 1.39,
+      "top_claim_status": "not_enough_evidence",
+      "transcript_chars": 32,
+      "caption_chars": 130,
+      "error": null,
+      "error_category": "ingest:metadata_fallback_used",
+      "ingest_notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Isaac & Andrea). | Could not fetch YouTube transcript (disabled/unavailable). | Recovered on-screen text using frame OCR fallback. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://youtube.com/shorts/BWAbPh6tFFQ?si=m6aGcjimS_WYrkoV",
+      "job_id": "23aa00f0721b44c1ac7da288c151c2ae",
+      "status": "completed",
+      "credibility_score": 69.67,
+      "generation_origin": "low",
+      "generation_origin_score": 1.39,
+      "top_claim_status": "not_enough_evidence",
+      "transcript_chars": 25,
+      "caption_chars": 140,
+      "error": null,
+      "error_category": "ingest:metadata_fallback_used",
+      "ingest_notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Young and Profiting). | Could not fetch YouTube transcript (disabled/unavailable). | Recovered on-screen text using frame OCR fallback. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://youtube.com/shorts/M7OTxF6zovI?si=BfNY0zjM1FBvhhE_",
+      "job_id": "7abfb7ab155842c69295ec334b68a683",
+      "status": "completed",
+      "credibility_score": 68.6,
+      "generation_origin": "low",
+      "generation_origin_score": 1.62,
+      "top_claim_status": "not_enough_evidence",
+      "transcript_chars": 0,
+      "caption_chars": 194,
+      "error": null,
+      "error_category": "ingest:no_transcript_subtitles_unavailable",
+      "ingest_notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: GOPAL MUSIC). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://youtube.com/shorts/ZKqKJUdihI0?si=BgDOBURifUoacOon",
+      "job_id": "9ff48f8b8fed485baa69e3c8b33681c8",
+      "status": "completed",
+      "credibility_score": 67.04,
+      "generation_origin": "low",
+      "generation_origin_score": 1.37,
+      "top_claim_status": "not_enough_evidence",
+      "transcript_chars": 0,
+      "caption_chars": 113,
+      "error": null,
+      "error_category": "ingest:no_transcript_subtitles_unavailable",
+      "ingest_notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: SP99-EDIT_SONG). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: skipped (insufficient extracted text)."
+    },
+    {
+      "url": "https://youtube.com/shorts/ydj_KdgLEaI?si=q5hiTp3uv8c2annz",
+      "job_id": "73d74dcfed8b43508a67fc0cb6f9940a",
+      "status": "completed",
+      "credibility_score": 68.08,
+      "generation_origin": "low",
+      "generation_origin_score": 1.38,
+      "top_claim_status": "not_enough_evidence",
+      "transcript_chars": 0,
+      "caption_chars": 194,
+      "error": null,
+      "error_category": "ingest:no_transcript_subtitles_unavailable",
+      "ingest_notes": "Could not fetch YouTube metadata via yt-dlp. | Recovered metadata from YouTube oEmbed (author: Priyasa Family Kitchen). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    }
+  ],
+  "error_counts": {
+    "ingest:metadata_fallback_used": 2,
+    "ingest:no_transcript_subtitles_unavailable": 3
+  }
+}

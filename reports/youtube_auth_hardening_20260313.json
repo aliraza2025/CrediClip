@@ -1,0 +1,23 @@
+{
+  "date": "2026-03-13",
+  "status": "partial_only",
+  "worker_auth": {
+    "cookie_file": "/home/ubuntu/youtube_cookies.txt",
+    "cookie_file_size_before": 1623,
+    "cookie_file_size_after": 2978,
+    "visitor_data": false,
+    "po_token_web": false,
+    "po_token_android": false
+  },
+  "result": {
+    "fresh_cookie_install": "completed",
+    "worker_restart": "completed",
+    "observed_behavior": "YouTube Shorts extraction still hits 'Sign in to confirm you're not a bot' on the worker even with the refreshed cookie file."
+  },
+  "conclusion": "Fresh cookies alone are not sufficient for reliable YouTube rich ingest on this worker. The next step would require visitorData and PO token values, not more code-only changes.",
+  "next_required_inputs": [
+    "YTDLP_VISITOR_DATA",
+    "YTDLP_PO_TOKEN_WEB",
+    "optional: YTDLP_PO_TOKEN_ANDROID"
+  ]
+}

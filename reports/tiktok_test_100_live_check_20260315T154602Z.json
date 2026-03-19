@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-03-15T15:46:02Z",
+  "submitted_report": "/Users/aliraaza/Documents/New project/reports/jobs_submitted_100_20260313T185321Z.json",
+  "total_urls": 2,
+  "live_polling_status": "not_attempted",
+  "live_polling_checked_jobs": 0,
+  "live_polling_error": null,
+  "status_counts": {},
+  "completed_urls": 3,
+  "processing_urls": 1,
+  "queued_urls": 96,
+  "failed_only_urls": 0,
+  "missing_urls": 0,
+  "found_submitted_ids": 0,
+  "found_source_urls": 0,
+  "latest_completed_urls": 0,
+  "all_terminal": false,
+  "all_completed": false
+}

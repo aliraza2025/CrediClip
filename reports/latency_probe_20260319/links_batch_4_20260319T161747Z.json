@@ -1,0 +1,21 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.instagram.com/p/DVOJgPIDZNk/?igsh=NjFhOGMzYTE3ZQ==",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.tiktok.com/@reuters/video/7589372207017626894",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    },
+    {
+      "url": "https://www.tiktok.com/@pet_statione/video/7579841364599328013",
+      "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+    }
+  ]
+}

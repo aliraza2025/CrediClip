@@ -3,3 +3,7 @@ __pycache__/
 .venv/
 .env
 .DS_Store
+app/data/jobs.db
+oracle/*.key
+oracle/*.pem
+oracle/ssh-key-*

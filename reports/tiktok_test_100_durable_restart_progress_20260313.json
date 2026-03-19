@@ -1,0 +1,9 @@
+{
+  "source_total": 100,
+  "jobs_returned": 100,
+  "completed_urls": 3,
+  "processing_urls": 1,
+  "queued_urls": 96,
+  "failed_only_urls": 0,
+  "missing_urls": 0
+}

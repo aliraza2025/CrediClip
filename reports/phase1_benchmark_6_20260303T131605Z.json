@@ -1,0 +1,46 @@
+{
+  "timestamp_utc": "20260303T131605Z",
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "labels": "app/data/eval_mixed_labels.json",
+  "n": 6,
+  "seed": 20260303,
+  "balanced": true,
+  "gates": {
+    "ingestion_success_rate": {
+      "value": 0.0,
+      "threshold": 0.85,
+      "pass": false
+    },
+    "not_enough_evidence_rate": {
+      "value": 1.0,
+      "threshold": 0.4,
+      "pass": false
+    },
+    "score_stddev": {
+      "value": 0.0,
+      "threshold": 8.0,
+      "pass": false
+    },
+    "queue_reliability": {
+      "value": null,
+      "threshold": 0.95,
+      "pass": false,
+      "evaluated": false
+    }
+  },
+  "counts": {
+    "tested": 6,
+    "ok_rows": 0,
+    "ingestion_ok_rows": 0,
+    "not_enough_count": 0
+  },
+  "result": {
+    "core_pass": false,
+    "overall_pass": false,
+    "queue_gate_evaluated": false
+  },
+  "artifacts": {
+    "csv": "reports/phase1_benchmark_6_20260303T131605Z.csv",
+    "json": "reports/phase1_benchmark_6_20260303T131605Z.json"
+  }
+}

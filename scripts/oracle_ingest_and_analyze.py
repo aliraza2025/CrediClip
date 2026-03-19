@@ -6,11 +6,16 @@ import asyncio
 import csv
 import json
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 import httpx
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from app.services.debug_state import get_debug_notes, reset_debug_notes
 from app.services.ingestion import enrich_from_youtube
@@ -48,7 +53,7 @@ async def process_one(api_url: str, url: str, timeout_sec: int, skip_no_text: bo
     normalized_url = normalize_youtube_url(url)
     reset_debug_notes()
 
-    caption, transcript, ingest_notes = await enrich_from_youtube(normalized_url)
+    caption, transcript, ingest_notes = await enrich_from_youtube(normalized_url, worker_mode=True)
     debug_notes = get_debug_notes()
 
     if skip_no_text and not caption.strip() and not transcript.strip():
@@ -83,12 +88,19 @@ async def process_one(api_url: str, url: str, timeout_sec: int, skip_no_text: bo
     flags = {f.get("type"): f for f in data.get("flags", [])}
     gen = flags.get("generation_origin", {})
     claim = (data.get("claim_assessments") or [{}])[0]
+    evidence = data.get("evidence_coverage") or {}
 
     return {
         "url": normalized_url,
         "credibility_score": data.get("credibility_score"),
         "generation_origin_level": gen.get("level"),
         "generation_origin_score": gen.get("score"),
+        "evidence_level": evidence.get("level"),
+        "evidence_total_tokens": evidence.get("total_tokens"),
+        "evidence_caption_tokens": evidence.get("caption_tokens"),
+        "evidence_transcript_tokens": evidence.get("transcript_tokens"),
+        "evidence_ocr_tokens": evidence.get("ocr_tokens"),
+        "evidence_asr_tokens": evidence.get("asr_tokens"),
         "top_claim_status": claim.get("status"),
         "top_claim_confidence": claim.get("confidence"),
         "caption_chars": len(caption),

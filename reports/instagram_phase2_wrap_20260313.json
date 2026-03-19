@@ -1,0 +1,57 @@
+{
+  "date": "2026-03-13",
+  "phase": "instagram_phase_2",
+  "status": "wrapped",
+  "architecture": {
+    "web_app": "Fly app accepts Instagram links and routes link-only analysis through the queue-backed worker path.",
+    "worker": "Oracle worker performs browser-rendered Instagram ingest, authenticated media download, local Whisper ASR, frame OCR, and returns artifacts for final scoring.",
+    "auth": "Instagram Netscape cookie export installed at /home/ubuntu/instagram_cookies.txt and activated via INSTAGRAM_COOKIE_FILE."
+  },
+  "final_validation_job": {
+    "job_id": "386be7b6dcfa40a2a0628074959ee8bc",
+    "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+    "score": 75.91,
+    "caption_chars": 485,
+    "transcript_chars": 746,
+    "evidence_coverage": {
+      "total_tokens": 184,
+      "caption_tokens": 77,
+      "transcript_tokens": 107,
+      "ocr_tokens": 28,
+      "asr_tokens": 79,
+      "level": "high",
+      "transcript_present": true,
+      "ocr_present": true,
+      "asr_present": true
+    }
+  },
+  "benchmark_progress": {
+    "pre_auth_instagram_10": {
+      "avg_score": 68.47,
+      "avg_tokens": 128.3,
+      "levels": {"low": 2, "medium": 6, "high": 2}
+    },
+    "post_auth_examples": [
+      {
+        "url": "https://www.instagram.com/reel/DVQUiv8Eoev/",
+        "before": {"score": 70.12, "tokens": 112, "transcript_chars": 49},
+        "after": {"score": 73.34, "tokens": 138, "transcript_chars": 338}
+      },
+      {
+        "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+        "before": {"score": 68.62, "tokens": 85, "transcript_chars": 49},
+        "after": {"score": 75.91, "tokens": 184, "transcript_chars": 746}
+      },
+      {
+        "url": "https://www.instagram.com/reel/DVfKxw0EvFV/",
+        "before": {"score": 62.37, "tokens": 25, "level": "low", "transcript_chars": 65},
+        "after": {"score": 66.24, "tokens": 54, "level": "medium", "transcript_chars": 196}
+      }
+    ]
+  },
+  "remaining_optional_work": [
+    "Refresh YouTube auth material to reduce anti-bot fallback behavior.",
+    "Consider conditional Groq only for medium/high evidence cases after auth-backed ingest is stable.",
+    "Upgrade Oracle runtime beyond Python 3.8 when practical."
+  ]
+}

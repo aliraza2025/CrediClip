@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 from dataclasses import dataclass
 
@@ -55,13 +57,27 @@ def extract_manipulation_cues(text: str) -> list[str]:
     keyword_map = {
         "ai voice": "Possible synthetic voice mention",
         "voice clone": "Possible cloned voice mention",
+        "cloned voice": "Possible cloned voice mention",
         "deepfake": "Explicit deepfake mention",
         "face swap": "Potential face manipulation mention",
         "ai generated": "Possible synthetic media mention",
+        "generated with ai": "Possible synthetic media mention",
+        "made with ai": "Possible synthetic media mention",
+        "#ai": "AI hashtag/self-disclosure cue",
+        "#aigenerated": "AI hashtag/self-disclosure cue",
+        "#midjourney": "AI image-generation cue",
+        "#stablediffusion": "AI image-generation cue",
+        "text to video": "Possible synthetic video workflow mention",
+        "prompt": "Prompt-driven generation cue",
     }
     for keyword, label in keyword_map.items():
         if keyword in lowered:
             cues.append(label)
+
+    # Lightweight visual-style lexical cues frequently found in synthetic clips.
+    style_tokens = ["ultra realistic ai", "ai art", "ai animation", "rendered", "cgi"]
+    if any(token in lowered for token in style_tokens):
+        cues.append("Synthetic visual-style lexical cue")
     return cues
 
 

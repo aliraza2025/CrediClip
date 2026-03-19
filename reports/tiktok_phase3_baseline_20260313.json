@@ -1,0 +1,27 @@
+{
+  "date": "2026-03-13",
+  "phase": "tiktok_phase_3",
+  "status": "baseline_live",
+  "live": {
+    "app_image": "crediclip-axraza-msba:deployment-01KKKPWJEME7Y9ZC1YWW5A7D4Z",
+    "fly_version": 101,
+    "queue_stats": {"queued": 0, "processing": 0, "completed": 0, "failed": 0},
+    "tiktok_analyze_via_queue": true
+  },
+  "implemented": [
+    "Dedicated TikTok ingestion module",
+    "Queue-backed TikTok link-only routing on the web app",
+    "Oracle worker TikTok dispatch",
+    "Public metadata + oEmbed fallback",
+    "Browser-rendered TikTok fallback",
+    "Screenshot OCR fallback",
+    "Optional worker media download + local Whisper ASR when a direct media URL is available",
+    "Diagnostics coverage for TikTok parser/app-shell detection"
+  ],
+  "not_yet_claimed": [
+    "No real TikTok benchmark sample has been run yet in production",
+    "No TikTok auth/session hardening has been added",
+    "Evidence quality distribution for TikTok is still unmeasured"
+  ],
+  "next_step": "Run a small public TikTok validation set and measure evidence coverage, score spread, and failure rate."
+}

@@ -1,0 +1,34 @@
+{
+  "tested": 780,
+  "success": 780,
+  "errors": 0,
+  "avg_credibility_score": 64.32,
+  "avg_analysis_confidence": 37.36,
+  "avg_evidence_total_tokens": 83.05,
+  "avg_misinformation_score": 12.16,
+  "avg_scam_score": 10.15,
+  "avg_manipulation_score": 0.56,
+  "avg_uncertainty_score": 39.25,
+  "avg_evidence_quality_score": 66.81,
+  "evidence_level_counts": {
+    "low": 359,
+    "medium": 256,
+    "high": 165
+  },
+  "top_claim_status_counts": {
+    "supported": 453,
+    "refuted": 0,
+    "not_enough_evidence": 321,
+    "missing": 6
+  },
+  "score_bands": {
+    "lt_45": 0,
+    "45_to_60": 327,
+    "60_to_75": 320,
+    "ge_75": 133
+  },
+  "artifacts": {
+    "csv": "reports/user_yt_batch_780_20260312T025706Z.csv",
+    "json": "reports/user_yt_batch_780_20260312T025706Z.json"
+  }
+}

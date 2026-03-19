@@ -1,0 +1,30 @@
+{
+  "tested": 100,
+  "success": 100,
+  "errors": 0,
+  "avg_credibility_score": 63.15,
+  "avg_analysis_confidence": 34.48,
+  "avg_evidence_total_tokens": 73.26,
+  "evidence_level_counts": {
+    "low": 55,
+    "medium": 24,
+    "high": 21
+  },
+  "top_claim_status_counts": {
+    "supported": 50,
+    "refuted": 0,
+    "not_enough_evidence": 49,
+    "missing": 1
+  },
+  "score_bands": {
+    "lt_45": 0,
+    "45_to_60": 50,
+    "60_to_75": 30,
+    "ge_75": 20
+  },
+  "artifacts": {
+    "csv": "reports/user_yt_sample100_20260312T025339Z.csv",
+    "json": "reports/user_yt_sample100_20260312T025339Z.json",
+    "summary": "reports/user_yt_sample100_20260312T025339Z_summary.json"
+  }
+}

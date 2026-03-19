@@ -1,0 +1,44 @@
+{
+  "date_utc": "2026-03-13",
+  "phase": "instagram_phase_2",
+  "status": "worker_backed",
+  "live_queue_backed": true,
+  "worker_runtime": {
+    "playwright": true,
+    "faster_whisper": true,
+    "python_version": "3.8.10"
+  },
+  "benchmark_before": {
+    "report_csv": "reports/links_batch_19_20260311T222203Z.csv",
+    "success": 19,
+    "avg_score": 52.63,
+    "median_score": 52.63,
+    "avg_tokens": 1.0,
+    "median_tokens": 1.0,
+    "levels": {
+      "low": 19,
+      "medium": 0,
+      "high": 0
+    }
+  },
+  "benchmark_after": {
+    "report_csv": "reports/links_batch_19_20260313T081733Z_final.csv",
+    "success": 19,
+    "avg_score": 69.97,
+    "median_score": 69.17,
+    "avg_tokens": 130.89,
+    "median_tokens": 95.0,
+    "levels": {
+      "low": 2,
+      "medium": 10,
+      "high": 7
+    }
+  },
+  "current_limitations": [
+    "Instagram public HTML usually resolves to a generic app shell.",
+    "Worker browser-rendered text extraction works without authentication.",
+    "Instagram media/audio download is still unreliable without authenticated Instagram cookies.",
+    "ASR runtime is installed, but asr_tokens remain zero until worker media access succeeds."
+  ],
+  "next_required_input": "Provide an Instagram Netscape cookie file on Oracle and set INSTAGRAM_COOKIE_FILE, then rerun a small Reel sample and the 19-link benchmark."
+}

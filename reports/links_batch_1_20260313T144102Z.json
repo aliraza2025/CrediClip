@@ -1,0 +1,35 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.tiktok.com/@suiynbay/video/7433526979527216389",
+      "credibility_score": 66.15,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.29,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "misinformation_score": 17.76,
+      "scam_score": 10.0,
+      "manipulation_score": 0.0,
+      "uncertainty_score": 57.45,
+      "evidence_quality_score": 54.85,
+      "weighted_misinformation_penalty": 6.0384,
+      "weighted_scam_penalty": 2.4,
+      "weighted_manipulation_penalty": 0.0,
+      "weighted_uncertainty_penalty": 6.894,
+      "weighted_evidence_quality_penalty": 6.582,
+      "weighted_total_penalty": 21.9144,
+      "reconstructed_credibility_score": 78.09,
+      "credibility_vs_reconstructed_delta": -11.9356,
+      "generation_origin_excluded_from_credibility": true,
+      "evidence_level": "medium",
+      "evidence_total_tokens": 53,
+      "evidence_caption_tokens": 15,
+      "evidence_transcript_tokens": 38,
+      "evidence_ocr_tokens": 38,
+      "evidence_asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence",
+      "top_claim_confidence": 0.52,
+      "notes": "Applied sparse-text score calibration to reduce flat scoring under limited extracted evidence. | Generation origin score calibrated by trained logistic model. | Claim verification used open-source evidence heuristics. | Rich text context detected (transcript/OCR); thresholds tuned to reduce unnecessary not_enough_evidence. | Analysis-confidence score: 54.24. | Evidence-quality penalty score: 54.85."
+    }
+  ]
+}

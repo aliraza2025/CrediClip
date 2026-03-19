@@ -1,0 +1,18 @@
+{
+  "source_total": 100,
+  "completed_urls": 60,
+  "processing_urls": 1,
+  "queued_urls": 39,
+  "failed_only_urls": 0,
+  "missing_urls": 0,
+  "avg_score_completed_slice": null,
+  "median_score_completed_slice": null,
+  "avg_tokens_completed_slice": 56.05,
+  "median_tokens_completed_slice": 58.0,
+  "avg_asr_tokens_completed_slice": 0.0,
+  "avg_ocr_tokens_completed_slice": 44.97,
+  "evidence_levels_completed_slice": {
+    "medium": 54,
+    "low": 6
+  }
+}

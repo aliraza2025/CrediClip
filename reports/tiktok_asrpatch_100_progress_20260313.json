@@ -1,0 +1,13 @@
+{
+  "rerun_started_at": "2026-03-13T15:54:21+00:00",
+  "completed_so_far": 8,
+  "remaining": 92,
+  "avg_score": 66.79,
+  "avg_tokens": 60.4,
+  "download_success_count": 8,
+  "asr_success_count": 0,
+  "no_audio_stream_count": 8,
+  "direct_media_attempt_count": 8,
+  "direct_media_error_count": 8,
+  "opaque_calledprocess_count": 0
+}

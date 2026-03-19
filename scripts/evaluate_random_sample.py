@@ -38,6 +38,8 @@ def run_api(api_url: str, video_id: str, timeout: int = 35) -> dict:
     gen = next((f for f in data.get("flags", []) if f.get("type") == "generation_origin"), {})
     claim0 = (data.get("claim_assessments") or [{}])[0]
     notes = data.get("notes", [])
+    components = data.get("component_scores", {}) or {}
+    evidence = data.get("evidence_coverage") or {}
     return {
         "video_id": video_id,
         "url": url,
@@ -45,6 +47,17 @@ def run_api(api_url: str, video_id: str, timeout: int = 35) -> dict:
         "generation_origin_level": gen.get("level"),
         "generation_origin_score": gen.get("score"),
         "generation_origin_rationale": gen.get("rationale"),
+        "evidence_level": evidence.get("level"),
+        "evidence_total_tokens": evidence.get("total_tokens"),
+        "evidence_caption_tokens": evidence.get("caption_tokens"),
+        "evidence_transcript_tokens": evidence.get("transcript_tokens"),
+        "evidence_ocr_tokens": evidence.get("ocr_tokens"),
+        "evidence_asr_tokens": evidence.get("asr_tokens"),
+        "misinformation_score": components.get("misinformation"),
+        "scam_score": components.get("scam"),
+        "manipulation_score": components.get("manipulation"),
+        "uncertainty_score": components.get("uncertainty"),
+        "evidence_quality_score": components.get("evidence_quality"),
         "top_claim_status": claim0.get("status"),
         "top_claim_confidence": claim0.get("confidence"),
         "trained_override": any("Generation origin calibrated by labeled training sample" in n for n in notes),

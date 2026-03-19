@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CrediClip MVP</title>
-    <link rel="stylesheet" href="/static/styles.css?v=20260225b" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260319a1" />
   </head>
-  <body>
-    <main class="container">
-      <section class="card">
+  <body class="analyzer-view">
+    <main class="phone-stage">
+      <div class="phone-frame">
+        <div class="phone-notch" aria-hidden="true"></div>
+        <div class="phone-screen">
+          <div class="container">
+      <section class="card feed-panel" id="analyzer-card">
         <h1>CrediClip</h1>
         <p class="subtitle">AI credibility scoring for TikTok, Instagram, and YouTube Shorts videos.</p>
 
@@ -17,27 +21,53 @@
           <input id="url" type="url" placeholder="https://www.youtube.com/shorts/..." required />
 
           <label for="caption">Caption (optional)</label>
-          <textarea id="caption" rows="3" placeholder="Optional for YouTube Shorts link-only. Recommended for TikTok/Instagram."></textarea>
+          <textarea id="caption" rows="3" placeholder="Optional for supported link-only platforms. Add it if you already have it."></textarea>
 
           <label for="transcript">Transcript (optional, recommended)</label>
-          <textarea id="transcript" rows="5" placeholder="Optional for YouTube Shorts link-only. Recommended for TikTok/Instagram."></textarea>
+          <textarea id="transcript" rows="5" placeholder="Optional for supported link-only platforms. Add it if you already have it."></textarea>
 
           <button type="submit">Analyze</button>
+          <a href="/dashboard" class="dashboard-link-small">Dashboard</a>
         </form>
       </section>
 
-      <section class="card" id="results-card" hidden>
-        <h2>Results</h2>
-        <div id="score"></div>
-        <h3>Risk Flags</h3>
-        <div id="flags"></div>
-        <h3>Claims</h3>
-        <div id="claims"></div>
-        <h3>Notes</h3>
-        <ul id="notes"></ul>
+      <section class="card feed-panel results-card" id="results-card" hidden>
+        <div id="loading-panel" class="loading-panel" hidden>
+          <h2>Analyzing Video</h2>
+          <p id="loading-status">Preparing request...</p>
+          <div class="status-track" aria-label="Analysis progress">
+            <div id="status-bar" class="status-bar"></div>
+          </div>
+          <div class="loading-gif-wrap">
+            <div
+              class="tenor-gif-embed"
+              data-postid="6176191"
+              data-share-method="host"
+              data-aspect-ratio="1"
+              data-width="100%"
+            >
+              <a href="https://tenor.com/view/cat-cute-working-tryping-stressed-gif-6176191">Cat Cute GIF</a>from
+              <a href="https://tenor.com/search/cat-gifs">Cat GIFs</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="results-content" hidden>
+          <h2>Your Score</h2>
+          <div id="score" class="score-hero"></div>
+          <div id="evaluation-summary" class="evaluation-summary"></div>
+          <div class="actions-row">
+            <button type="button" id="try-again-btn" class="secondary-btn">Try Another Link</button>
+          </div>
+        </div>
       </section>
+          </div>
+        </div>
+        <div class="phone-home-indicator" aria-hidden="true"></div>
+      </div>
     </main>
 
-    <script src="/static/app.js?v=20260225b"></script>
+    <script src="/static/app.js?v=20260319a1"></script>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
   </body>
 </html>

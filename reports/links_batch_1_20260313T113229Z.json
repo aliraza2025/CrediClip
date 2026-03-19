@@ -1,0 +1,9 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.instagram.com/reel/DVfVE6ritM1/?igsh=NjFhOGMzYTE3ZQ==",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    }
+  ]
+}

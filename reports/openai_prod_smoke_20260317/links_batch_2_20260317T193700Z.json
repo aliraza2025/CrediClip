@@ -1,0 +1,39 @@
+{
+  "api_url": "https://crediclip-axraza-msba.fly.dev/api/analyze",
+  "results": [
+    {
+      "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+      "error": "curl: (56) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://www.tiktok.com/@reuters/video/7589372207017626894",
+      "credibility_score": 75.71,
+      "generation_origin_level": "low",
+      "generation_origin_score": 1.84,
+      "generation_origin_rationale": "Human-generated content likely.",
+      "misinformation_score": 3.8,
+      "scam_score": 10.0,
+      "manipulation_score": 0.0,
+      "uncertainty_score": 12.32,
+      "evidence_quality_score": 41.23,
+      "weighted_misinformation_penalty": 1.292,
+      "weighted_scam_penalty": 2.4,
+      "weighted_manipulation_penalty": 0.0,
+      "weighted_uncertainty_penalty": 1.4784,
+      "weighted_evidence_quality_penalty": 4.9476,
+      "weighted_total_penalty": 10.118,
+      "reconstructed_credibility_score": 89.88,
+      "credibility_vs_reconstructed_delta": -14.172,
+      "generation_origin_excluded_from_credibility": true,
+      "evidence_level": "medium",
+      "evidence_total_tokens": 70,
+      "evidence_caption_tokens": 70,
+      "evidence_transcript_tokens": 0,
+      "evidence_ocr_tokens": 0,
+      "evidence_asr_tokens": 0,
+      "top_claim_status": "supported",
+      "top_claim_confidence": 0.82,
+      "notes": "Generation origin score calibrated by trained logistic model. | Claim verification attempted via OpenAI with heuristic fallback. | Rich text context detected (transcript/OCR); thresholds tuned to reduce unnecessary not_enough_evidence. | Analysis-confidence score: 62.59. | Evidence-quality penalty score: 41.23. | Extracted evidence token count: 70."
+    }
+  ]
+}

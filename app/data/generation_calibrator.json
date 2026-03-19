@@ -1,0 +1,78 @@
+{
+  "feature_order": [
+    "generation_origin_score",
+    "manipulation_score",
+    "uncertainty_score",
+    "evidence_quality_score",
+    "top_claim_confidence",
+    "top_claim_not_enough",
+    "credibility_inverse"
+  ],
+  "weights": [
+    2.195737653802543,
+    0.0,
+    0.0,
+    0.0,
+    0.10202042099706478,
+    -0.07106631711139927,
+    -0.03768917710092003
+  ],
+  "bias": 3.8425197655337793,
+  "means": [
+    84.96174863387978,
+    0.0,
+    60.0,
+    70.0,
+    0.648907103825136,
+    0.6557377049180327,
+    18.081967213114755
+  ],
+  "stds": [
+    24.453673413014386,
+    1.0,
+    1.0,
+    1.0,
+    0.17281945822387154,
+    0.4751271064324405,
+    9.888385440600292
+  ],
+  "blend": 0.7,
+  "recommended_threshold": 0.2,
+  "training_rows": 183,
+  "class_balance": {
+    "ai_generated": 169,
+    "human_generated": 14
+  },
+  "metrics": {
+    "base_rule_generation_score_ge_50": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "specificity": 1.0,
+      "tp": 169,
+      "tn": 14,
+      "fp": 0,
+      "fn": 0
+    },
+    "calibrated_probability_rule": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "specificity": 1.0,
+      "tp": 169,
+      "tn": 14,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "reports_used": [
+    "reports/validation_50_20260226T094627Z.csv",
+    "reports/validation_50_20260226T095820Z.csv",
+    "reports/validation_50_20260226T100604Z.csv",
+    "reports/validation_50_20260226T101346Z.csv",
+    "reports/validation_5_20260226T091050Z.csv",
+    "reports/validation_5_20260226T091350Z.csv"
+  ]
+}

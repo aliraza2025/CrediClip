@@ -1,0 +1,93 @@
+{
+  "count": 5,
+  "avg_score": 67.64,
+  "median_score": 67.23,
+  "avg_tokens": 72.6,
+  "median_tokens": 65.0,
+  "levels": {
+    "medium": 5
+  },
+  "avg_caption_tokens": 10.0,
+  "avg_transcript_tokens": 62.6,
+  "avg_ocr_tokens": 62.6,
+  "avg_asr_tokens": 0.0,
+  "best": {
+    "url": "https://www.tiktok.com/@crashadamsbackup/video/7584700981921778974",
+    "score": 69.61,
+    "tokens": 103,
+    "level": "medium",
+    "caption_tokens": 17,
+    "transcript_tokens": 86,
+    "ocr_tokens": 86,
+    "asr_tokens": 0,
+    "top_claim_status": "not_enough_evidence"
+  },
+  "worst": {
+    "url": "https://www.tiktok.com/@realjayllnn/video/7586112300378033422",
+    "score": 66.24,
+    "tokens": 54,
+    "level": "medium",
+    "caption_tokens": 1,
+    "transcript_tokens": 53,
+    "ocr_tokens": 53,
+    "asr_tokens": 0,
+    "top_claim_status": "not_enough_evidence"
+  },
+  "results": [
+    {
+      "url": "https://www.tiktok.com/@realjayllnn/video/7586112300378033422",
+      "score": 66.24,
+      "tokens": 54,
+      "level": "medium",
+      "caption_tokens": 1,
+      "transcript_tokens": 53,
+      "ocr_tokens": 53,
+      "asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence"
+    },
+    {
+      "url": "https://www.tiktok.com/@realjayllnn/video/7615771785107098894",
+      "score": 66.68,
+      "tokens": 59,
+      "level": "medium",
+      "caption_tokens": 1,
+      "transcript_tokens": 58,
+      "ocr_tokens": 58,
+      "asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence"
+    },
+    {
+      "url": "https://www.tiktok.com/@fidget_crafty/video/7412367757125094687",
+      "score": 68.46,
+      "tokens": 82,
+      "level": "medium",
+      "caption_tokens": 24,
+      "transcript_tokens": 58,
+      "ocr_tokens": 58,
+      "asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence"
+    },
+    {
+      "url": "https://www.tiktok.com/@crashadamsbackup/video/7584700981921778974",
+      "score": 69.61,
+      "tokens": 103,
+      "level": "medium",
+      "caption_tokens": 17,
+      "transcript_tokens": 86,
+      "ocr_tokens": 86,
+      "asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence"
+    },
+    {
+      "url": "https://www.tiktok.com/@nfl/video/7604678425932074254",
+      "score": 67.23,
+      "tokens": 65,
+      "level": "medium",
+      "caption_tokens": 7,
+      "transcript_tokens": 58,
+      "ocr_tokens": 58,
+      "asr_tokens": 0,
+      "top_claim_status": "not_enough_evidence"
+    }
+  ]
+}

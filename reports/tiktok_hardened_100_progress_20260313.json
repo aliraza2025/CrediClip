@@ -1,0 +1,76 @@
+{
+  "rerun_started_at": "2026-03-13T14:41:40+00:00",
+  "completed_so_far": 7,
+  "remaining": 93,
+  "avg_score": 66.88,
+  "avg_tokens": 61.9,
+  "download_success_count": 7,
+  "unsupported_protocol_count": 0,
+  "asr_success_count": 0,
+  "asr_error_count": 7,
+  "rows": [
+    {
+      "url": "https://www.tiktok.com/@courtneyzeng/video/7235832053994999082",
+      "created_at": "2026-03-13T14:41:40.513730+00:00",
+      "score": 67.32,
+      "tokens": 66,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    },
+    {
+      "url": "https://www.tiktok.com/@suiynbay/video/7433526979527216389",
+      "created_at": "2026-03-13T14:42:45.272458+00:00",
+      "score": 65.28,
+      "tokens": 43,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    },
+    {
+      "url": "https://www.tiktok.com/@monseromoo/video/7398368289136594206",
+      "created_at": "2026-03-13T14:43:50.031696+00:00",
+      "score": 67.5,
+      "tokens": 68,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    },
+    {
+      "url": "https://www.tiktok.com/@khardzianiiii/video/7438665906387029256",
+      "created_at": "2026-03-13T14:44:51.812734+00:00",
+      "score": 65.2,
+      "tokens": 42,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    },
+    {
+      "url": "https://www.tiktok.com/@franncchii/video/7481502708256492830",
+      "created_at": "2026-03-13T14:46:02.563105+00:00",
+      "score": 66.24,
+      "tokens": 54,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    },
+    {
+      "url": "https://www.tiktok.com/@bagahsievvaj/video/7422955567326579990",
+      "created_at": "2026-03-13T14:47:04.440610+00:00",
+      "score": 67.86,
+      "tokens": 73,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    },
+    {
+      "url": "https://www.tiktok.com/@sheraaknrana/video/6828290913828080902",
+      "created_at": "2026-03-13T14:48:10.680914+00:00",
+      "score": 68.73,
+      "tokens": 87,
+      "downloaded_video": true,
+      "unsupported_protocol": false,
+      "asr_error": true
+    }
+  ]
+}

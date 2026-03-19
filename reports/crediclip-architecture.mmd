@@ -1,0 +1,44 @@
+flowchart TD
+    A["User (Web UI)"] --> B["FastAPI App (Fly.io)"]
+
+    B --> C["URL Normalizer + Platform Router<br/>(TikTok / Instagram / YouTube Shorts)"]
+    C --> D["Ingestion Layer"]
+
+    D --> D1["yt-dlp (metadata/audio/video)"]
+    D --> D2["youtube-transcript-api"]
+    D --> D3["YouTube oEmbed API"]
+    D --> D4["Watch-page scraping (httpx + BeautifulSoup)"]
+    D --> D5["Whisper ASR (faster-whisper)"]
+    D --> D6["Frame OCR (ffmpeg + pytesseract + Pillow)"]
+    D --> D7["Thumbnail fallback (i.ytimg)"]
+
+    D --> E["Signal Extraction"]
+    E --> E1["Claim extraction (rule-based)"]
+    E --> E2["Scam cue detection (heuristics)"]
+    E --> E3["Manipulation cue detection (heuristics)"]
+
+    E --> F["Claim Verification"]
+    F --> F1["OpenRouter LLM (Qwen 3.5 Flash)<br/>Primary when available"]
+    F --> F2["Open-source heuristic verifier<br/>Fallback"]
+
+    F --> G["Scoring Engine"]
+    G --> G1["Misinformation score"]
+    G --> G2["Scam score"]
+    G --> G3["Manipulation score"]
+    G --> G4["Uncertainty score"]
+    G --> G5["Generation origin score<br/>(AI vs Human likely)"]
+
+    G --> H["Credibility Aggregator<br/>Final Score + Risk Flags + Claim Assessments + Notes"]
+    H --> I["JSON API Response + UI Report"]
+
+    J["Training / Evaluation Pipeline"] --> J1["Kaggle AI Shorts dataset<br/>(aibuttonfoundation/...)"]
+    J --> J2["Human labels sources<br/>(Kaggle + channel-based extraction)"]
+    J --> J3["Manual overrides JSON"]
+    J --> J4["Validation scripts (random/balanced samples)"]
+    J --> J5["Threshold metrics<br/>(Precision/Recall/F1/Confusion)"]
+    J5 --> G5
+
+    K["Optional APIs"] --> K1["AI or Not API (deepfake scan)<br/>optional/not always configured"]
+    K --> K2["OpenRouter API"]
+    K1 --> G3
+    K2 --> F1

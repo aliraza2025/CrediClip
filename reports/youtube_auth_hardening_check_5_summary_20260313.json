@@ -1,0 +1,44 @@
+{
+  "date": "2026-03-13",
+  "batch": "youtube_auth_hardening_check_5",
+  "completed": 5,
+  "avg_score": 59.94,
+  "avg_tokens": 27.0,
+  "levels": {
+    "low": 4,
+    "medium": 1
+  },
+  "rows": [
+    {
+      "url": "https://www.youtube.com/shorts/NIm4vcGD7t0",
+      "score": 63.14,
+      "tokens": 35,
+      "level": "low"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mGpB9oP2Rzc",
+      "score": 58.27,
+      "tokens": 20,
+      "level": "low"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/4Y_y79sZV84",
+      "score": 65.71,
+      "tokens": 48,
+      "level": "medium"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/WN_MnEy779E",
+      "score": 56.29,
+      "tokens": 16,
+      "level": "low"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oNFgkkEhatw",
+      "score": 56.29,
+      "tokens": 16,
+      "level": "low"
+    }
+  ],
+  "conclusion": "Fresh YouTube cookies alone did not remove bot-blocked fallback behavior. Rich ingest remains auth-limited without visitorData/PO tokens."
+}

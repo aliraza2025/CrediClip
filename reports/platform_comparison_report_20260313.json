@@ -1,0 +1,143 @@
+{
+  "date": "2026-03-13",
+  "basis": {
+    "youtube": "10-link live benchmark after final auth hardening pass",
+    "instagram": "10-link benchmark plus authenticated Phase 2 validation job",
+    "tiktok": "20-link live benchmark"
+  },
+  "platforms": {
+    "youtube": {
+      "benchmark_file": "/Users/aliraaza/Documents/New project/reports/youtube_test_10_summary_20260313.json",
+      "sample_size": 10,
+      "avg_score": 59.63,
+      "median_score": 58.6,
+      "avg_tokens": 22.8,
+      "median_tokens": 21.0,
+      "levels": {
+        "low": 10
+      },
+      "status": "working but auth-limited",
+      "summary": "Completes reliably, but rich media/transcript extraction is still constrained by YouTube anti-bot friction."
+    },
+    "instagram": {
+      "benchmark_file": "/Users/aliraaza/Documents/New project/reports/instagram_test_10_summary_20260313.json",
+      "sample_size": 10,
+      "avg_score": 68.47,
+      "median_score": 68.21,
+      "avg_tokens": 128.3,
+      "median_tokens": 78.0,
+      "levels": {
+        "medium": 6,
+        "high": 2,
+        "low": 2
+      },
+      "status": "strongest current platform",
+      "summary": "Worker browser ingest is live, and authenticated media/ASR/OCR is proven on the wrapped validation path.",
+      "authenticated_validation": {
+        "job_id": "386be7b6dcfa40a2a0628074959ee8bc",
+        "url": "https://www.instagram.com/reel/DVfVE6ritM1/",
+        "score": 75.91,
+        "caption_chars": 485,
+        "transcript_chars": 746,
+        "evidence_coverage": {
+          "total_tokens": 184,
+          "caption_tokens": 77,
+          "transcript_tokens": 107,
+          "ocr_tokens": 28,
+          "asr_tokens": 79,
+          "level": "high",
+          "transcript_present": true,
+          "ocr_present": true,
+          "asr_present": true
+        }
+      }
+    },
+    "tiktok": {
+      "benchmark_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_20_summary_20260313.json",
+      "sample_size": 20,
+      "avg_score": 67.9,
+      "median_score": 67.69,
+      "avg_tokens": 76.4,
+      "median_tokens": 71.5,
+      "levels": {
+        "medium": 18,
+        "high": 2
+      },
+      "avg_asr_tokens": 0.0,
+      "status": "good baseline, media path still needs hardening",
+      "summary": "Queue-backed ingest is stable and evidence is materially better than YouTube, but ASR is not contributing yet.",
+      "best_case": {
+        "url": "https://www.tiktok.com/@reuters/video/7589372207017626894",
+        "score": 72.87,
+        "tokens": 130,
+        "level": "high",
+        "caption_tokens": 70,
+        "transcript_tokens": 60,
+        "ocr_tokens": 60,
+        "asr_tokens": 0,
+        "manipulation_score": 0.0,
+        "generation_origin_score": 1.32,
+        "top_claim_status": "not_enough_evidence"
+      },
+      "worst_case": {
+        "url": "https://www.tiktok.com/@happenstancemanor/video/7588299202992639287",
+        "score": 65.11,
+        "tokens": 41,
+        "level": "medium",
+        "caption_tokens": 2,
+        "transcript_tokens": 39,
+        "ocr_tokens": 39,
+        "asr_tokens": 0,
+        "manipulation_score": 0.0,
+        "generation_origin_score": 1.29,
+        "top_claim_status": "not_enough_evidence"
+      },
+      "manipulation_outliers": [
+        {
+          "url": "https://www.tiktok.com/@movies00comedy/video/7595083496788462878",
+          "score": 65.53,
+          "tokens": 72,
+          "level": "medium",
+          "caption_tokens": 16,
+          "transcript_tokens": 56,
+          "ocr_tokens": 56,
+          "asr_tokens": 0,
+          "manipulation_score": 22.0,
+          "generation_origin_score": 33.35,
+          "top_claim_status": "not_enough_evidence"
+        }
+      ]
+    }
+  },
+  "rank_by_evidence_density": [
+    {
+      "platform": "instagram",
+      "avg_tokens": 128.3,
+      "avg_score": 68.47,
+      "status": "strongest current platform"
+    },
+    {
+      "platform": "tiktok",
+      "avg_tokens": 76.4,
+      "avg_score": 67.9,
+      "status": "good baseline, media path still needs hardening"
+    },
+    {
+      "platform": "youtube",
+      "avg_tokens": 22.8,
+      "avg_score": 59.63,
+      "status": "working but auth-limited"
+    }
+  ],
+  "overall_read": {
+    "strongest_now": "instagram",
+    "second": "tiktok",
+    "third": "youtube",
+    "key_constraint": "TikTok and YouTube still need stronger media/audio extraction. Instagram already cleared that bar with authenticated worker ingest."
+  },
+  "next_steps": [
+    "Finish TikTok media URL hardening and re-run the 100-link CSV benchmark to measure ASR uptake.",
+    "Keep YouTube on the current worker-backed path but treat it as the weakest evidence source until auth improves.",
+    "Use this report as the baseline comparison while expanding TikTok coverage."
+  ]
+}

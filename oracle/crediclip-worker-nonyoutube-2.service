@@ -1,0 +1,21 @@
+[Unit]
+Description=CrediClip Queue Worker (Non-YouTube #2)
+After=network-online.target ollama.service
+Wants=network-online.target
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/CrediClip
+EnvironmentFile=-/etc/default/crediclip-worker
+Environment=PYTHONPATH=/home/ubuntu/CrediClip
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/bin/bash -lc 'source /home/ubuntu/CrediClip/.venv/bin/activate && python scripts/queue_worker.py --api-base "${API_BASE:-https://crediclip-axraza-msba.fly.dev}" --worker-id "oracle-worker-2" --ingest-mode "${INGEST_MODE:-rich}" --analysis-mode "${ANALYSIS_MODE:-local}" --poll-sec "${POLL_SEC:-3}" --timeout-sec "${TIMEOUT_SEC:-180}" --exclude-platforms youtube_shorts'
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

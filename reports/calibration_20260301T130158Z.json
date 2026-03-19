@@ -1,0 +1,46 @@
+{
+  "timestamp_utc": "20260301T130158Z",
+  "report_path": "reports/validation_200_20260301T124012Z.csv",
+  "rows_total": 200,
+  "rows_ok": 0,
+  "rows_with_truth": 0,
+  "rows_without_truth": 0,
+  "truth_distribution": {
+    "positive": 0,
+    "negative": 0
+  },
+  "claim_status": {
+    "not_enough_evidence_count": 0,
+    "not_enough_evidence_rate": 0.0
+  },
+  "current_rule": {
+    "name": "generation_origin_level == high",
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "specificity": 0.0,
+    "f1": 0.0,
+    "confusion": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0
+    }
+  },
+  "recommended_threshold_rule": {
+    "name": "generation_origin_score >= threshold",
+    "threshold": 50,
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "specificity": 0.0,
+    "f1": 0.0,
+    "confusion": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0
+    }
+  },
+  "warning": "No rows had ground-truth labels; metrics are not meaningful."
+}

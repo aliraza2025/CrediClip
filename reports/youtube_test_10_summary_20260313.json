@@ -1,0 +1,115 @@
+{
+  "batch": "youtube_test_10",
+  "requested": 10,
+  "completed": 10,
+  "missing": [],
+  "avg_score": 59.63,
+  "median_score": 58.6,
+  "avg_tokens": 22.8,
+  "median_tokens": 21.0,
+  "levels": {
+    "low": 10
+  },
+  "rows": [
+    {
+      "url": "https://www.youtube.com/shorts/NIm4vcGD7t0",
+      "status": "completed",
+      "score": 62.52,
+      "tokens": 27,
+      "level": "low",
+      "caption_chars": 196,
+      "transcript_chars": 25,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: Brain Busters). | Could not fetch YouTube transcript (disabled/unavailable). | Recovered on-screen text using frame OCR fallback. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/mGpB9oP2Rzc",
+      "status": "completed",
+      "score": 58.27,
+      "tokens": 20,
+      "level": "low",
+      "caption_chars": 193,
+      "transcript_chars": 0,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: Hydraulic Press Channel). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/4Y_y79sZV84",
+      "status": "completed",
+      "score": 63.37,
+      "tokens": 38,
+      "level": "low",
+      "caption_chars": 197,
+      "transcript_chars": 71,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: Mi 8  tips). | Could not fetch YouTube transcript (disabled/unavailable). | Recovered transcript from browser-rendered watch-page fallback. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/MVq3H8ZCy04",
+      "status": "completed",
+      "score": 56.14,
+      "tokens": 13,
+      "level": "low",
+      "caption_chars": 109,
+      "transcript_chars": 0,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: Bader Al Safar). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: skipped (insufficient extracted text)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Ty8P6dDiJCM",
+      "status": "completed",
+      "score": 58.33,
+      "tokens": 21,
+      "level": "low",
+      "caption_chars": 170,
+      "transcript_chars": 0,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: K Study). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/cejHgFGUyTo",
+      "status": "completed",
+      "score": 61.85,
+      "tokens": 18,
+      "level": "low",
+      "caption_chars": 9,
+      "transcript_chars": 117,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Could not fetch YouTube metadata via oEmbed fallback. | Recovered metadata from YouTube watch-page scraping fallback. | Could not fetch YouTube transcript (disabled/unavailable). | Recovered transcript from browser-rendered watch-page fallback. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oisrvYSqpNA",
+      "status": "completed",
+      "score": 58.87,
+      "tokens": 30,
+      "level": "low",
+      "caption_chars": 195,
+      "transcript_chars": 0,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: YS  knowledge video). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/88T44CZAjv4",
+      "status": "completed",
+      "score": 58.33,
+      "tokens": 21,
+      "level": "low",
+      "caption_chars": 162,
+      "transcript_chars": 0,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: foodiebeats). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/WN_MnEy779E",
+      "status": "completed",
+      "score": 62.3,
+      "tokens": 24,
+      "level": "low",
+      "caption_chars": 123,
+      "transcript_chars": 42,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: More JT). | Could not fetch YouTube transcript (disabled/unavailable). | Recovered transcript from browser-rendered watch-page fallback. | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    },
+    {
+      "url": "https://www.youtube.com/shorts/oNFgkkEhatw",
+      "status": "completed",
+      "score": 56.29,
+      "tokens": 16,
+      "level": "low",
+      "caption_chars": 123,
+      "transcript_chars": 0,
+      "notes": "Could not fetch YouTube metadata via yt-dlp. | Worker video download returned no file; using fallback ingestion. | Recovered metadata from YouTube oEmbed (author: Mappelz). | Could not fetch YouTube transcript (disabled/unavailable). | Using deterministic YouTube thumbnail URL fallback for visual metadata checks. | Added thumbnail metadata signals (open-source fallback). | Source-check: low alignment with trusted sources (0/1 claims matched)."
+    }
+  ]
+}

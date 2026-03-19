@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from contextvars import ContextVar
 
 _debug_notes_var: ContextVar[list[str]] = ContextVar("_debug_notes_var", default=[])
