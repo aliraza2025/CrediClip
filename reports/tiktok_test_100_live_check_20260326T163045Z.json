@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-03-26T16:30:45Z",
+  "source_snapshot": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_live_check_20260326T093245Z.json",
+  "is_complete_100_of_100": false,
+  "source_url_count": 100,
+  "job_id_count": 100,
+  "durable_progress": {
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "latest_probe": {
+    "url": "https://crediclip-axraza-msba.fly.dev/api/jobs?limit=1",
+    "ok": false,
+    "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+  },
+  "local_db_overlap": null
+}

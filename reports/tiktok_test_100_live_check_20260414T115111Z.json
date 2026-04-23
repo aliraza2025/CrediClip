@@ -1,0 +1,25 @@
+{
+  "submitted_file": "/Users/aliraaza/Documents/New project/reports/jobs_submitted_100_20260313T185321Z.json",
+  "durable_progress_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_durable_restart_progress_20260313.json",
+  "source_url_count": 100,
+  "job_id_count": 100,
+  "durable_progress": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "live_probe": {
+    "api_url": "https://crediclip-axraza-msba.fly.dev/api/jobs?limit=1",
+    "curl_exit_code": 6,
+    "curl_output": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev"
+  },
+  "completion_source": "durable_progress.completed_urls",
+  "is_complete_100_of_100": false,
+  "decision": "Benchmark is not complete (3/100), so final 100-link summary report was not written.",
+  "run_time_utc": "2026-04-14T11:51:11Z",
+  "checked_at_utc": "2026-04-14T11:51:11Z"
+}

@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-03-25T22:45:48Z",
+  "source_snapshot_used": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_live_check_20260325T084601Z.json",
+  "is_complete_100_of_100": false,
+  "source_url_count": 100,
+  "job_id_count": 100,
+  "durable_progress": {
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "live_probe": {
+    "ok": false,
+    "url": "https://crediclip-axraza-msba.fly.dev/health",
+    "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev",
+    "http_status": null,
+    "body_prefix": null
+  }
+}
