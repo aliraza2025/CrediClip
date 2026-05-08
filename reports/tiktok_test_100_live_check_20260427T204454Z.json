@@ -1,0 +1,23 @@
+{
+  "generated_at_utc": "2026-04-27T20:44:54Z",
+  "submitted_file": "/Users/aliraaza/Documents/New project/reports/jobs_submitted_100_20260313T185321Z.json",
+  "durable_progress_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_durable_restart_progress_20260313.json",
+  "based_on_latest_artifact": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_live_check_20260427T204133Z.json",
+  "summary": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_count": 3,
+    "processing_count": 1,
+    "queued_count": 96,
+    "failed_only_count": 0,
+    "missing_count": 0
+  },
+  "is_complete_100_of_100": false,
+  "decision": "keep_waiting",
+  "live_probe": {
+    "url": "https://crediclip-axraza-msba.fly.dev/api/jobs?limit=1",
+    "curl_exit_code": 6,
+    "curl_output": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev\n\n\nHTTP_CODE=000",
+    "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev\n\n\nHTTP_CODE=000"
+  }
+}

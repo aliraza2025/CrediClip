@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-04-25T16:43:29Z",
+  "checked_at_local": "2026-04-25T09:43:29-0700",
+  "durable_progress_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_durable_restart_progress_20260313.json",
+  "durable_progress": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_urls": 3,
+    "processing_urls": 1,
+    "queued_urls": 96,
+    "failed_only_urls": 0,
+    "missing_urls": 0
+  },
+  "completion_source": "durable_progress.completed_urls",
+  "is_complete_100_of_100": false,
+  "based_on_latest_artifact": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_live_check_20260425T153455Z.json",
+  "live_probe": {
+    "url": "https://crediclip-axraza-msba.fly.dev/api/jobs?limit=1",
+    "curl_exit_code": 6,
+    "curl_output": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev\n\nHTTP_CODE=000",
+    "error": "curl: (6) Could not resolve host: crediclip-axraza-msba.fly.dev\n\nHTTP_CODE=000"
+  },
+  "historical_completion_scan": {
+    "artifact_glob": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_live_check_*.json",
+    "historical_true_count": 0,
+    "historical_max_completed": 0
+  },
+  "decision": "keep_waiting"
+}

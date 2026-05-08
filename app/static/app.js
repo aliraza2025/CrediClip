@@ -162,93 +162,140 @@ function formatLevel(level) {
   return String(level || 'unknown').toLowerCase();
 }
 
-function narrativeFromFlags(result) {
+function parseAnalysisConfidence(result) {
+  const notes = Array.isArray(result.notes) ? result.notes : [];
+  const note = notes.find((entry) => /Analysis-confidence score:/i.test(String(entry)));
+  if (!note) return null;
+  const match = String(note).match(/Analysis-confidence score:\s*([0-9.]+)/i);
+  if (!match) return null;
+  return Number(match[1]);
+}
+
+function labelBucket(level, options = {}) {
+  const normalized = formatLevel(level);
+  const { low = 'Low', medium = 'Moderate', high = 'High' } = options;
+  if (normalized === 'low') return low;
+  if (normalized === 'medium') return medium;
+  if (normalized === 'high') return high;
+  return medium;
+}
+
+function toneBucket(label) {
+  const normalized = String(label || '').toLowerCase();
+  if (['low', 'strong', 'human'].includes(normalized)) return 'good';
+  if (['moderate', 'mixed', 'weak'].includes(normalized)) return 'warn';
+  return 'bad';
+}
+
+function buildCompactSummary(result) {
   const flags = result.flags || [];
   const byType = Object.fromEntries(flags.map((f) => [f.type, f]));
-  const positives = [];
-  const caveats = [];
 
-  const origin = byType.generation_origin;
-  if (origin) {
-    const lvl = formatLevel(origin.level);
-    if (lvl === 'low') {
-      positives.push('Looks Human-Written: Very likely created by a person, not AI.');
-    } else if (lvl === 'high') {
-      positives.push('Looks AI-Generated: Strong signs this content was created or heavily altered by AI.');
-    } else {
-      caveats.push('AI vs Human likelihood: Mixed signals, likely AI-assisted or partially synthetic.');
-    }
+  const misinformation = labelBucket(byType.misinformation?.level, {
+    low: 'Low',
+    medium: 'Moderate',
+    high: 'High',
+  });
+  const scam = labelBucket(byType.scam?.level, {
+    low: 'Low',
+    medium: 'Moderate',
+    high: 'High',
+  });
+
+  const originLevel = formatLevel(byType.generation_origin?.level);
+  const aiContent = originLevel === 'low' ? 'Human' : originLevel === 'high' ? 'AI' : 'Mixed';
+  const manipulation = labelBucket(byType.manipulation?.level, {
+    low: 'Low',
+    medium: 'Moderate',
+    high: 'High',
+  });
+
+  const confidenceScore = parseAnalysisConfidence(result);
+  const confidence = confidenceScore === null
+    ? 'Medium'
+    : confidenceScore >= 65
+      ? 'High'
+      : confidenceScore >= 35
+        ? 'Medium'
+        : 'Low';
+
+  const evidenceFlag = byType.evidence_quality;
+  let evidence = 'Weak';
+  if (formatLevel(evidenceFlag?.level) === 'low') {
+    evidence = 'Strong';
+  } else if (
+    formatLevel(evidenceFlag?.level) === 'high' &&
+    ((result.evidence_coverage?.total_tokens ?? 0) === 0 || Number(evidenceFlag?.score ?? 0) >= 85)
+  ) {
+    evidence = 'Missing';
   }
 
-  const misinformation = byType.misinformation;
-  if (misinformation) {
-    const lvl = formatLevel(misinformation.level);
-    if (lvl === 'low') positives.push('Misinformation Risk: Low — nothing strongly misleading detected.');
-    else if (lvl === 'medium') caveats.push('Misinformation Risk: Moderate — some claims may need fact verification.');
-    else caveats.push('Misinformation Risk: High — likely misleading or unsupported claims detected.');
-  }
+  const score = Number(result.credibility_score ?? 0);
+  const misinformationLevel = formatLevel(byType.misinformation?.level);
+  const scamLevel = formatLevel(byType.scam?.level);
+  const manipulationLevel = formatLevel(byType.manipulation?.level);
 
-  const scam = byType.scam;
-  if (scam) {
-    const lvl = formatLevel(scam.level);
-    if (lvl === 'low') positives.push('Scam Risk: Very low — no typical scam patterns found.');
-    else if (lvl === 'medium') caveats.push('Scam Risk: Moderate — some scam-like persuasion patterns detected.');
-    else caveats.push('Scam Risk: High — multiple scam-like patterns detected.');
-  }
+  let oneLineSummary = 'Video needs verification';
+  if (scamLevel === 'high') oneLineSummary = 'Possible scam video';
+  else if (misinformationLevel === 'high') oneLineSummary = 'Possibly misleading video';
+  else if (originLevel === 'high') oneLineSummary = 'Likely AI-made video';
+  else if (originLevel === 'medium' && manipulationLevel !== 'low') oneLineSummary = 'Possibly AI-assisted video';
+  else if (manipulationLevel === 'high') oneLineSummary = 'Likely edited video';
+  else if (evidence === 'Missing') oneLineSummary = 'Video lacks evidence';
+  else if (evidence === 'Weak' && confidence === 'Low') oneLineSummary = 'Video needs verification';
+  else if (score >= 75) oneLineSummary = 'Likely trustworthy video';
+  else if (score >= 60) oneLineSummary = 'Mostly trustworthy video';
+  else if (score < 45) oneLineSummary = 'Questionable video credibility';
 
-  const manipulation = byType.manipulation;
-  if (manipulation) {
-    const lvl = formatLevel(manipulation.level);
-    const scoreNum = Number(manipulation.score || 0);
-    if (lvl === 'low' && scoreNum <= 0.1) {
-      positives.push('Manipulation Risk: None detected — content appears authentic.');
-    } else if (lvl === 'low') {
-      positives.push('Manipulation Risk: Low — no strong signs of synthetic media.');
-    } else if (lvl === 'medium') {
-      caveats.push('Manipulation Risk: Moderate — some edited/synthetic signals are present.');
-    } else {
-      caveats.push('Manipulation Risk: High — strong deepfake or synthetic-media signals detected.');
-    }
-  }
-
-  const uncertainty = byType.uncertainty;
-  if (uncertainty) {
-    const lvl = formatLevel(uncertainty.level);
-    if (lvl === 'low') positives.push('Low Uncertainty: There is enough evidence to be reasonably confident.');
-    else if (lvl === 'medium') {
-      caveats.push('Moderate Uncertainty: Some supporting evidence is missing, so confidence is limited.');
-    } else {
-      caveats.push('High Uncertainty: There isn’t enough strong supporting evidence to be fully confident.');
-    }
-  }
-
-  const evidence = byType.evidence_quality;
-  if (evidence) {
-    const lvl = formatLevel(evidence.level);
-    if (lvl === 'low') positives.push('Evidence Quality: Strong — sources/backing information are solid.');
-    else if (lvl === 'medium') {
-      caveats.push('Evidence Quality: Fair — some useful backing exists, but not enough for high confidence.');
-    } else {
-      caveats.push(
-        'Evidence Quality: The sources or backing information are weak, which lowers overall trust.',
-      );
-    }
-  }
-
-  return { positives, caveats };
+  return {
+    oneLineSummary,
+    rows: [
+      { label: 'Misinformation', value: misinformation, tone: toneBucket(misinformation) },
+      { label: 'Scam', value: scam, tone: toneBucket(scam) },
+      { label: 'AI Content', value: aiContent, tone: toneBucket(aiContent) },
+      { label: 'Manipulation', value: manipulation, tone: toneBucket(manipulation) },
+    ],
+    confidence: { value: confidence, tone: toneBucket(confidence) },
+    evidence: { value: evidence, tone: toneBucket(evidence) },
+  };
 }
 
 function renderEvaluationSummary(result) {
   if (!evaluationSummary) return;
-  const { positives, caveats } = narrativeFromFlags(result);
-  const summaryList = [...positives, ...caveats];
-  const lines = summaryList.length ? summaryList : ['No strong evaluation signals were detected.'];
+  const compact = buildCompactSummary(result);
 
   evaluationSummary.innerHTML = `
-    <h3 class="summary-title">What We Found</h3>
-    <ul class="summary-list">
-      ${lines.map((p) => `<li>${escapeHtml(p)}</li>`).join('')}
-    </ul>
+    <p class="result-summary-line">${escapeHtml(compact.oneLineSummary)}</p>
+    <div class="compact-panel">
+      <div class="compact-section">
+        <span class="compact-heading">Summary</span>
+        <span class="compact-summary-chip">${escapeHtml(compact.oneLineSummary)}</span>
+      </div>
+      <div class="compact-section">
+        <span class="compact-heading">Signals</span>
+        <div class="compact-rows">
+          ${compact.rows
+            .map(
+              (row) => `
+                <div class="compact-row">
+                  <span class="compact-label">${escapeHtml(row.label)}</span>
+                  <span class="compact-value compact-${escapeHtml(row.tone)}">${escapeHtml(row.value)}</span>
+                </div>`,
+            )
+            .join('')}
+        </div>
+      </div>
+      <div class="compact-section compact-footer">
+        <div class="compact-row">
+          <span class="compact-label">Confidence</span>
+          <span class="compact-value compact-${escapeHtml(compact.confidence.tone)}">${escapeHtml(compact.confidence.value)}</span>
+        </div>
+        <div class="compact-row">
+          <span class="compact-label">Evidence</span>
+          <span class="compact-value compact-${escapeHtml(compact.evidence.tone)}">${escapeHtml(compact.evidence.value)}</span>
+        </div>
+      </div>
+    </div>
   `;
 }
 
@@ -311,7 +358,7 @@ form.addEventListener('submit', async (event) => {
 
     scoreDiv.innerHTML = `
       <span class="score-main">${escapeHtml(result.credibility_score)} / 100</span>
-      <span class="score-label">Credibility Score</span>
+      <span class="score-label">Score</span>
     `;
     renderEvaluationSummary(result);
 

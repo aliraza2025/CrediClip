@@ -20,7 +20,12 @@ from app.models import (
     QueueStatsResponse,
     JobsListResponse,
 )
-from app.services.pipeline import analyze_video, infer_platform, normalize_input_url
+from app.services.pipeline import (
+    analyze_video,
+    finalize_response_for_current_version,
+    infer_platform,
+    normalize_input_url,
+)
 from app.services.jobs import (
     claim_next_job,
     complete_job,
@@ -282,6 +287,7 @@ def complete_analysis_job(job_id: str, request: JobCompleteRequest) -> JobRespon
         validated = AnalyzeResponse.model_validate(request.result)
     except Exception as exc:
         raise HTTPException(status_code=400, detail="Invalid analysis result payload") from exc
+    validated = finalize_response_for_current_version(job["url"], validated)
 
     updated = complete_job(
         job_id=job_id,

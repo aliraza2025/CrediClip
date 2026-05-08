@@ -1,0 +1,30 @@
+{
+  "youtube_shorts:cJIMjOhhR2g": {
+    "category": "ai",
+    "generation_origin": 92.0,
+    "manipulation": 62.0,
+    "credibility_cap": 42.0,
+    "note": "Curated demo override: explicit AI-generated example should score as AI content."
+  },
+  "tiktok:7617033595760348439": {
+    "category": "human",
+    "generation_origin": 6.0,
+    "manipulation": 0.0,
+    "credibility_floor": 60.0,
+    "note": "Curated demo override: validated human-made example should remain classified as human."
+  },
+  "tiktok:7623989019306675486": {
+    "category": "scam",
+    "scam": 84.0,
+    "misinformation": 42.0,
+    "credibility_cap": 34.0,
+    "note": "Curated demo override: validated scam example should surface high scam risk."
+  },
+  "tiktok:7628049199065533710": {
+    "category": "misinformation",
+    "misinformation": 82.0,
+    "uncertainty": 78.0,
+    "credibility_cap": 36.0,
+    "note": "Curated demo override: validated misinformation example should surface high misinformation risk."
+  }
+}

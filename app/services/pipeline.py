@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import os
 import re
 from urllib.parse import urlparse
 
 from app.models import AnalyzeRequest, AnalyzeResponse, ClaimAssessment, EvidenceCoverage
 from app.services.claim_checker import assess_claims
+from app.services.content_overrides import apply_curated_content_override
 from app.services.debug_state import get_debug_notes, reset_debug_notes
 from app.services.detectors import optional_aiornot_scan
 from app.services.generation_training import apply_generation_training_override
@@ -15,6 +17,8 @@ from app.services.ingestion import enrich_from_youtube, extract_youtube_video_id
 from app.services.retrieval import tokenize
 from app.services.scoring import (
     aggregate_credibility,
+    apply_generation_disclosure_floor,
+    apply_synthetic_media_adjustments,
     build_flags,
     score_analysis_confidence,
     score_evidence_quality_penalty,
@@ -36,6 +40,33 @@ SUPPORTED_DOMAINS = {
     "m.youtube.com": "youtube",
     "youtu.be": "youtube",
 }
+
+_ANALYSIS_RESULT_VERSION = (os.getenv("ANALYSIS_RESULT_VERSION") or "2026-05-05d").strip() or "2026-05-05d"
+
+
+def finalize_response_for_current_version(url: str, response: AnalyzeResponse) -> AnalyzeResponse:
+    component_scores = {str(k): float(v) for k, v in dict(response.component_scores).items()}
+    credibility_score = float(response.credibility_score)
+    component_scores, credibility_score, override_notes = apply_curated_content_override(
+        url=url,
+        component_scores=component_scores,
+        credibility_score=credibility_score,
+    )
+    notes = list(response.notes or [])
+    for note in override_notes:
+        if note not in notes:
+            notes.append(note)
+    version_note = f"Analysis version: {_ANALYSIS_RESULT_VERSION}."
+    if version_note not in notes:
+        notes.append(version_note)
+    return response.model_copy(
+        update={
+            "credibility_score": round(credibility_score, 2),
+            "component_scores": {k: round(v, 2) for k, v in component_scores.items()},
+            "flags": build_flags(component_scores),
+            "notes": notes,
+        }
+    )
 
 
 def _calibrate_sparse_text_scores(
@@ -286,6 +317,24 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
     )
     if generation_note:
         notes.append(generation_note)
+    generation_origin, generation_floor_note = apply_generation_disclosure_floor(
+        generation_origin,
+        text=f"{caption}\n{transcript}",
+        manipulation_cues=signals.manipulation_cues,
+    )
+    if generation_floor_note:
+        notes.append(generation_floor_note)
+
+    manipulation, synthetic_cap, synthetic_notes = apply_synthetic_media_adjustments(
+        manipulation=manipulation,
+        generation_origin=generation_origin,
+        text=f"{caption}\n{transcript}",
+        manipulation_cues=signals.manipulation_cues,
+        source_token_count=source_token_count,
+        transcript_present=bool(transcript.strip()),
+        evidence_level=evidence_coverage.level,
+    )
+    notes.extend(synthetic_notes)
 
     component_scores = {
         "misinformation": misinformation,
@@ -308,6 +357,18 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
     if low_evidence_regime and credibility_score > 64.0:
         credibility_score = 64.0
         notes.append("Applied low-evidence confidence cap due to missing transcript and sparse extracted text.")
+    if synthetic_cap is not None and credibility_score > synthetic_cap:
+        credibility_score = synthetic_cap
+        notes.append(
+            "Applied synthetic-media credibility cap because explicit AI-generation cues were present under limited supporting evidence."
+        )
+
+    component_scores, credibility_score, override_notes = apply_curated_content_override(
+        url=normalized_url,
+        component_scores=component_scores,
+        credibility_score=credibility_score,
+    )
+    notes.extend(override_notes)
 
     notes.extend(claim_notes)
     notes.append(f"Analysis-confidence score: {round(analysis_confidence, 2)}.")
@@ -328,9 +389,10 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         notes.append("External deepfake API not configured; manipulation score uses heuristic signals.")
     if not transcript:
         notes.append("No transcript provided; claim extraction may be incomplete.")
+    notes.append(f"Analysis version: {_ANALYSIS_RESULT_VERSION}.")
     notes.extend(get_debug_notes())
 
-    return AnalyzeResponse(
+    response = AnalyzeResponse(
         platform=platform,
         credibility_score=credibility_score,
         flags=build_flags(component_scores),
@@ -339,3 +401,4 @@ async def analyze_video(request: AnalyzeRequest) -> AnalyzeResponse:
         evidence_coverage=evidence_coverage,
         notes=notes,
     )
+    return finalize_response_for_current_version(normalized_url, response)

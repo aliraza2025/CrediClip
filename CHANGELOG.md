@@ -2,6 +2,40 @@
 
 All notable project updates are summarized here in a release-style format.
 
+## 2026-05-08 - Demo Alignment, UI Cleanup, and Presentation Finalization
+
+This release packages the latest work across scoring corrections, curated demo consistency, frontend result UX, reporting artifacts, and presentation delivery.
+
+### Added
+
+- curated content override layer for demo-critical URLs
+- manual override dataset for AI, human, scam, and misinformation examples
+- presentation-ready demo video package artifact
+- Chronicle presentation link in the project documentation
+- diagnostic regression coverage for AI self-disclosure and sparse-evidence synthetic-media scoring
+
+### Changed
+
+- refreshed result rendering into a compact score-first UI with:
+  - short summary line
+  - compact signal rows
+  - confidence and evidence badges
+- updated score summaries so they describe the video more directly
+- versioned completed analysis results to avoid reusing stale queue outputs after scoring logic changes
+- finalized presentation materials and slide-aligned scripting around the 13-slide Chronicle deck
+
+### Fixed
+
+- explicit AI-tagged or self-disclosed videos no longer fall back to "human-generated likely"
+- sparse-evidence synthetic-media cases now raise manipulation risk and cap credibility more appropriately
+- worker-completed queue results now receive current-version finalization before being stored
+- curated demo links now align more consistently with intended categories in live use
+
+### Reference Documents
+
+- [README.md](/Users/aliraaza/Documents/New%20project/README.md)
+- [demo_video_package_20260505.md](/Users/aliraaza/Documents/New%20project/reports/demo_video_package_20260505.md)
+
 ## 2026-03-19 - Multi-Platform Pipeline and Runtime Stabilization
 
 This release consolidates the work done across YouTube, Instagram, TikTok, queueing, workers, scoring, dashboard, and runtime optimization.

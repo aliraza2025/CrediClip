@@ -3,6 +3,24 @@ from __future__ import annotations
 from app.models import ClaimAssessment, RiskFlag
 
 
+STRONG_AI_DISCLOSURE_PATTERNS = [
+    "#aigenerated",
+    "ai generated",
+    "generated with ai",
+    "made with ai",
+    "this is ai",
+]
+
+WEAK_AI_DISCLOSURE_PATTERNS = [
+    "#ai",
+    "#aiart",
+    "#midjourney",
+    "#stablediffusion",
+    "ai video",
+    "ai clip",
+]
+
+
 def clamp(value: float, lo: float = 0.0, hi: float = 100.0) -> float:
     return max(lo, min(hi, value))
 
@@ -193,6 +211,79 @@ def score_generation_origin(
         declaration_bonus += 8.0
 
     return clamp(cue_score + api_score + keyword_bonus + declaration_bonus)
+
+
+def apply_generation_disclosure_floor(
+    score: float,
+    text: str,
+    manipulation_cues: list[str],
+) -> tuple[float, str | None]:
+    """Prevent explicit AI self-disclosures from being calibrated back to 'human likely'."""
+    lowered = text.lower()
+    has_strong = any(pat in lowered for pat in STRONG_AI_DISCLOSURE_PATTERNS)
+    has_weak = any(pat in lowered for pat in WEAK_AI_DISCLOSURE_PATTERNS)
+    has_self_disclosure_cue = any("self-disclosure cue" in cue.lower() for cue in manipulation_cues)
+
+    if has_strong:
+        floored = max(float(score), 85.0)
+        if floored > score:
+            return floored, "Raised generation-origin score due to explicit AI self-disclosure in source text."
+        return score, None
+
+    if has_weak or has_self_disclosure_cue:
+        floored = max(float(score), 65.0)
+        if floored > score:
+            return floored, "Raised generation-origin score due to AI-tag/self-disclosure cues in source text."
+        return score, None
+
+    return score, None
+
+
+def apply_synthetic_media_adjustments(
+    manipulation: float,
+    generation_origin: float,
+    text: str,
+    manipulation_cues: list[str],
+    source_token_count: int,
+    transcript_present: bool,
+    evidence_level: str,
+) -> tuple[float, float | None, list[str]]:
+    """Raise synthetic-media risk when the clip self-identifies as AI-generated.
+
+    Generation-origin stays separate for explainability, but explicit AI/self-disclosure
+    should still influence credibility when the system has little supporting evidence.
+    """
+    lowered = text.lower()
+    has_strong = any(pat in lowered for pat in STRONG_AI_DISCLOSURE_PATTERNS)
+    has_weak = any(pat in lowered for pat in WEAK_AI_DISCLOSURE_PATTERNS)
+    has_self_disclosure_cue = any("self-disclosure cue" in cue.lower() for cue in manipulation_cues)
+    low_evidence = (not transcript_present and source_token_count < 35) or str(evidence_level).lower() == "low"
+
+    notes: list[str] = []
+    adjusted_manipulation = float(manipulation)
+    credibility_cap: float | None = None
+
+    if has_strong or generation_origin >= 85.0:
+        adjusted_manipulation = max(adjusted_manipulation, 62.0 if low_evidence else 50.0)
+        if low_evidence:
+            credibility_cap = 44.0
+        notes.append(
+            "Raised manipulation risk because the source text explicitly identifies the clip as AI-generated."
+        )
+    elif generation_origin >= 65.0:
+        adjusted_manipulation = max(adjusted_manipulation, 48.0 if low_evidence else 38.0)
+        if low_evidence:
+            credibility_cap = 49.0
+        if has_weak or has_self_disclosure_cue:
+            notes.append(
+                "Raised manipulation risk because AI-tag/self-disclosure cues indicate likely synthetic media."
+            )
+        else:
+            notes.append(
+                "Raised manipulation risk because the generation-origin score indicates likely synthetic media."
+            )
+
+    return clamp(adjusted_manipulation), credibility_cap, notes
 
 
 def aggregate_credibility(

@@ -19,6 +19,10 @@ CrediClip turns a social-video link into a structured credibility assessment by 
 - evidence-aware scoring
 - selective hosted LLM claim assessment where it improves quality
 
+## Presentation
+
+- Chronicle presentation: [CrediClip: AI-Powered Credibility Analysis for Short-Form Video](https://app.chroniclehq.com/3048b981-38cd-4b9e-86f9-67e4f7080caa/document/fe85f416-b3b7-438e-8944-f80e85029093)
+
 ## Current Production State
 
 Platform status:

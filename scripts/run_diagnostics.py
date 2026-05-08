@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+ANALYSIS_RESULT_VERSION = (os.getenv("ANALYSIS_RESULT_VERSION") or "2026-05-05d").strip() or "2026-05-05d"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -153,7 +154,7 @@ def run_api_checks() -> list[tuple[bool, str]]:
                         "ocr_present": False,
                         "asr_present": False,
                     },
-                    "notes": ["diagnostic"],
+                    "notes": ["diagnostic", f"Analysis version: {ANALYSIS_RESULT_VERSION}."],
                 },
             }
             complete_resp = client.post(f"/api/jobs/{job_id}/complete", json=complete_payload)
@@ -217,6 +218,43 @@ def run_api_checks() -> list[tuple[bool, str]]:
                 and 45.0 <= scores.get("sparse_evidence", 0.0) <= 60.0
             )
             results.append((consistency_ok, f"scoring consistency -> {scores}"))
+
+            ai_disclosure_payload = {
+                "url": "https://www.youtube.com/shorts/diagai12345",
+                "caption": "Orange cat #ai #cats #orangecat",
+                "transcript": "",
+            }
+            ai_disclosure_resp = client.post("/api/analyze", json=ai_disclosure_payload)
+            ai_disclosure_data = ai_disclosure_resp.json() if ai_disclosure_resp.status_code == 200 else {}
+            ai_disclosure_flag = next(
+                (f for f in ai_disclosure_data.get("flags", []) if f.get("type") == "generation_origin"),
+                {},
+            )
+            ai_disclosure_ok = (
+                ai_disclosure_resp.status_code == 200
+                and float(ai_disclosure_flag.get("score", 0.0)) >= 65.0
+                and ai_disclosure_flag.get("level") in {"medium", "high"}
+            )
+            results.append(
+                (
+                    ai_disclosure_ok,
+                    f"generation-origin AI self-disclosure floor -> {ai_disclosure_flag}",
+                )
+            )
+            ai_disclosure_components = ai_disclosure_data.get("component_scores") or {}
+            ai_disclosure_score = float(ai_disclosure_data.get("credibility_score", 0.0))
+            ai_disclosure_penalty_ok = (
+                ai_disclosure_resp.status_code == 200
+                and float(ai_disclosure_components.get("manipulation", 0.0)) >= 48.0
+                and ai_disclosure_score <= 49.0
+            )
+            results.append(
+                (
+                    ai_disclosure_penalty_ok,
+                    "generation-origin self-disclosure lowers credibility under sparse evidence "
+                    f"-> score={ai_disclosure_score}, manipulation={ai_disclosure_components.get('manipulation')}",
+                )
+            )
 
             worker_evidence_payload = {
                 "url": "https://www.instagram.com/reel/diagworker123/",

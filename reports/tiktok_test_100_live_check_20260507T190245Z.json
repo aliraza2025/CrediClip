@@ -1,0 +1,17 @@
+{
+  "checked_at_utc": "2026-05-07T19:02:45Z",
+  "submitted_file": "/Users/aliraaza/Documents/New project/reports/jobs_submitted_100_20260313T185321Z.json",
+  "durable_progress_file": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_durable_restart_progress_20260313.json",
+  "source_url_count": 100,
+  "job_id_count": 100,
+  "durable_progress": {
+    "source_total": 100,
+    "jobs_returned": 100,
+    "completed_urls": 3,
+    "status_counts": null
+  },
+  "completion_source": "durable_progress.completed_urls",
+  "is_complete_100_of_100": false,
+  "based_on_latest_artifact": "/Users/aliraaza/Documents/New project/reports/tiktok_test_100_live_check_20260507T130046Z.json",
+  "decision": "keep_waiting"
+}

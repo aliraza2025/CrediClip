@@ -8,6 +8,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from app.services.content_overrides import has_curated_content_override
+
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -36,6 +38,10 @@ def _recent_completed_sec() -> int:
         return max(0, int(raw))
     except Exception:
         return 900
+
+
+def _analysis_result_version() -> str:
+    return (os.getenv("ANALYSIS_RESULT_VERSION") or "2026-05-05d").strip() or "2026-05-05d"
 
 
 def _db_path() -> Path:
@@ -101,6 +107,21 @@ def _row_to_job(row: sqlite3.Row) -> dict[str, Any]:
         "error": row["error"],
         "result": _parse_json(row["result_json"], None),
     }
+
+
+def _result_matches_current_version(row: sqlite3.Row) -> bool:
+    result = _parse_json(row["result_json"], None)
+    if not isinstance(result, dict):
+        return False
+    notes = result.get("notes") or []
+    if not isinstance(notes, list):
+        return False
+    marker = f"Analysis version: {_analysis_result_version()}."
+    if marker not in notes:
+        return False
+    if has_curated_content_override(row["url"]):
+        return any("Applied curated content override for demo category:" in str(note) for note in notes)
+    return True
 
 
 def _job_platform(url: str) -> str:
@@ -173,6 +194,8 @@ def find_reusable_job(url: str) -> dict[str, Any] | None:
             if updated_at is None:
                 continue
             if updated_at.astimezone(timezone.utc).timestamp() < cutoff:
+                continue
+            if not _result_matches_current_version(row):
                 continue
             return _row_to_job(row)
     return None

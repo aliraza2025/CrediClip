@@ -237,24 +237,100 @@ button:active {
 
 .evaluation-summary {
   margin: 0 auto 8px;
-  max-width: 760px;
+  max-width: 560px;
   text-align: left;
   color: #211638;
 }
 
-.summary-title {
-  margin: 8px 0 4px;
+.result-summary-line {
+  margin: 0 0 10px;
+  text-align: center;
   font-size: 1rem;
+  font-weight: 800;
+  color: #27153c;
 }
 
-.summary-list {
-  margin: 0 0 8px;
-  padding-left: 22px;
-  line-height: 1.45;
+.compact-panel {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 2px solid rgba(39, 21, 60, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 244, 255, 0.96));
 }
 
-.summary-list li {
-  margin: 4px 0;
+.compact-section {
+  display: grid;
+  gap: 8px;
+}
+
+.compact-heading {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6f6089;
+}
+
+.compact-summary-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff4d9;
+  color: #7c4b00;
+  font-weight: 800;
+}
+
+.compact-rows {
+  display: grid;
+  gap: 8px;
+}
+
+.compact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.compact-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2d2141;
+}
+
+.compact-value {
+  min-width: 90px;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.compact-good {
+  background: rgba(0, 167, 125, 0.14);
+  color: #007256;
+}
+
+.compact-warn {
+  background: rgba(255, 140, 26, 0.16);
+  color: #9a5200;
+}
+
+.compact-bad {
+  background: rgba(219, 31, 72, 0.16);
+  color: #a51739;
+}
+
+.compact-footer {
+  padding-top: 4px;
+  border-top: 1px solid rgba(39, 21, 60, 0.08);
 }
 
 #results-content.score-enter {
