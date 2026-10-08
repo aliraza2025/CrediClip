@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 from urllib.parse import urlparse
@@ -11,7 +12,18 @@ from app.services.ingestion import extract_youtube_video_id
 OVERRIDES_PATH = Path(__file__).resolve().parent.parent / "data" / "manual_content_overrides.json"
 
 
+def _overrides_enabled() -> bool:
+    return (os.getenv("ENABLE_CURATED_CONTENT_OVERRIDES") or "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
 def _load_overrides() -> dict[str, dict]:
+    if not _overrides_enabled():
+        return {}
     if not OVERRIDES_PATH.exists():
         return {}
     try:

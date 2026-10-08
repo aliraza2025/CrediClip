@@ -38,6 +38,18 @@ Operational status:
 - 1 dedicated YouTube worker
 - interactive dashboard for queue, worker, and platform visibility
 
+Privacy and admin access:
+
+- `POST /api/jobs` and `GET /api/jobs/{job_id}` stay public so the analyzer can submit a link and poll that specific job.
+- `/dashboard`, `GET /api/jobs`, and `GET /api/queue/stats` require `ADMIN_TOKEN` when that environment variable is set.
+- Open the dashboard as `/dashboard?admin_token=...` or pass `X-Admin-Token` / `Authorization: Bearer ...`.
+
+Curated demo overrides:
+
+- `app/data/manual_content_overrides.json` is a transparent fixture for known presentation examples.
+- Overrides are off by default and only apply when `ENABLE_CURATED_CONTENT_OVERRIDES=1`.
+- Production scoring should leave this disabled unless you are intentionally running a controlled demo.
+
 ## Architecture At A Glance
 
 1. User submits a URL

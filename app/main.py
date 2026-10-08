@@ -2,7 +2,7 @@ import asyncio
 import os
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException, Query
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
@@ -67,6 +67,7 @@ _INSTAGRAM_ANALYZE_QUEUE_WAIT_SEC = max(30, int(os.getenv("INSTAGRAM_ANALYZE_QUE
 _INSTAGRAM_ANALYZE_QUEUE_POLL_SEC = max(0.25, float(os.getenv("INSTAGRAM_ANALYZE_QUEUE_POLL_SEC", "1.5")))
 _TIKTOK_ANALYZE_QUEUE_WAIT_SEC = max(30, int(os.getenv("TIKTOK_ANALYZE_QUEUE_WAIT_SEC", "300")))
 _TIKTOK_ANALYZE_QUEUE_POLL_SEC = max(0.25, float(os.getenv("TIKTOK_ANALYZE_QUEUE_POLL_SEC", "1.5")))
+_ADMIN_TOKEN = (os.getenv("ADMIN_TOKEN") or "").strip()
 _analyze_semaphore = asyncio.Semaphore(_ANALYZE_MAX_CONCURRENCY)
 
 static_dir = Path(__file__).parent / "static"
@@ -76,6 +77,27 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 @app.on_event("startup")
 def startup() -> None:
     init_job_store()
+
+
+def _bearer_token(authorization: str | None) -> str:
+    if not authorization:
+        return ""
+    scheme, _, token = authorization.partition(" ")
+    if scheme.lower() != "bearer":
+        return ""
+    return token.strip()
+
+
+def require_admin_access(
+    admin_token: str | None = Query(default=None),
+    x_admin_token: str | None = Header(default=None),
+    authorization: str | None = Header(default=None),
+) -> None:
+    if not _ADMIN_TOKEN:
+        return
+    provided = (admin_token or x_admin_token or _bearer_token(authorization)).strip()
+    if provided != _ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="Admin access required")
 
 
 async def _run_analyze_with_limits(request: AnalyzeRequest) -> AnalyzeResponse:
@@ -161,7 +183,7 @@ def index() -> FileResponse:
     )
 
 
-@app.get("/dashboard")
+@app.get("/dashboard", dependencies=[Depends(require_admin_access)])
 def dashboard() -> FileResponse:
     return FileResponse(
         static_dir / "dashboard.html",
@@ -193,7 +215,7 @@ def create_analysis_job(request: JobCreateRequest) -> JobResponse:
     return JobResponse(**job)
 
 
-@app.get("/api/jobs", response_model=JobsListResponse)
+@app.get("/api/jobs", response_model=JobsListResponse, dependencies=[Depends(require_admin_access)])
 def list_analysis_jobs(status: str | None = None, limit: int = 50) -> JobsListResponse:
     if status and status not in {"queued", "processing", "completed", "failed"}:
         raise HTTPException(status_code=400, detail="Invalid status filter")
@@ -201,7 +223,7 @@ def list_analysis_jobs(status: str | None = None, limit: int = 50) -> JobsListRe
     return JobsListResponse(jobs=[JobResponse(**j) for j in jobs])
 
 
-@app.get("/api/queue/stats", response_model=QueueStatsResponse)
+@app.get("/api/queue/stats", response_model=QueueStatsResponse, dependencies=[Depends(require_admin_access)])
 def get_queue_stats() -> QueueStatsResponse:
     return QueueStatsResponse(**queue_stats())
 

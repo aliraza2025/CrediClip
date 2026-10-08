@@ -29,6 +29,7 @@ const opsReadout = document.getElementById('ops-readout');
 
 let timer = null;
 let selectedJobId = null;
+const adminToken = new URLSearchParams(window.location.search).get('admin_token') || '';
 
 const state = {
   jobs: [],
@@ -38,6 +39,12 @@ const state = {
   workerOptions: [],
   statHistory: [],
 };
+
+function adminUrl(path) {
+  if (!adminToken) return path;
+  const joiner = path.includes('?') ? '&' : '?';
+  return `${path}${joiner}admin_token=${encodeURIComponent(adminToken)}`;
+}
 
 const KNOWN_LANES = [
   {
@@ -716,7 +723,7 @@ function updateWorkerFilterOptions() {
 }
 
 async function loadStats() {
-  const res = await fetch('/api/queue/stats');
+  const res = await fetch(adminUrl('/api/queue/stats'));
   if (!res.ok) throw new Error('Failed to load queue stats');
   const data = await res.json();
   state.stats = data;
@@ -737,7 +744,7 @@ async function loadStats() {
 }
 
 async function loadJobs() {
-  const res = await fetch('/api/jobs?limit=100');
+  const res = await fetch(adminUrl('/api/jobs?limit=100'));
   if (!res.ok) throw new Error('Failed to load jobs list');
   const data = await res.json();
   const jobs = (data.jobs || []).map((job) => ({

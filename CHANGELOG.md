@@ -23,6 +23,8 @@ This release packages the latest work across scoring corrections, curated demo c
 - updated score summaries so they describe the video more directly
 - versioned completed analysis results to avoid reusing stale queue outputs after scoring logic changes
 - finalized presentation materials and slide-aligned scripting around the 13-slide Chronicle deck
+- disabled curated demo overrides by default behind `ENABLE_CURATED_CONTENT_OVERRIDES`
+- protected dashboard and aggregate job-list APIs behind `ADMIN_TOKEN`
 
 ### Fixed
 
