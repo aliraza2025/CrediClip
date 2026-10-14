@@ -1,0 +1,11 @@
+title: CrediClip Engineering Notes
+description: Technical notes from the CrediClip short-form video credibility analysis project.
+url: "https://aliraza2025.github.io"
+baseurl: "/CrediClip"
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+exclude:
+  - publishing
+
