@@ -23,8 +23,9 @@ CrediClip turns a social-video link into a structured credibility assessment by 
 
 - Chronicle presentation: [CrediClip: AI-Powered Credibility Analysis for Short-Form Video](https://app.chroniclehq.com/3048b981-38cd-4b9e-86f9-67e4f7080caa/document/fe85f416-b3b7-438e-8944-f80e85029093)
 
-## Technical Article
+## Engineering and Product Articles
 
+- [What 780 completed video jobs taught me about AI product quality](https://aliraza2025.github.io/CrediClip/evaluating-ai-product-quality/)
 - [Building a Multi-Lane Data Plane for Short-Form Video Credibility Analysis](https://aliraza2025.github.io/CrediClip/data-plane/)
 
 ## Current Production State

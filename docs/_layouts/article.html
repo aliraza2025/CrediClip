@@ -31,7 +31,7 @@
     <main>
       <article>
         <header class="article-hero">
-          <p class="eyebrow">Capstone engineering note <span>01</span></p>
+          <p class="eyebrow">{{ page.note_label | default: "Capstone engineering note" }} <span>{{ page.note_number | default: "01" }}</span></p>
           <h1>{{ page.title }}</h1>
           <p class="dek">{{ page.description }}</p>
 
@@ -50,12 +50,18 @@
           <aside class="section-rail" aria-label="Article sections">
             <p>On this page</p>
             <nav>
+              {% if page.toc %}
+              {% for section in page.toc %}
+              <a href="#{{ section.id | escape }}">{{ section.label | escape }}</a>
+              {% endfor %}
+              {% else %}
               <a href="#the-problem-with-a-single-synchronous-pipeline">The original problem</a>
               <a href="#control-plane-versus-data-plane">Two-plane architecture</a>
               <a href="#step-2-claim-jobs-atomically">Atomic job claims</a>
               <a href="#step-3-create-lanes-with-routing-filters">Worker lanes</a>
               <a href="#step-6-design-for-failure-not-only-success">Failure recovery</a>
               <a href="#lessons-from-building-the-data-plane">Lessons learned</a>
+              {% endif %}
             </nav>
           </aside>
 
