@@ -1,5 +1,9 @@
 # CrediClip
 
+[Portfolio and case studies](https://alirazaportfolio2026.netlify.app/)
+
+M.S. Business Analytics capstone by Ali Raza. The engineering notes explain the architecture, benchmark results, and limits of the assessments. Batch completion and recovered evidence do not establish independently measured credibility accuracy.
+
 CrediClip is a multi-platform credibility analysis system for short-form video.
 It accepts a public TikTok, Instagram, or YouTube Shorts URL and returns:
 
