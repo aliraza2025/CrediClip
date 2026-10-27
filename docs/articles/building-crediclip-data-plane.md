@@ -13,6 +13,8 @@ tags:
   - AI
 ---
 
+Explore my complete [product, AI, analytics, and strategy portfolio](https://alirazaportfolio2026.netlify.app/).
+
 Short-form video looks simple from the outside: paste a link, wait briefly, and receive a credibility score. The engineering behind that interaction is less simple. YouTube Shorts, Instagram Reels, and TikTok expose different metadata, apply different anti-bot controls, and fail in different ways. A single request handler that tries to download media, transcribe audio, scan frames, retrieve evidence, and score a claim quickly becomes slow and fragile.
 
 I encountered this problem while building **CrediClip**, my capstone project for credibility analysis of short-form video. The most important architectural decision was to separate the system into two parts:
@@ -313,6 +315,14 @@ The lane architecture improved the project in four practical ways.
 
 It also made the system easier to explain. The score was no longer the output of a single opaque model call. It was the final stage of an observable pipeline that collected evidence, measured coverage, assessed signals, and recorded uncertainty.
 
+## Scoring, confidence, and evaluation
+
+The final score is computed in deterministic application code. LLMs can provide structured claim assessments when evidence thresholds are met. Low analysis confidence shrinks scores toward a neutral anchor of 52, while evidence coverage describes the recovered inputs. That behavior is a design choice, not an independently validated probability.
+
+In the March 11, 2026 YouTube batch, all 780 jobs eventually completed, including two retried links, but 759 results (97.3%) were low evidence. In a separate 19-link Instagram comparison between March 11 and March 13, mean evidence tokens rose from 1.0 to 130.9. These measurements describe completion and evidence recovery. They do not establish credibility accuracy.
+
+The [evaluation article](https://aliraza2025.github.io/CrediClip/evaluating-ai-product-quality/) links the underlying reports and distinguishes these measurements from independently labeled assessment quality. Stronger labeled evaluation and confidence calibration remain necessary.
+
 ## Tradeoffs and limits
 
 The design is intentionally pragmatic, but it has limits.
@@ -338,3 +348,6 @@ For an MVP, the best architecture is not necessarily the one with the most infra
 **Project:** [CrediClip on GitHub](https://github.com/aliraza2025/CrediClip)  
 **Author:** Ali Raza  
 **Topic:** Data-plane architecture for short-form video credibility analysis
+
+Explore my complete [product, AI, analytics, and strategy portfolio](https://alirazaportfolio2026.netlify.app/).
+
