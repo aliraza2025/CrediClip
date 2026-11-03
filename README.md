@@ -1,6 +1,6 @@
 # CrediClip
 
-[Portfolio and case studies](https://alirazaportfolio2026.netlify.app/)
+[Portfolio and case studies](https://alirazaai.page/)
 
 M.S. Business Analytics capstone by Ali Raza. The engineering notes explain the architecture, benchmark results, and limits of the assessments. Batch completion and recovered evidence do not establish independently measured credibility accuracy.
 
@@ -29,8 +29,8 @@ CrediClip turns a social-video link into a structured credibility assessment by 
 
 ## Engineering and Product Articles
 
-- [What 780 completed video jobs taught me about AI product quality](https://aliraza2025.github.io/CrediClip/evaluating-ai-product-quality/)
-- [Building a Multi-Lane Data Plane for Short-Form Video Credibility Analysis](https://aliraza2025.github.io/CrediClip/data-plane/)
+- [What 780 completed video jobs taught me about AI product quality](https://alirazaai.page/notes/crediclip-ai-product-quality)
+- [Building a Multi-Lane Data Plane for Short-Form Video Credibility Analysis](https://alirazaai.page/notes/crediclip-data-plane)
 
 ## Current Production State
 

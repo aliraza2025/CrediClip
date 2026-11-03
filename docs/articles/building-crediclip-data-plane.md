@@ -322,7 +322,7 @@ The final score is computed in deterministic application code. LLMs can provide 
 
 In the March 11, 2026 YouTube batch, all 780 jobs eventually completed, including two retried links, but 759 results (97.3%) were low evidence. In a separate 19-link Instagram comparison between March 11 and March 13, mean evidence tokens rose from 1.0 to 130.9. These measurements describe completion and evidence recovery. They do not establish credibility accuracy.
 
-The [evaluation article](https://aliraza2025.github.io/CrediClip/evaluating-ai-product-quality/) links the underlying reports and distinguishes these measurements from independently labeled assessment quality. Stronger labeled evaluation and confidence calibration remain necessary.
+The [evaluation article](https://alirazaai.page/notes/crediclip-ai-product-quality) links the underlying reports and distinguishes these measurements from independently labeled assessment quality. Stronger labeled evaluation and confidence calibration remain necessary.
 
 ## Tradeoffs and limits
 

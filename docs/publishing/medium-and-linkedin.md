@@ -4,7 +4,7 @@
 
 Use this as the original URL after GitHub Pages is enabled:
 
-`https://aliraza2025.github.io/CrediClip/data-plane/`
+`https://alirazaai.page/notes/crediclip-data-plane`
 
 ## Medium
 
@@ -32,7 +32,7 @@ In my CrediClip capstone, I separated the lightweight control plane from a multi
 
 In this technical article, I explain the queue design, lane-routing logic, platform adapters, failure recovery, and engineering tradeoffs, with code samples from the working implementation.
 
-Read the full article: https://aliraza2025.github.io/CrediClip/data-plane/
+Read the full article: https://alirazaai.page/notes/crediclip-data-plane
 
 #Python #FastAPI #DataEngineering #SystemArchitecture #ArtificialIntelligence
 
