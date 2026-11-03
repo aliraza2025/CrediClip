@@ -1,4 +1,5 @@
 ---
+moved_to: https://alirazaai.page/notes/crediclip-data-plane
 layout: article
 title: Building a Multi-Lane Data Plane for Short-Form Video Credibility Analysis
 description: How I separated CrediClip's web control plane from platform-specific evidence workers to analyze YouTube Shorts, Instagram Reels, and TikTok videos reliably.
@@ -13,7 +14,7 @@ tags:
   - AI
 ---
 
-Explore my complete [product, AI, analytics, and strategy portfolio](https://alirazaportfolio2026.netlify.app/).
+Explore my complete [product, AI, analytics, and strategy portfolio](https://alirazaai.page/).
 
 Short-form video looks simple from the outside: paste a link, wait briefly, and receive a credibility score. The engineering behind that interaction is less simple. YouTube Shorts, Instagram Reels, and TikTok expose different metadata, apply different anti-bot controls, and fail in different ways. A single request handler that tries to download media, transcribe audio, scan frames, retrieve evidence, and score a claim quickly becomes slow and fragile.
 
@@ -349,5 +350,5 @@ For an MVP, the best architecture is not necessarily the one with the most infra
 **Author:** Ali Raza  
 **Topic:** Data-plane architecture for short-form video credibility analysis
 
-Explore my complete [product, AI, analytics, and strategy portfolio](https://alirazaportfolio2026.netlify.app/).
+Explore my complete [product, AI, analytics, and strategy portfolio](https://alirazaai.page/).
 

@@ -1,4 +1,5 @@
 ---
+moved_to: https://alirazaai.page/notes/crediclip-ai-product-quality
 layout: article
 title: What 780 completed video jobs taught me about AI product quality
 description: How evidence coverage, readiness benchmarks, and explicit uncertainty shaped the CrediClip roadmap.
@@ -80,11 +81,11 @@ Building the workflow and documenting those distinctions gave me a clearer view 
 
 ## Sources and further reading
 
-This article adapts the evaluation and product lessons in my [original CrediClip case study](https://alirazaportfolio2026.netlify.app/crediclip).
+This article adapts the evaluation and product lessons in my [original CrediClip case study](https://alirazaai.page/crediclip).
 
 - [780-link YouTube batch summary](https://github.com/aliraza2025/CrediClip/blob/main/reports/links_batch_780_20260311T175959Z_final_summary.json), including evidence coverage and retried links.
 - [March 4 readiness benchmark](https://github.com/aliraza2025/CrediClip/blob/main/reports/phase1_benchmark_100_20260304T111624Z.json), including gate thresholds and counts.
 - [Instagram benchmark summary](https://github.com/aliraza2025/CrediClip/blob/main/reports/instagram_phase2_summary_20260313.json), with the before and after reports.
 - [Building the CrediClip data plane]({{ '/data-plane/' | relative_url }}), the accompanying architecture article.
-- [Source code](https://github.com/aliraza2025/CrediClip) and [my portfolio](https://alirazaportfolio2026.netlify.app/).
+- [Source code](https://github.com/aliraza2025/CrediClip) and [my portfolio](https://alirazaai.page/).
 
